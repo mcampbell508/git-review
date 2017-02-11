@@ -23,6 +23,7 @@ class GitVersionControlTest extends TestCase
     protected $directory;
 
     protected $testFileName;
+    private $gitVersionControl;
 
     public function setUp()
     {
@@ -32,28 +33,26 @@ class GitVersionControlTest extends TestCase
             mkdir($this->directory, 0755, true);
         } else {
             // Clean up any created files.
-            $cmd = 'rm -rf ' . $this->directory . DIRECTORY_SEPARATOR . '*';
-            $process = new Process($cmd);
-            $process->run();
+            $this->runProcess('rm -rf ' . $this->directory . DIRECTORY_SEPARATOR . '*');
         }
 
         $this->directory = realpath($this->directory);
         $this->testFileName = 'test.txt';
 
         chdir($this->directory);
+
+        $this->gitVersionControl = new GitVersionControl();
     }
 
     public function tearDown()
     {
         // Clean up any created files.
-        $process = new Process('rm -rf ' . $this->directory);
-        $process->run();
+        $this->runProcess('rm -rf ' . $this->directory);
     }
 
     public function testGetStagedFilesWithNoGitRepo()
     {
-        $git = new GitVersionControl();
-        $collection = $git->getStagedFiles();
+        $collection = $this->gitVersionControl->getStagedFiles();
 
         $this->assertInstanceOf('StaticReview\Collection\FileCollection', $collection);
         $this->assertCount(0, $collection);
@@ -64,11 +63,9 @@ class GitVersionControlTest extends TestCase
         $cmd  = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
 
-        $process = new Process($cmd);
-        $process->run();
+        $this->runProcess($cmd);
 
-        $git = new GitVersionControl();
-        $collection = $git->getStagedFiles();
+        $collection = $this->gitVersionControl->getStagedFiles();
 
         $this->assertInstanceOf('StaticReview\Collection\FileCollection', $collection);
         $this->assertCount(0, $collection);
@@ -80,11 +77,9 @@ class GitVersionControlTest extends TestCase
         $cmd .= ' && git init';
         $cmd .= ' && git add ' . $this->testFileName;
 
-        $process = new Process($cmd);
-        $process->run();
+        $this->runProcess($cmd);
 
-        $git = new GitVersionControl();
-        $collection = $git->getStagedFiles();
+        $collection = $this->gitVersionControl->getStagedFiles();
 
         $this->assertInstanceOf('StaticReview\Collection\FileCollection', $collection);
         $this->assertCount(1, $collection);
@@ -104,11 +99,9 @@ class GitVersionControlTest extends TestCase
         $cmd .= ' && echo \'test\' > ' . $this->testFileName;
         $cmd .= ' && git add ' . $this->testFileName;
 
-        $process = new Process($cmd);
-        $process->run();
+        $this->runProcess($cmd);
 
-        $git = new GitVersionControl();
-        $collection = $git->getStagedFiles();
+        $collection = $this->gitVersionControl->getStagedFiles();
 
         $this->assertInstanceOf('StaticReview\Collection\FileCollection', $collection);
         $this->assertCount(1, $collection);
@@ -129,11 +122,9 @@ class GitVersionControlTest extends TestCase
         $cmd .= ' && git add ' . $this->testFileName;
         $cmd .= ' && echo \'not staged\' >> ' . $this->testFileName;
 
-        $process = new Process($cmd);
-        $process->run();
+        $this->runProcess($cmd);
 
-        $git = new GitVersionControl();
-        $collection = $git->getStagedFiles();
+        $collection = $this->gitVersionControl->getStagedFiles();
 
         $this->assertInstanceOf('StaticReview\Collection\FileCollection', $collection);
         $this->assertCount(1, $collection);
@@ -143,9 +134,78 @@ class GitVersionControlTest extends TestCase
         $this->assertSame(basename($this->testFileName), $file->getFileName());
         $this->assertSame('M', $file->getStatus());
 
-        $process = new Process('cat ' . $file->getFullPath());
-        $process->run();
+        $process = $this->runProcess('cat ' . $file->getFullPath());
 
         $this->assertSame('test', trim($process->getOutput()));
+    }
+
+    /**
+     * For some reason a file had to be added and committed, for this test to pass.
+     * Also, I could not seem to use the ProcessBuilder.
+     */
+    public function testGetBranchName()
+    {
+        $cmd  = 'touch ' . $this->testFileName;
+        $cmd .= ' && git init';
+        $cmd .= ' && git add ' . $this->testFileName;
+        $cmd .= ' && git commit -m \'test\'';
+
+        $this->runProcess($cmd);
+
+        $this->assertSame('master', $this->gitVersionControl->getBranch()->getName());
+    }
+
+    public function testGetBranchNameAfterChangingBranches()
+    {
+        $cmd  = 'touch ' . $this->testFileName;
+        $cmd .= ' && git init';
+        $cmd .= ' && git add ' . $this->testFileName;
+        $cmd .= ' && git commit -m \'Commit message\'';
+
+        $this->runProcess($cmd);
+
+        $this->assertSame('master', $this->gitVersionControl->getBranch()->getName());
+
+        $this->runProcess('git checkout -b develop');
+
+        $this->assertSame('develop', $this->gitVersionControl->getBranch()->getName());
+    }
+
+    public function testGetBranchNameAccountsForDetachedHeadState()
+    {
+        $cmd  = 'touch ' . $this->testFileName;
+        $cmd .= ' && git init';
+        $cmd .= ' && git add ' . $this->testFileName;
+        $cmd .= ' && git commit -m \'Commit message\'';
+        $cmd .= " && echo 'more text' >> $this->testFileName";
+        $cmd .= ' && git add ' . $this->testFileName;
+        $cmd .= ' && git commit -m \'Second commit message\'';
+
+        $this->runProcess($cmd);
+        $this->causeDetachedHead();
+
+        $this->assertSame('(detached', $this->gitVersionControl->getBranch()->getName());
+        $this->assertTrue($this->gitVersionControl->getBranch()->isInDetachedHeadState());
+    }
+
+    /**
+     * @param $command
+     *
+     * @return Process
+     */
+    private function runProcess($command)
+    {
+        $process = new Process($command, $this->directory);
+        $process->run();
+
+        return $process;
+    }
+
+    /**
+     * Cause a detached HEAD scenario.
+     */
+    private function causeDetachedHead()
+    {
+        $this->runProcess('git checkout HEAD~1');
     }
 }

@@ -16,4 +16,6 @@ namespace StaticReview\VersionControl;
 interface VersionControlInterface
 {
     public function getStagedFiles();
+    public function getCommitMessage();
+    public function getBranch();
 }
