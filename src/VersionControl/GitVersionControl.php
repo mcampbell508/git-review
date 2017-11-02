@@ -75,6 +75,16 @@ class GitVersionControl implements VersionControlInterface
     }
 
     /**
+     * Gets the branch info.
+     *
+     * @return GitBranch
+     */
+    public function getBranch()
+    {
+        return new GitBranch($this->getProjectBase());
+    }
+
+    /**
      * Gets the projects base directory.
      *
      * @return string
