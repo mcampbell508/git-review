@@ -26,7 +26,7 @@ class IssueTest extends TestCase
     protected $issueMessage;
     protected $issueFile;
 
-    protected $levels = [ Issue::LEVEL_INFO, Issue::LEVEL_WARNING, Issue::LEVEL_ERROR ];
+    protected $levels = [Issue::LEVEL_INFO, Issue::LEVEL_WARNING, Issue::LEVEL_ERROR];
 
     public function setUp()
     {

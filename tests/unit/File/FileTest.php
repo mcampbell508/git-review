@@ -101,7 +101,7 @@ class FileTest extends TestCase
 
     public function testGetFormattedStatus()
     {
-        $statuses = [ 'A', 'C', 'M', 'R' ];
+        $statuses = ['A', 'C', 'M', 'R'];
 
         foreach ($statuses as $status) {
             $file = new File($status, $this->filePath, $this->projectPath);
