@@ -19,7 +19,7 @@ use StaticReview\Review\ReviewableInterface;
 
 class WorkInProgressReview extends AbstractMessageReview
 {
-    public function review(ReporterInterface $reporter, ReviewableInterface $commit)
+    public function review(ReporterInterface $reporter, ReviewableInterface $commit): void
     {
         $fulltext = $commit->getSubject() . PHP_EOL . $commit->getBody();
 

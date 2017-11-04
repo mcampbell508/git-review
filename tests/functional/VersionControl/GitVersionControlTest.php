@@ -25,7 +25,7 @@ class GitVersionControlTest extends TestCase
     protected $testFileName;
     private $gitVersionControl;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->directory  = sys_get_temp_dir() . '/sjparkinson.static-review/function-tests/';
 
@@ -44,13 +44,13 @@ class GitVersionControlTest extends TestCase
         $this->gitVersionControl = new GitVersionControl();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         // Clean up any created files.
         $this->runProcess('rm -rf ' . $this->directory);
     }
 
-    public function testGetStagedFilesWithNoGitRepo()
+    public function testGetStagedFilesWithNoGitRepo(): void
     {
         $collection = $this->gitVersionControl->getStagedFiles();
 
@@ -58,7 +58,7 @@ class GitVersionControlTest extends TestCase
         $this->assertCount(0, $collection);
     }
 
-    public function testGetStagedFilesWithGitRepo()
+    public function testGetStagedFilesWithGitRepo(): void
     {
         $cmd  = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
@@ -71,7 +71,7 @@ class GitVersionControlTest extends TestCase
         $this->assertCount(0, $collection);
     }
 
-    public function testGetStagedFilesWithNewFile()
+    public function testGetStagedFilesWithNewFile(): void
     {
         $cmd  = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
@@ -90,7 +90,7 @@ class GitVersionControlTest extends TestCase
         $this->assertSame('A', $file->getStatus());
     }
 
-    public function testGetStagedFilesWithModifiedFile()
+    public function testGetStagedFilesWithModifiedFile(): void
     {
         $cmd  = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
@@ -112,7 +112,7 @@ class GitVersionControlTest extends TestCase
         $this->assertSame('M', $file->getStatus());
     }
 
-    public function testGetStagedFilesWithPartiallyStagedFile()
+    public function testGetStagedFilesWithPartiallyStagedFile(): void
     {
         $cmd  = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
@@ -143,7 +143,7 @@ class GitVersionControlTest extends TestCase
      * For some reason a file had to be added and committed, for this test to pass.
      * Also, I could not seem to use the ProcessBuilder.
      */
-    public function testGetBranchName()
+    public function testGetBranchName(): void
     {
         $cmd  = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
@@ -155,7 +155,7 @@ class GitVersionControlTest extends TestCase
         $this->assertSame('master', $this->gitVersionControl->getBranch()->getName());
     }
 
-    public function testGetBranchNameAfterChangingBranches()
+    public function testGetBranchNameAfterChangingBranches(): void
     {
         $cmd  = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
@@ -171,7 +171,7 @@ class GitVersionControlTest extends TestCase
         $this->assertSame('develop', $this->gitVersionControl->getBranch()->getName());
     }
 
-    public function testGetBranchNameAccountsForDetachedHeadState()
+    public function testGetBranchNameAccountsForDetachedHeadState(): void
     {
         $cmd  = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
@@ -203,7 +203,7 @@ class GitVersionControlTest extends TestCase
     /**
      * Cause a detached HEAD scenario.
      */
-    private function causeDetachedHead()
+    private function causeDetachedHead(): void
     {
         $this->runProcess('git checkout HEAD~1');
     }

@@ -23,7 +23,7 @@ class HookRunCommand extends Command
 {
     const ARGUMENT_HOOK = 'hook';
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName('hook:run');
 
@@ -32,7 +32,7 @@ class HookRunCommand extends Command
         $this->addArgument(self::ARGUMENT_HOOK, InputArgument::REQUIRED, 'The hook file to run.');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): void
     {
         $hookArg = $input->getArgument(self::ARGUMENT_HOOK);
         $path = $this->getTargetPath($hookArg);
@@ -42,7 +42,7 @@ class HookRunCommand extends Command
 
             $process = new Process($cmd);
 
-            $process->run(function ($type, $buffer) use ($output) {
+            $process->run(function ($type, $buffer) use ($output): void {
                 $output->write($buffer);
             });
         }

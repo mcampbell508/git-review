@@ -34,7 +34,7 @@ class BodyLineLengthReview extends AbstractMessageReview
      */
     protected $urls = true;
 
-    public function setMaximumLength($length)
+    public function setMaximumLength($length): void
     {
         $this->maximum = $length;
     }
@@ -44,7 +44,7 @@ class BodyLineLengthReview extends AbstractMessageReview
         return $this->maximum;
     }
 
-    public function setAllowLongUrls($enable)
+    public function setAllowLongUrls($enable): void
     {
         $this->urls = (bool) $enable;
     }
@@ -54,7 +54,7 @@ class BodyLineLengthReview extends AbstractMessageReview
         return $this->urls;
     }
 
-    public function review(ReporterInterface $reporter, ReviewableInterface $commit)
+    public function review(ReporterInterface $reporter, ReviewableInterface $commit): void
     {
         $lines = preg_split('/(\r?\n)+/', $commit->getBody());
         foreach ($lines as $line) {

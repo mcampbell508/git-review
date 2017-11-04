@@ -41,7 +41,7 @@ class NoCommitTagReview extends AbstractFileReview
      *
      * @link http://stackoverflow.com/a/4749368
      */
-    public function review(ReporterInterface $reporter, ReviewableInterface $file)
+    public function review(ReporterInterface $reporter, ReviewableInterface $file): void
     {
         $cmd = sprintf('grep --fixed-strings --ignore-case --quiet "NOCOMMIT" %s', $file->getFullPath());
 

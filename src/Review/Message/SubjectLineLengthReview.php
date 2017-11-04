@@ -29,7 +29,7 @@ class SubjectLineLengthReview extends AbstractMessageReview
      */
     protected $maximum = 50;
 
-    public function setMaximumLength($length)
+    public function setMaximumLength($length): void
     {
         $this->maximum = $length;
     }
@@ -39,7 +39,7 @@ class SubjectLineLengthReview extends AbstractMessageReview
         return $this->maximum;
     }
 
-    public function review(ReporterInterface $reporter, ReviewableInterface $commit)
+    public function review(ReporterInterface $reporter, ReviewableInterface $commit): void
     {
         if (strlen($commit->getSubject()) > $this->getMaximumLength()) {
             $message = sprintf(

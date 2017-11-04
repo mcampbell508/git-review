@@ -94,7 +94,7 @@ class SubjectImperativeReview extends AbstractMessageReview
         'uses',       'using',        'used',
     ];
 
-    public function review(ReporterInterface $reporter, ReviewableInterface $commit)
+    public function review(ReporterInterface $reporter, ReviewableInterface $commit): void
     {
         $regex = '/^(?:' . implode('|', $this->incorrect) . ')\b/i';
         if (preg_match($regex, $commit->getSubject())) {
