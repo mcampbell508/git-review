@@ -6,6 +6,7 @@ phpunit.xml
 .vagrant/
 vendor/
 build/
+.php_cs
 
 # OS Generated Files #
 ######################
