@@ -13,8 +13,8 @@
 
 namespace StaticReview\Collection;
 
-use \Countable;
-use \Iterator;
+use Countable;
+use Iterator;
 
 abstract class Collection implements Iterator, Countable
 {
