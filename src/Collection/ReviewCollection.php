@@ -43,12 +43,12 @@ class ReviewCollection extends Collection
     public function select(callable $filter)
     {
         if (! $this->collection) {
-            return new ReviewCollection();
+            return new self();
         }
 
         $filtered = array_filter($this->collection, $filter);
 
-        return new ReviewCollection($filtered);
+        return new self($filtered);
     }
 
     /**

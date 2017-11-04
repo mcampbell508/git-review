@@ -43,11 +43,11 @@ class FileCollection extends Collection
     public function select(callable $filter)
     {
         if (! $this->collection) {
-            return new FileCollection();
+            return new self();
         }
 
         $filtered = array_filter($this->collection, $filter);
 
-        return new FileCollection($filtered);
+        return new self($filtered);
     }
 }

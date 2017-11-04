@@ -41,12 +41,12 @@ class IssueCollection extends Collection
     public function select(callable $filter)
     {
         if (! $this->collection) {
-            return new IssueCollection();
+            return new self();
         }
 
         $filtered = array_filter($this->collection, $filter);
 
-        return new IssueCollection($filtered);
+        return new self($filtered);
     }
 
     /**
