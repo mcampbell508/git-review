@@ -36,7 +36,7 @@ class CommitMessage implements CommitMessageInterface
      * @param string $message
      * @param string $hash
      */
-    public function __construct($message, $hash = null)
+    public function __construct(string $message, ?string $hash = null)
     {
         $message = (new SanitizeMessage($message))->getSanitizedMessage();
 
@@ -54,7 +54,7 @@ class CommitMessage implements CommitMessageInterface
      *
      * @return string
      */
-    public function getSubject()
+    public function getSubject(): string
     {
         return $this->subject;
     }
@@ -64,7 +64,7 @@ class CommitMessage implements CommitMessageInterface
      *
      * @return string
      */
-    public function getBody()
+    public function getBody(): string
     {
         return $this->body;
     }
@@ -74,7 +74,7 @@ class CommitMessage implements CommitMessageInterface
      *
      * @return string|null
      */
-    public function getHash()
+    public function getHash():? string
     {
         return $this->hash ?: null;
     }
@@ -84,7 +84,7 @@ class CommitMessage implements CommitMessageInterface
      *
      * @return string
      */
-    public function getName()
+    public function getName():? string
     {
         return $this->getHash() ?: 'current commit';
     }

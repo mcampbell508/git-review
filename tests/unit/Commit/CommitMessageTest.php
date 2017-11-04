@@ -70,7 +70,7 @@ class CommitMessageTest extends TestCase
      *
      * @return string
      */
-    private function message($name)
+    private function message(string $name): string
     {
         return file_get_contents($this->fixtures . '/commit-message-' . $name . '.txt');
     }

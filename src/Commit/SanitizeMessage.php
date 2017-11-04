@@ -9,16 +9,18 @@ class SanitizeMessage
     public function __construct(string $message)
     {
         $this->message = $message;
+
+        $this->sanitizeMessage();
     }
 
-    public function sanitizeMessage(): void
+    private function sanitizeMessage(): void
     {
         $this->stripOutDiff();
         $this->removeComments();
         $this->splitMessageByNewLines();
     }
 
-    public function getSanitizedMessage()
+    public function getSanitizedMessage(): array
     {
         return $this->message;
     }
