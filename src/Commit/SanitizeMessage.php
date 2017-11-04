@@ -18,7 +18,6 @@ class SanitizeMessage
         $this->splitMessageByNewLines();
     }
 
-
     public function getSanitizedMessage()
     {
         return $this->message;
@@ -42,7 +41,6 @@ class SanitizeMessage
         list($message) = $this->message;
         $this->message = preg_replace('/^#.*/m', '', $message);
     }
-
     
     private function splitMessageByNewLines()
     {
