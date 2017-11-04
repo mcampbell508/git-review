@@ -1,11 +1,26 @@
 ---
 image: php:7.1
 
-before_script:
-# Install dependencies
-- bash ci/docker_install.sh > /dev/null
+stages:
+  - test_build
+  - test
 
-test:app:
+test_build:
+  stage: test_build
   script:
-  - php /usr/local/bin/composer install --no-interaction --no-progress
-  - php vendor/bin/phpunit
+    - bash ci/docker_install.sh > /dev/null
+    - php /usr/local/bin/composer install --no-interaction --no-progress
+
+phpunit-tests:
+  stage: test
+  dependencies:
+    - test_build
+  script:
+    - php vendor/bin/phpunit
+
+phpcs:
+  stage: test
+  dependencies:
+    - test_build
+  script:
+    - php vendor/bin/phpcs --standard=PSR2 src/ bin/ hooks/ tests/
