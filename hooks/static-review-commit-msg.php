@@ -33,7 +33,6 @@ if (empty($argv[1]) || !is_file($argv[1])) {
 
 // Reference the required classes and the reviews you want to use.
 use League\CLImate\CLImate;
-use StaticReview\Issue\Issue;
 use StaticReview\Reporter\Reporter;
 use StaticReview\Review\Message\BodyLineLengthReview;
 use StaticReview\Review\Message\SubjectImperativeReview;

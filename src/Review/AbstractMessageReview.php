@@ -15,7 +15,6 @@ namespace StaticReview\Review;
 
 use StaticReview\Commit\CommitMessageInterface;
 use StaticReview\File\FileInterface;
-use Symfony\Component\Process\Process;
 
 abstract class AbstractMessageReview extends AbstractReview
 {
