@@ -41,7 +41,7 @@ class SanitizeMessage
         list($message) = $this->message;
         $this->message = preg_replace('/^#.*/m', '', $message);
     }
-    
+
     private function splitMessageByNewLines()
     {
         $this->message = preg_split('/(\r?\n)+/', trim($this->message));
