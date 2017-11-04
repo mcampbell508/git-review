@@ -37,6 +37,7 @@ abstract class AbstractReview implements ReviewInterface
         if ($subject instanceof CommitMessageInterface) {
             return $this->canReviewMessage($subject);
         }
+
         return false;
     }
 
@@ -61,6 +62,7 @@ abstract class AbstractReview implements ReviewInterface
         if (null === $cwd) {
             $cwd = $this->getRootDirectory();
         }
+
         return new Process($commandline, $cwd, $env, $input, $timeout, $options);
     }
 
