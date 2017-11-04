@@ -71,8 +71,9 @@ if ($reporter->hasIssues()) {
     $climate->out('')->red('✘ Please fix the errors above using: git commit --amend');
 
     exit(0);
-} else {
+
+}  
     $climate->green('✔ That commit looks good!');
 
     exit(0);
-}
+

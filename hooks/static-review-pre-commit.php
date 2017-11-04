@@ -67,8 +67,9 @@ if ($reporter->hasIssues()) {
     $climate->out('')->red('✘ Please fix the errors above.');
 
     exit(1);
-} else {
+
+}  
     $climate->out('')->green('✔ Looking good.')->white('Have you tested everything?');
 
     exit(0);
-}
+
