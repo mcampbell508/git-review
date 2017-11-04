@@ -13,8 +13,8 @@
 
 namespace StaticReview\Reporter;
 
-use StaticReview\Review\ReviewInterface;
 use StaticReview\Review\ReviewableInterface;
+use StaticReview\Review\ReviewInterface;
 
 interface ReporterInterface
 {

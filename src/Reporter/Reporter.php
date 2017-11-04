@@ -15,8 +15,8 @@ namespace StaticReview\Reporter;
 
 use StaticReview\Collection\IssueCollection;
 use StaticReview\Issue\Issue;
-use StaticReview\Review\ReviewInterface;
 use StaticReview\Review\ReviewableInterface;
+use StaticReview\Review\ReviewInterface;
 
 class Reporter implements ReporterInterface
 {

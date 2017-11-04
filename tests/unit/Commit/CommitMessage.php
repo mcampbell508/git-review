@@ -13,9 +13,9 @@
 
 namespace StaticReview\Test\Unit\Commit;
 
-use StaticReview\Commit\CommitMessage;
-
 use PHPUnit_Framework_TestCase as TestCase;
+
+use StaticReview\Commit\CommitMessage;
 
 class CommitMessageTest extends TestCase
 {

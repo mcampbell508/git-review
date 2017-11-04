@@ -13,8 +13,8 @@
 
 namespace StaticReview\Review;
 
-use StaticReview\File\FileInterface;
 use StaticReview\Commit\CommitMessageInterface;
+use StaticReview\File\FileInterface;
 use Symfony\Component\Process\Process;
 
 abstract class AbstractReview implements ReviewInterface
