@@ -7,6 +7,13 @@ stages:
 
 test_build:
   stage: test_build
+  artifacts:
+    expire_in: 7d
+    paths:
+      - vendor/
+  cache:
+    paths:
+      - vendor/
   script:
     - bash ci/docker_install.sh > /dev/null
     - php /usr/local/bin/composer install --no-interaction --no-progress
