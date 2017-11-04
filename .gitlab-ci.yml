@@ -30,4 +30,5 @@ phpcs:
   dependencies:
     - test_build
   script:
+    - php vendor/bin/php-cs-fixer fix --verbose --dry-run
     - php vendor/bin/phpcs --standard=PSR2 src/ bin/ hooks/ tests/
