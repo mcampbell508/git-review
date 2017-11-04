@@ -17,8 +17,8 @@ class SanitizeMessage
         $this->removeComments();
         $this->splitMessageByNewLines();
     }
-    
-    
+
+
     public function getSanitizedMessage()
     {
         return $this->message;
