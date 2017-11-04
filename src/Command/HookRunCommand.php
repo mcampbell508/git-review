@@ -61,7 +61,7 @@ class HookRunCommand extends Command
             $target = sprintf($path, realpath(__DIR__ . '/../../hooks/'), $hookArgument);
         }
 
-        if (! file_exists($target)) {
+        if (!file_exists($target)) {
             $error = sprintf('<error>The hook %s does not exist!</error>', $target);
             $output->writeln($error);
             exit(1);

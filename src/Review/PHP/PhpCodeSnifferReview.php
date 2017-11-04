@@ -101,7 +101,7 @@ class PhpCodeSnifferReview extends AbstractFileReview
         $process = $this->getProcess($cmd);
         $process->run();
 
-        if (! $process->isSuccessful()) {
+        if (!$process->isSuccessful()) {
             // Create the array of outputs and remove empty values.
             $output = json_decode($process->getOutput(), true);
 

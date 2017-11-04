@@ -29,7 +29,7 @@ class GitVersionControlTest extends TestCase
     {
         $this->directory  = sys_get_temp_dir() . '/sjparkinson.static-review/function-tests/';
 
-        if (! is_dir($this->directory)) {
+        if (!is_dir($this->directory)) {
             mkdir($this->directory, 0755, true);
         } else {
             // Clean up any created files.

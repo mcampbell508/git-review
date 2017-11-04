@@ -45,7 +45,7 @@ class ComposerLintReview extends AbstractFileReview
         $process = $this->getProcess($cmd);
         $process->run();
 
-        if (! $process->isSuccessful()) {
+        if (!$process->isSuccessful()) {
             $message = 'The composer configuration is not valid';
             $reporter->error($message, $this, $file);
         }

@@ -59,13 +59,13 @@ class HookInstallCommand extends Command
             $output->writeln($message);
         }
 
-        if (! file_exists($source)) {
+        if (!file_exists($source)) {
             $error = sprintf('<error>The hook %s does not exist!</error>', $source);
             $output->writeln($error);
             exit(1);
         }
 
-        if (! is_dir(dirname($target))) {
+        if (!is_dir(dirname($target))) {
             $message = sprintf('<error>The directory at %s does not exist.</error>', $target);
             $output->writeln($message);
             exit(1);
@@ -78,7 +78,7 @@ class HookInstallCommand extends Command
             $output->writeln($message);
         }
 
-        if (! file_exists($target) || $force) {
+        if (!file_exists($target) || $force) {
             symlink($source, $target);
             chmod($target, 0755);
             $output->writeln('Symlink created.');

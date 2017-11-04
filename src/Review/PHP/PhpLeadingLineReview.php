@@ -44,7 +44,7 @@ class PhpLeadingLineReview extends AbstractFileReview
         $process = $this->getProcess($cmd);
         $process->run();
 
-        if (! in_array(trim($process->getOutput()), ['<?php', '#!/usr/bin/env php'])) {
+        if (!in_array(trim($process->getOutput()), ['<?php', '#!/usr/bin/env php'])) {
             $message = 'File must begin with `<?php` or `#!/usr/bin/env php`';
             $reporter->error($message, $this, $file);
         }

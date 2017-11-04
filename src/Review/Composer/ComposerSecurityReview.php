@@ -51,7 +51,7 @@ class ComposerSecurityReview extends AbstractFileReview
         $process = $this->getProcess($cmd);
         $process->run();
 
-        if (! $process->isSuccessful()) {
+        if (!$process->isSuccessful()) {
             $message = 'The composer project dependencies contain known vulnerabilities';
             $reporter->error($message, $this, $file);
         }

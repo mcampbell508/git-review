@@ -124,7 +124,7 @@ class GitVersionControl implements VersionControlInterface
     {
         $cachedPath = sys_get_temp_dir() . self::CACHE_DIR . $file->getRelativePath();
 
-        if (! is_dir(dirname($cachedPath))) {
+        if (!is_dir(dirname($cachedPath))) {
             mkdir(dirname($cachedPath), 0700, true);
         }
 

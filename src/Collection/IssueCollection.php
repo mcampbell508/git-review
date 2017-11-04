@@ -40,7 +40,7 @@ class IssueCollection extends Collection
      */
     public function select(callable $filter)
     {
-        if (! $this->collection) {
+        if (!$this->collection) {
             return new self();
         }
 
