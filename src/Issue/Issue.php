@@ -55,6 +55,20 @@ class Issue implements IssueInterface
     }
 
     /**
+     * Overrides the toString method.
+     */
+    public function __toString()
+    {
+        return sprintf(
+            "%s %s: %s in %s",
+            $this->getReviewName(),
+            $this->getLevelName(),
+            $this->getMessage(),
+            $this->getSubject()->getName()
+        );
+    }
+
+    /**
      * Gets the Issues level.
      */
     public function getLevel()
@@ -140,19 +154,5 @@ class Issue implements IssueInterface
         $result = ($this->getLevel() & $option);
 
         return ($result === $this->getLevel());
-    }
-
-    /**
-     * Overrides the toString method.
-     */
-    public function __toString()
-    {
-        return sprintf(
-            "%s %s: %s in %s",
-            $this->getReviewName(),
-            $this->getLevelName(),
-            $this->getMessage(),
-            $this->getSubject()->getName()
-        );
     }
 }

@@ -54,21 +54,6 @@ class BodyLineLengthReview extends AbstractMessageReview
         return $this->urls;
     }
 
-    private function isLineTooLong($line)
-    {
-        return strlen($line) > $this->getMaximumLength();
-    }
-
-    private function doesContainUrl($line)
-    {
-        if ($this->getAllowLongUrls()) {
-            // It might contain a URL, but URL checking is disabled.
-            return false;
-        }
-
-        return strpos($line, '://') !== false;
-    }
-
     public function review(ReporterInterface $reporter, ReviewableInterface $commit)
     {
         $lines = preg_split('/(\r?\n)+/', $commit->getBody());
@@ -82,5 +67,20 @@ class BodyLineLengthReview extends AbstractMessageReview
                 $reporter->error($message, $this, $commit);
             }
         }
+    }
+
+    private function isLineTooLong($line)
+    {
+        return strlen($line) > $this->getMaximumLength();
+    }
+
+    private function doesContainUrl($line)
+    {
+        if ($this->getAllowLongUrls()) {
+            // It might contain a URL, but URL checking is disabled.
+            return false;
+        }
+
+        return strpos($line, '://') !== false;
     }
 }

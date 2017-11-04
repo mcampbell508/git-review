@@ -19,9 +19,6 @@ use Symfony\Component\Process\Process;
 
 abstract class AbstractReview implements ReviewInterface
 {
-    abstract protected function canReviewFile(FileInterface $file);
-
-    abstract protected function canReviewMessage(CommitMessageInterface $message);
 
     /**
      * Determine if the subject can be reviewed.
@@ -65,6 +62,9 @@ abstract class AbstractReview implements ReviewInterface
 
         return new Process($commandline, $cwd, $env, $input, $timeout, $options);
     }
+    abstract protected function canReviewFile(FileInterface $file);
+
+    abstract protected function canReviewMessage(CommitMessageInterface $message);
 
     /**
      * Get the root directory for a process command.

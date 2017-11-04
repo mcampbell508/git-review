@@ -29,18 +29,6 @@ class CommitMessageTest extends TestCase
         $this->fixtures = realpath(__DIR__ . '/../../fixtures');
     }
 
-    /**
-     * Get a commit message fixture by name
-     *
-     * @param string $name
-     *
-     * @return string
-     */
-    private function message($name)
-    {
-        return file_get_contents($this->fixtures . '/commit-message-' . $name . '.txt');
-    }
-
     public function testConstructionSubjectOnly()
     {
         $commit = new CommitMessage($this->message('subject-only'));
@@ -73,5 +61,17 @@ class CommitMessageTest extends TestCase
         // Nothing should be different, the diff should be stripped
         $this->assertSame('Create a better commit message', $commit->getSubject());
         $this->assertSame('We have the tools.', $commit->getBody());
+    }
+
+    /**
+     * Get a commit message fixture by name
+     *
+     * @param string $name
+     *
+     * @return string
+     */
+    private function message($name)
+    {
+        return file_get_contents($this->fixtures . '/commit-message-' . $name . '.txt');
     }
 }

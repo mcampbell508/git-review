@@ -31,6 +31,14 @@ abstract class Collection implements Iterator, Countable
     }
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return sprintf('%s(%s)', get_class($this), $this->count());
+    }
+
+    /**
      * Method should throw an InvalidArgumentException if $item is not the
      * expected type.
      *
@@ -105,13 +113,5 @@ abstract class Collection implements Iterator, Countable
     public function valid()
     {
         return key($this->collection) !== null;
-    }
-
-    /**
-     * @return string
-     */
-    public function __toString()
-    {
-        return sprintf('%s(%s)', get_class($this), $this->count());
     }
 }
