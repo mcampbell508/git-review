@@ -13,33 +13,18 @@
 
 namespace StaticReview\Test\Functional\VersionControl;
 
-use PHPUnit_Framework_TestCase as TestCase;
-
+use StaticReview\Test\Functional\FunctionalTestCase;
 use StaticReview\VersionControl\GitVersionControl;
 use Symfony\Component\Process\Process;
 
-class GitVersionControlTest extends TestCase
+class GitVersionControlTest extends FunctionalTestCase
 {
-    protected $directory;
-
-    protected $testFileName;
+    /** @var GitVersionControl */
     private $gitVersionControl;
 
     public function setUp(): void
     {
-        $this->directory  = sys_get_temp_dir() . '/sjparkinson.static-review/function-tests/';
-
-        if (!is_dir($this->directory)) {
-            mkdir($this->directory, 0755, true);
-        } else {
-            // Clean up any created files.
-            $this->runProcess('rm -rf ' . $this->directory . DIRECTORY_SEPARATOR . '*');
-        }
-
-        $this->directory = realpath($this->directory);
-        $this->testFileName = 'test.txt';
-
-        chdir($this->directory);
+        parent::setUp();
 
         $this->gitVersionControl = new GitVersionControl();
     }
@@ -185,19 +170,6 @@ class GitVersionControlTest extends TestCase
         $this->causeDetachedHead();
 
         $this->assertSame('(HEAD', $this->gitVersionControl->getBranch()->getName());
-    }
-
-    /**
-     * @param $command
-     *
-     * @return Process
-     */
-    private function runProcess($command)
-    {
-        $process = new Process($command, $this->directory);
-        $process->run();
-
-        return $process;
     }
 
     /**
