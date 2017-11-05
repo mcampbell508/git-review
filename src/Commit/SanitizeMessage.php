@@ -13,16 +13,16 @@ class SanitizeMessage
         $this->sanitizeMessage();
     }
 
+    public function getSanitizedMessage(): array
+    {
+        return $this->message;
+    }
+
     private function sanitizeMessage(): void
     {
         $this->stripOutDiff();
         $this->removeComments();
         $this->splitMessageByNewLines();
-    }
-
-    public function getSanitizedMessage(): array
-    {
-        return $this->message;
     }
 
     /**

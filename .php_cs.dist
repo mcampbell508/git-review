@@ -38,7 +38,6 @@ $rules = [
     'ordered_imports' => true,
     'protected_to_private' => true,
     'psr4' => true,
-    'return_type_declaration' => true,
     'self_accessor' => true,
     'space_after_semicolon' => true,
     'standardize_not_equals' => true,
