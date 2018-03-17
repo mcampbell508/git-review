@@ -21,7 +21,7 @@
     },
     "autoload": {
         "psr-4": {
-            "StaticReview\\": "src/"
+            "GitReview\\": "src/"
         }
     },
     "autoload-dev": {
@@ -31,7 +31,7 @@
         }
     },
     "bin": [
-        "bin/static-review.php"
+        "bin/git-review.php"
     ],
     "require": {
         "php": "^5.5 || ^7.0",
