@@ -1,8 +1,7 @@
-# static-review
+# git-review
 
-__This package is abandoned :rotating_light:.__
-
-See [GrumPHP](https://github.com/phpro/grumphp) for a maintained alternative.
+This package was forked from [Static Review](https://github.com/sjparkinson/git-review) which has been abandoned.
+I am using this as a personal project and have renamed to `git-review`
 
 ---
 
@@ -10,8 +9,8 @@ An extendable framework for version control hooks.
 
 ![StaticReview Success Demo](http://i.imgur.com/8G3uORp.gif)
 
-[travis]:    https://travis-ci.org/sjparkinson/static-review
-[packagist]: https://packagist.org/packages/sjparkinson/static-review
+[travis]:    https://travis-ci.org/mcampbell508/git-review
+[packagist]: https://packagist.org/packages/mcampbell508/git-review
 [php]:       https://php.net/
 
 ## Usage
@@ -19,39 +18,39 @@ An extendable framework for version control hooks.
 For a [composer][composer] managed project you can simply run the following ...
 
 ```bash
-$ composer require sjparkinson/static-review
+$ composer require mcampbell508/git-review
 ```
 
 Hooks can then be installed like so ...
 
 ```bash
-$ vendor/bin/static-review.php hook:install vendor/sjparkinson/static-review/hooks/example-pre-commit.php .git/hooks/pre-commit
+$ vendor/bin/git-review.php hook:install vendor/mcampbell508/git-review/hooks/example-pre-commit.php .git/hooks/pre-commit
 ```
 
 Otherwise, if you don't use composer ...
 
 ```bash
-$ git clone https://github.com/sjparkinson/static-review.git
-$ cd static-review/
+$ git clone https://github.com/mcampbell508/git-review.git
+$ cd git-review/
 $ composer install --no-dev --optimize-autoloader
-$ bin/static-review.php hook:install hooks/example-pre-commit.php ~/.../.git/hooks/pre-commit
+$ bin/git-review.php hook:install hooks/example-pre-commit.php ~/.../.git/hooks/pre-commit
 ```
 
 [composer]: https://getcomposer.org/
 
 ### Global Installation and Usage
 
-The hooks can also be used for any project if you install `static-review` globally:
+The hooks can also be used for any project if you install `git-review` globally:
 
 ```bash
-$ composer g require sjparkinson/static-review
+$ composer g require mcampbell508/git-review
 ```
 
 Then, just install the hooks as you would normally but reference the global
 installation path:
 
 ```bash
-$ static-review.php hook:install ~/.composer/vendor/sjparkinson/static-review/hooks/static-review-commit-msg.php .git/hooks/commit-msg
+$ git-review.php hook:install ~/.composer/vendor/mcampbell508/git-review/hooks/git-review-commit-msg.php .git/hooks/commit-msg
 ```
 
 This assumes you have set up [global composer paths][global-composer].
@@ -175,8 +174,8 @@ class WorkInProgressReview extends AbstractMessageReview
 See [vagrantup.com][vagrant] and [phpunit.de][phpunit].
 
 ```bash
-$ git clone https://github.com/sjparkinson/static-review.git
-$ cd static-review/
+$ git clone https://github.com/mcampbell508/git-review.git
+$ cd git-review/
 $ vagrant up
 $ vagrant ssh
 ...
@@ -192,5 +191,5 @@ $ composer test
 
 The content of this library is released under the [MIT License][license] by [Samuel Parkinson][twitter].
 
-[license]: https://github.com/sjparkinson/static-review/blob/master/LICENSE
+[license]: https://github.com/sjparkinson/git-review/blob/master/LICENSE
 [twitter]: https://twitter.com/samparkinson_
