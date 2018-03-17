@@ -16,11 +16,8 @@ namespace GitReview\File;
 class File implements FileInterface
 {
     const STATUS_ADDED    = 'A';
-
     const STATUS_COPIED   = 'C';
-
     const STATUS_MODIFIED = 'M';
-
     const STATUS_RENAMED  = 'R';
     const STATUS_DELETED  = 'D';
     const STATUS_UNSTAGED  = '??';
