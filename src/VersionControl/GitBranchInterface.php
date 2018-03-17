@@ -2,9 +2,15 @@
 
 namespace GitReview\VersionControl;
 
+use Tightenco\Collect\Support\Collection;
+
 interface GitBranchInterface
 {
-    public function getName();
+    public function getName(): string;
 
-    public function isInDetachedHeadState();
+    public function getChangedFiles(): Collection;
+
+    public function getParentHash();
+
+    public function isDirty():bool;
 }

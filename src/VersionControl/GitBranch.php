@@ -2,27 +2,75 @@
 
 namespace GitReview\VersionControl;
 
-use Symfony\Component\Process\Process;
+use GitReview\File\FileCollection;
+use GitReview\Process\ProcessFactory;
+use Tightenco\Collect\Support\Collection;
 
 class GitBranch implements GitBranchInterface
 {
-    private $basePath;
+    private $currentWorkingDirectory;
+    private $gitBinary;
+    private $processFactory;
 
-    public function __construct(string $basePath)
+    public function __construct(string $currentWorkingDirectory, string $gitBinary = '/usr/bin/git')
     {
-        $this->basePath = $basePath;
+        $this->currentWorkingDirectory = $currentWorkingDirectory;
+        $this->gitBinary = $gitBinary;
+        $this->processFactory = new ProcessFactory();
     }
 
     public function getName(): string
     {
-        $process = new Process('git branch | grep "*" | cut -d " " -f 2', $this->basePath);
-        $process->run();
-
-        return trim($process->getOutput());
+        return $this->processFactory->create("git rev-parse --abbrev-ref HEAD")->getOutput();
     }
 
-    public function isInDetachedHeadState(): bool
+    public function getChangedFiles(): Collection
     {
-        return $this->getName() === '(detached';
+        $fileCollection = new FileCollection($this->currentWorkingDirectory);
+
+        $branchName = $this->getName();
+
+        $committedFilesProcess = $this->processFactory
+            ->create(
+                "git log --name-status --pretty=format: {$this->getParentHash()}..$branchName".
+                " | grep -E '^[A-Z]\b' | sort | uniq"
+            );
+
+        if (!$committedFilesProcess->isSuccessful()) {
+            return'dssd';
+        }
+
+        $fileCollection->addFiles(\array_filter(\explode("\n", $committedFilesProcess->getOutput())));
+
+        if ($this->isDirty()) {
+            $files = $this->processFactory->create("git status --short | sort | uniq")->getOutput();
+
+            if (strlen($files) > 0) {
+                $fileCollection->addFiles(\array_filter(\explode("\n", $files)));
+            }
+        }
+
+        return $fileCollection->getFileCollection();
+    }
+
+    public function getParentHash()
+    {
+        if ($this->getName() === 'master') {
+            return "Branch is already on master";
+        }
+
+        return $this->processFactory
+            ->create("git rev-list --boundary {$this->getName()}...master | grep \"^-\" | cut -c2-")
+            ->getOutput();
+    }
+
+    public function isDirty(): bool
+    {
+        return !empty($this->processFactory->create("git status --short")->getOutput());
+    }
+
+    private function getProjectBase()
+    {
+        $this->processFactory->create('git rev-parse --show-toplevel')->getOutput();
     }
 }
