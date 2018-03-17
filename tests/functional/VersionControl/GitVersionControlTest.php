@@ -190,7 +190,7 @@ class GitVersionControlTest extends FunctionalTestCase
         $cmd .= ' && git add ' . $this->testFileName;
         $cmd .= ' && git commit -m \'test\'';
         $cmd .= ' && mkdir ' . $testFolderName;
-        $cmd .= ' && mv ' .  $this->testFileName . ' ' . $testFolderName;
+        $cmd .= ' && git mv ' .  $this->testFileName . ' ' . $testFolderName;
         $cmd .= ' && git add ' . $this->testFileName;
         $cmd .= ' && git add ' . $testFolderName;
 
