@@ -12,7 +12,7 @@ class FunctionalTestCase extends TestCase
 
     public function setUp()
     {
-        $this->directory  = sys_get_temp_dir() . '/static-review-functional-tests/';
+        $this->directory  = sys_get_temp_dir() . '/git-review-functional-tests/';
 
         if (!is_dir($this->directory)) {
             mkdir($this->directory, 0755, true);

@@ -124,54 +124,6 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->assertSame('test', trim($process->getOutput()));
     }
 
-    /**
-     * For some reason a file had to be added and committed, for this test to pass.
-     * Also, I could not seem to use the ProcessBuilder.
-     */
-    public function testGetBranchName()
-    {
-        $cmd  = 'touch ' . $this->testFileName;
-        $cmd .= ' && git init';
-        $cmd .= ' && git add ' . $this->testFileName;
-        $cmd .= ' && git commit -m \'test\'';
-
-        $this->runProcess($cmd);
-
-        $this->assertSame('master', $this->gitVersionControl->getBranch()->getName());
-    }
-
-    public function testGetBranchNameAfterChangingBranches()
-    {
-        $cmd  = 'touch ' . $this->testFileName;
-        $cmd .= ' && git init';
-        $cmd .= ' && git add ' . $this->testFileName;
-        $cmd .= ' && git commit -m \'Commit message\'';
-
-        $this->runProcess($cmd);
-
-        $this->assertSame('master', $this->gitVersionControl->getBranch()->getName());
-
-        $this->runProcess('git checkout -b develop');
-
-        $this->assertSame('develop', $this->gitVersionControl->getBranch()->getName());
-    }
-
-    public function testGetBranchNameAccountsForDetachedHeadState()
-    {
-        $cmd  = 'touch ' . $this->testFileName;
-        $cmd .= ' && git init';
-        $cmd .= ' && git add ' . $this->testFileName;
-        $cmd .= ' && git commit -m \'Commit message\'';
-        $cmd .= " && echo 'more text' >> $this->testFileName";
-        $cmd .= ' && git add ' . $this->testFileName;
-        $cmd .= ' && git commit -m \'Second commit message\'';
-
-        $this->runProcess($cmd);
-        $this->causeDetachedHead();
-
-        $this->assertSame('(HEAD', $this->gitVersionControl->getBranch()->getName());
-    }
-
     public function testGetStagedFilesWithMovedUnrenamedFile()
     {
         $testFolderName = 'test_folder';
@@ -229,13 +181,5 @@ class GitVersionControlTest extends FunctionalTestCase
 
         $this->assertSame(basename($newTestFileName), $file->getFileName());
         $this->assertStringStartsWith('R', $file->getStatus());
-    }
-
-    /**
-     * Cause a detached HEAD scenario.
-     */
-    private function causeDetachedHead()
-    {
-        $this->runProcess('git checkout HEAD~1');
     }
 }
