@@ -11,7 +11,7 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Test\Unit;
+namespace GitReview\Test\Unit;
 
 use Mockery;
 use PHPUnit_Framework_TestCase as TestCase;
@@ -20,7 +20,7 @@ class AbstractReviewTest extends TestCase
 {
     public function testGetProcess()
     {
-        $review = Mockery::mock('StaticReview\Review\AbstractReview')->makePartial();
+        $review = Mockery::mock('GitReview\Review\AbstractReview')->makePartial();
 
         $process = $review->getProcess('whoami');
 
@@ -29,7 +29,7 @@ class AbstractReviewTest extends TestCase
 
     public function testGetProcessWorkingDirectory()
     {
-        $review = Mockery::mock('StaticReview\Review\AbstractReview')->makePartial();
+        $review = Mockery::mock('GitReview\Review\AbstractReview')->makePartial();
 
         $process = $review->getProcess('whoami');
 

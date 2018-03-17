@@ -11,12 +11,12 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Reporter;
+namespace GitReview\Reporter;
 
-use StaticReview\Collection\IssueCollection;
-use StaticReview\Issue\Issue;
-use StaticReview\Review\ReviewableInterface;
-use StaticReview\Review\ReviewInterface;
+use GitReview\Collection\IssueCollection;
+use GitReview\Issue\Issue;
+use GitReview\Review\ReviewableInterface;
+use GitReview\Review\ReviewInterface;
 
 class Reporter implements ReporterInterface
 {

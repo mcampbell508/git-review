@@ -11,10 +11,10 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Test\Unit\Classes;
+namespace GitReview\Test\Unit\Classes;
 
 use PHPUnit_Framework_TestCase as TestCase;
-use StaticReview\File\File;
+use GitReview\File\File;
 
 class FileTest extends TestCase
 {

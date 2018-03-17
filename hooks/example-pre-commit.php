@@ -25,13 +25,13 @@ if (!$included) {
 }
 
 // Reference the required classes and the reviews you want to use.
-use StaticReview\Reporter\Reporter;
-use StaticReview\Review\General\LineEndingsReview;
-use StaticReview\StaticReview;
-use StaticReview\VersionControl\GitVersionControl;
+use GitReview\Reporter\Reporter;
+use GitReview\Review\General\LineEndingsReview;
+use GitReview\GitReview;
+use GitReview\VersionControl\GitVersionControl;
 
 $reporter = new Reporter();
-$review   = new StaticReview($reporter);
+$review   = new GitReview($reporter);
 
 // Add any reviews to the StaticReview instance, supports a fluent interface.
 $review->addReview(new LineEndingsReview());

@@ -11,10 +11,10 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Reporter;
+namespace GitReview\Reporter;
 
-use StaticReview\Review\ReviewableInterface;
-use StaticReview\Review\ReviewInterface;
+use GitReview\Review\ReviewableInterface;
+use GitReview\Review\ReviewInterface;
 
 interface ReporterInterface
 {

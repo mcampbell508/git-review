@@ -11,9 +11,9 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Review;
+namespace GitReview\Review;
 
-use StaticReview\Commit\CommitMessageInterface;
+use GitReview\Commit\CommitMessageInterface;
 
 abstract class AbstractFileReview extends AbstractReview
 {

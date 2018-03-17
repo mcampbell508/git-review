@@ -7,7 +7,7 @@ I am using this as a personal project and have renamed to `git-review`
 
 An extendable framework for version control hooks.
 
-![StaticReview Success Demo](http://i.imgur.com/8G3uORp.gif)
+![GitReview Success Demo](http://i.imgur.com/8G3uORp.gif)
 
 [travis]:    https://travis-ci.org/mcampbell508/git-review
 [packagist]: https://packagist.org/packages/mcampbell508/git-review
@@ -71,14 +71,14 @@ basic hooks for each.
 include __DIR__ . '/../../../autoload.php';
 
 // Reference the required classes.
-use StaticReview\StaticReview;
-use StaticReview\Review\General\LineEndingsReview;
+use GitReview\GitReview;
+use GitReview\Review\General\LineEndingsReview;
 [...]
 
 $reporter = new Reporter();
-$review   = new StaticReview($reporter);
+$review   = new GitReview($reporter);
 
-// Add any reviews to the StaticReview instance, supports a fluent interface.
+// Add any reviews to the GitReview instance, supports a fluent interface.
 $review->addReview(new LineEndingsReview());
 
 $git = new GitVersionControl();
@@ -100,14 +100,14 @@ $review->files($git->getStagedFiles());
 include __DIR__ . '/../../../autoload.php';
 
 // Reference the required classes.
-use StaticReview\StaticReview;
-use StaticReview\Review\Message\BodyLineLengthReview;
+use GitReview\GitReview;
+use GitReview\Review\Message\BodyLineLengthReview;
 [...]
 
 $reporter = new Reporter();
-$review   = new StaticReview($reporter);
+$review   = new GitReview($reporter);
 
-// Add any reviews to the StaticReview instance, supports a fluent interface.
+// Add any reviews to the GitReview instance, supports a fluent interface.
 $review->addReview(new BodyLineLengthReview());
 
 $git = new GitVersionControl();

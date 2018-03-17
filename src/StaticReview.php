@@ -11,15 +11,15 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview;
+namespace GitReview;
 
-use StaticReview\Collection\FileCollection;
-use StaticReview\Collection\ReviewCollection;
-use StaticReview\Commit\CommitMessageInterface;
-use StaticReview\Reporter\ReporterInterface;
-use StaticReview\Review\ReviewInterface;
+use GitReview\Collection\FileCollection;
+use GitReview\Collection\ReviewCollection;
+use GitReview\Commit\CommitMessageInterface;
+use GitReview\Reporter\ReporterInterface;
+use GitReview\Review\ReviewInterface;
 
-class StaticReview
+class GitReview
 {
     /**
      * A ReviewCollection.

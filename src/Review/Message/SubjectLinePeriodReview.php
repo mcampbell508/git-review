@@ -11,11 +11,11 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Review\Message;
+namespace GitReview\Review\Message;
 
-use StaticReview\Reporter\ReporterInterface;
-use StaticReview\Review\AbstractMessageReview;
-use StaticReview\Review\ReviewableInterface;
+use GitReview\Reporter\ReporterInterface;
+use GitReview\Review\AbstractMessageReview;
+use GitReview\Review\ReviewableInterface;
 
 /**
  * Rule 4: Do not end the subject line with a period

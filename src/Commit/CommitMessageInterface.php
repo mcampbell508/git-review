@@ -11,9 +11,9 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Commit;
+namespace GitReview\Commit;
 
-use StaticReview\Review\ReviewableInterface;
+use GitReview\Review\ReviewableInterface;
 
 interface CommitMessageInterface extends ReviewableInterface
 {

@@ -11,10 +11,10 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Test\Functional\VersionControl;
+namespace GitReview\Test\Functional\VersionControl;
 
-use StaticReview\Test\Functional\FunctionalTestCase;
-use StaticReview\VersionControl\GitVersionControl;
+use GitReview\Test\Functional\FunctionalTestCase;
+use GitReview\VersionControl\GitVersionControl;
 use Symfony\Component\Process\Process;
 
 class GitVersionControlTest extends FunctionalTestCase
@@ -39,7 +39,7 @@ class GitVersionControlTest extends FunctionalTestCase
     {
         $collection = $this->gitVersionControl->getStagedFiles();
 
-        $this->assertInstanceOf('StaticReview\Collection\FileCollection', $collection);
+        $this->assertInstanceOf('GitReview\Collection\FileCollection', $collection);
         $this->assertCount(0, $collection);
     }
 
@@ -52,7 +52,7 @@ class GitVersionControlTest extends FunctionalTestCase
 
         $collection = $this->gitVersionControl->getStagedFiles();
 
-        $this->assertInstanceOf('StaticReview\Collection\FileCollection', $collection);
+        $this->assertInstanceOf('GitReview\Collection\FileCollection', $collection);
         $this->assertCount(0, $collection);
     }
 
@@ -66,7 +66,7 @@ class GitVersionControlTest extends FunctionalTestCase
 
         $collection = $this->gitVersionControl->getStagedFiles();
 
-        $this->assertInstanceOf('StaticReview\Collection\FileCollection', $collection);
+        $this->assertInstanceOf('GitReview\Collection\FileCollection', $collection);
         $this->assertCount(1, $collection);
 
         $file = $collection->current();
@@ -88,7 +88,7 @@ class GitVersionControlTest extends FunctionalTestCase
 
         $collection = $this->gitVersionControl->getStagedFiles();
 
-        $this->assertInstanceOf('StaticReview\Collection\FileCollection', $collection);
+        $this->assertInstanceOf('GitReview\Collection\FileCollection', $collection);
         $this->assertCount(1, $collection);
 
         $file = $collection->current();
@@ -111,7 +111,7 @@ class GitVersionControlTest extends FunctionalTestCase
 
         $collection = $this->gitVersionControl->getStagedFiles();
 
-        $this->assertInstanceOf('StaticReview\Collection\FileCollection', $collection);
+        $this->assertInstanceOf('GitReview\Collection\FileCollection', $collection);
         $this->assertCount(1, $collection);
 
         $file = $collection->current();
@@ -192,7 +192,7 @@ class GitVersionControlTest extends FunctionalTestCase
         $git = new GitVersionControl();
         $collection = $git->getStagedFiles();
 
-        $this->assertInstanceOf('StaticReview\Collection\FileCollection', $collection);
+        $this->assertInstanceOf('GitReview\Collection\FileCollection', $collection);
         $this->assertCount(1, $collection);
 
         $file = $collection->current();
@@ -222,7 +222,7 @@ class GitVersionControlTest extends FunctionalTestCase
         $git = new GitVersionControl();
         $collection = $git->getStagedFiles();
 
-        $this->assertInstanceOf('StaticReview\Collection\FileCollection', $collection);
+        $this->assertInstanceOf('GitReview\Collection\FileCollection', $collection);
         $this->assertCount(1, $collection);
 
         $file = $collection->current();

@@ -11,10 +11,10 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Issue;
+namespace GitReview\Issue;
 
-use StaticReview\Review\ReviewableInterface;
-use StaticReview\Review\ReviewInterface;
+use GitReview\Review\ReviewableInterface;
+use GitReview\Review\ReviewInterface;
 
 class Issue implements IssueInterface
 {

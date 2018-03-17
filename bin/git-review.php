@@ -2,7 +2,7 @@
 <?php
 
 /*
- * This file is part of StaticReview
+ * This file is part of GitReview
  *
  * Copyright (c) 2014 Samuel Parkinson <@samparkinson_>
  *
@@ -33,12 +33,12 @@ if (!$included) {
     exit(1);
 }
 
-use StaticReview\Command\HookInstallCommand;
-use StaticReview\Command\HookListCommand;
-use StaticReview\Command\HookRunCommand;
+use GitReview\Command\HookInstallCommand;
+use GitReview\Command\HookListCommand;
+use GitReview\Command\HookRunCommand;
 use Symfony\Component\Console\Application;
 
-$name    = 'StaticReview Command Line Tool';
+$name    = 'GitReview Command Line Tool';
 $version = '3.0.0';
 
 $console = new Application($name, $version);

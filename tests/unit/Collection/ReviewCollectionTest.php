@@ -11,11 +11,11 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Test\Unit\Collection;
+namespace GitReview\Test\Unit\Collection;
 
 use Mockery;
 use PHPUnit_Framework_TestCase as TestCase;
-use StaticReview\Collection\ReviewCollection;
+use GitReview\Collection\ReviewCollection;
 
 class ReviewCollectionTest extends TestCase
 {
@@ -28,7 +28,7 @@ class ReviewCollectionTest extends TestCase
 
     public function testValidateWithValidObject()
     {
-        $object = Mockery::mock('StaticReview\Review\ReviewInterface');
+        $object = Mockery::mock('GitReview\Review\ReviewInterface');
 
         $this->assertTrue($this->collection->validate($object));
     }
@@ -45,7 +45,7 @@ class ReviewCollectionTest extends TestCase
 
     public function testSelectWithTrueCallback()
     {
-        $review = Mockery::mock('StaticReview\Review\ReviewInterface');
+        $review = Mockery::mock('GitReview\Review\ReviewInterface');
 
         $this->collection->append($review);
 
@@ -60,7 +60,7 @@ class ReviewCollectionTest extends TestCase
 
     public function testSelectWithFalseCallback()
     {
-        $review = Mockery::mock('StaticReview\Review\ReviewInterface');
+        $review = Mockery::mock('GitReview\Review\ReviewInterface');
 
         $this->collection->append($review);
 
@@ -84,10 +84,10 @@ class ReviewCollectionTest extends TestCase
 
     public function testForFileWithMatchingFile()
     {
-        $review = Mockery::mock('StaticReview\Review\ReviewInterface');
+        $review = Mockery::mock('GitReview\Review\ReviewInterface');
         $review->shouldReceive('canReview')->once()->andReturn(true);
 
-        $file = Mockery::mock('StaticReview\File\FileInterface');
+        $file = Mockery::mock('GitReview\File\FileInterface');
 
         $this->collection->append($review);
 
@@ -99,10 +99,10 @@ class ReviewCollectionTest extends TestCase
 
     public function testForFileWithNonMatchingFile()
     {
-        $review = Mockery::mock('StaticReview\Review\ReviewInterface');
+        $review = Mockery::mock('GitReview\Review\ReviewInterface');
         $review->shouldReceive('canReview')->once()->andReturn(false);
 
-        $file = Mockery::mock('StaticReview\File\FileInterface');
+        $file = Mockery::mock('GitReview\File\FileInterface');
 
         $this->collection->append($review);
 

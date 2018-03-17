@@ -1,6 +1,6 @@
 <?php
 
-namespace StaticReview\VersionControl;
+namespace GitReview\VersionControl;
 
 interface GitBranchInterface
 {

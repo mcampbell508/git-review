@@ -11,7 +11,7 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\File;
+namespace GitReview\File;
 
 class File implements FileInterface
 {

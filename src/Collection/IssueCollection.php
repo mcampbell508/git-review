@@ -11,9 +11,9 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Collection;
+namespace GitReview\Collection;
 
-use StaticReview\Issue\IssueInterface;
+use GitReview\Issue\IssueInterface;
 
 class IssueCollection extends Collection
 {

@@ -11,12 +11,12 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Review\PHP;
+namespace GitReview\Review\PHP;
 
-use StaticReview\File\FileInterface;
-use StaticReview\Reporter\ReporterInterface;
-use StaticReview\Review\AbstractFileReview;
-use StaticReview\Review\ReviewableInterface;
+use GitReview\File\FileInterface;
+use GitReview\Reporter\ReporterInterface;
+use GitReview\Review\AbstractFileReview;
+use GitReview\Review\ReviewableInterface;
 
 class PhpLintReview extends AbstractFileReview
 {

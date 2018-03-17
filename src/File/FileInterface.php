@@ -11,9 +11,9 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\File;
+namespace GitReview\File;
 
-use StaticReview\Review\ReviewableInterface;
+use GitReview\Review\ReviewableInterface;
 
 interface FileInterface extends ReviewableInterface
 {

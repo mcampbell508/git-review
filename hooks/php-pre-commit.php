@@ -26,20 +26,20 @@ if (!$included) {
 
 // Reference the required classes and the reviews you want to use.
 use League\CLImate\CLImate;
-use StaticReview\Reporter\Reporter;
-use StaticReview\Review\Composer\ComposerLintReview;
-use StaticReview\Review\General\LineEndingsReview;
-use StaticReview\Review\General\NoCommitTagReview;
-use StaticReview\Review\PHP\PhpLeadingLineReview;
-use StaticReview\Review\PHP\PhpLintReview;
-use StaticReview\StaticReview;
-use StaticReview\VersionControl\GitVersionControl;
+use GitReview\Reporter\Reporter;
+use GitReview\Review\Composer\ComposerLintReview;
+use GitReview\Review\General\LineEndingsReview;
+use GitReview\Review\General\NoCommitTagReview;
+use GitReview\Review\PHP\PhpLeadingLineReview;
+use GitReview\Review\PHP\PhpLintReview;
+use GitReview\GitReview;
+use GitReview\VersionControl\GitVersionControl;
 
 $reporter = new Reporter();
 $climate  = new CLImate();
 $git      = new GitVersionControl();
 
-$review = new StaticReview($reporter);
+$review = new GitReview($reporter);
 
 // Add any reviews to the StaticReview instance, supports a fluent interface.
 $review->addReview(new LineEndingsReview())

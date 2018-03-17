@@ -11,11 +11,11 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Test\Unit\Commit;
+namespace GitReview\Test\Unit\Commit;
 
 use PHPUnit_Framework_TestCase as TestCase;
 
-use StaticReview\Commit\CommitMessage;
+use GitReview\Commit\CommitMessage;
 
 class CommitMessageTest extends TestCase
 {

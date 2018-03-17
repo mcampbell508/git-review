@@ -33,21 +33,21 @@ if (empty($argv[1]) || !is_file($argv[1])) {
 
 // Reference the required classes and the reviews you want to use.
 use League\CLImate\CLImate;
-use StaticReview\Reporter\Reporter;
-use StaticReview\Review\Message\BodyLineLengthReview;
-use StaticReview\Review\Message\SubjectImperativeReview;
-use StaticReview\Review\Message\SubjectLineCapitalReview;
-use StaticReview\Review\Message\SubjectLineLengthReview;
-use StaticReview\Review\Message\SubjectLinePeriodReview;
-use StaticReview\Review\Message\WorkInProgressReview;
-use StaticReview\StaticReview;
-use StaticReview\VersionControl\GitVersionControl;
+use GitReview\Reporter\Reporter;
+use GitReview\Review\Message\BodyLineLengthReview;
+use GitReview\Review\Message\SubjectImperativeReview;
+use GitReview\Review\Message\SubjectLineCapitalReview;
+use GitReview\Review\Message\SubjectLineLengthReview;
+use GitReview\Review\Message\SubjectLinePeriodReview;
+use GitReview\Review\Message\WorkInProgressReview;
+use GitReview\GitReview;
+use GitReview\VersionControl\GitVersionControl;
 
 $reporter = new Reporter();
 $climate  = new CLImate();
 $git      = new GitVersionControl();
 
-$review   = new StaticReview($reporter);
+$review   = new GitReview($reporter);
 
 // Add any reviews to the StaticReview instance, supports a fluent interface.
 $review->addReview(new BodyLineLengthReview())

@@ -1,6 +1,6 @@
 <?php
 
-namespace StaticReview\Commit;
+namespace GitReview\Commit;
 
 class SanitizeMessage
 {

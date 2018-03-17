@@ -11,11 +11,11 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Test\Unit\Issue;
+namespace GitReview\Test\Unit\Issue;
 
 use Mockery;
 use PHPUnit_Framework_TestCase as TestCase;
-use StaticReview\Issue\Issue;
+use GitReview\Issue\Issue;
 
 class IssueTest extends TestCase
 {
@@ -32,8 +32,8 @@ class IssueTest extends TestCase
     {
         $this->issueLevel   = Issue::LEVEL_INFO;
         $this->issueMessage = 'Test';
-        $this->issueReview  = Mockery::mock('StaticReview\Review\ReviewInterface');
-        $this->issueFile    = Mockery::mock('StaticReview\File\FileInterface');
+        $this->issueReview  = Mockery::mock('GitReview\Review\ReviewInterface');
+        $this->issueFile    = Mockery::mock('GitReview\File\FileInterface');
 
         $this->issue = new Issue(
             $this->issueLevel,
@@ -70,7 +70,7 @@ class IssueTest extends TestCase
 
     public function testGetReviewNameWithNamespace()
     {
-        $review = new \StaticReview\Review\General\NoCommitTagReview();
+        $review = new \GitReview\Review\General\NoCommitTagReview();
 
         $issue = new Issue(
             $this->issueLevel,
@@ -136,7 +136,7 @@ class IssueTest extends TestCase
     public function testGetColourWithInvalidInput()
     {
         $issue = Mockery::mock(
-            'StaticReview\Issue\Issue[getLevel]',
+            'GitReview\Issue\Issue[getLevel]',
             [
                 Issue::LEVEL_ALL,
                 $this->issueMessage,

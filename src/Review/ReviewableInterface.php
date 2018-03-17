@@ -11,7 +11,7 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Review;
+namespace GitReview\Review;
 
 interface ReviewableInterface
 {

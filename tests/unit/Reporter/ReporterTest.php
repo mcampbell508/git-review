@@ -11,12 +11,12 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Test\Unit\Reporter;
+namespace GitReview\Test\Unit\Reporter;
 
 use Mockery;
 use PHPUnit_Framework_TestCase as TestCase;
-use StaticReview\Issue\Issue;
-use StaticReview\Reporter\Reporter;
+use GitReview\Issue\Issue;
+use GitReview\Reporter\Reporter;
 
 class ReporterTest extends TestCase
 {
@@ -28,8 +28,8 @@ class ReporterTest extends TestCase
 
     public function setUp()
     {
-        $this->review = Mockery::mock('StaticReview\Review\ReviewInterface');
-        $this->file   = Mockery::mock('StaticReview\File\FileInterface');
+        $this->review = Mockery::mock('GitReview\Review\ReviewInterface');
+        $this->file   = Mockery::mock('GitReview\File\FileInterface');
 
         $this->reporter = new Reporter();
     }

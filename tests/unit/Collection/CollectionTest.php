@@ -11,7 +11,7 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Test\Unit\Collection;
+namespace GitReview\Test\Unit\Collection;
 
 use Mockery;
 use PHPUnit_Framework_TestCase as TestCase;
@@ -24,7 +24,7 @@ class CollectionTest extends TestCase
 
     public function setUp()
     {
-        $this->collection = Mockery::mock('StaticReview\Collection\Collection')->makePartial();
+        $this->collection = Mockery::mock('GitReview\Collection\Collection')->makePartial();
 
         $this->item = 'Example Item';
     }

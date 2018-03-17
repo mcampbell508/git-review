@@ -11,28 +11,28 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Test\Unit;
+namespace GitReview\Test\Unit;
 
 use Mockery;
 use PHPUnit_Framework_TestCase as TestCase;
-use StaticReview\Collection\FileCollection;
-use StaticReview\Collection\ReviewCollection;
-use StaticReview\StaticReview;
+use GitReview\Collection\FileCollection;
+use GitReview\Collection\ReviewCollection;
+use GitReview\GitReview;
 
-class StaticReviewTest extends TestCase
+class GitReviewTest extends TestCase
 {
     protected $review;
 
     protected $reporter;
 
-    protected $staticReview;
+    protected $GitReview;
 
     public function setUp()
     {
-        $this->reporter = Mockery::mock('StaticReview\Reporter\ReporterInterface');
-        $this->review   = Mockery::mock('StaticReview\Review\ReviewInterface');
+        $this->reporter = Mockery::mock('GitReview\Reporter\ReporterInterface');
+        $this->review   = Mockery::mock('GitReview\Review\ReviewInterface');
 
-        $this->staticReview = new StaticReview($this->reporter);
+        $this->GitReview = new GitReview($this->reporter);
     }
 
     public function tearDown()
@@ -42,48 +42,48 @@ class StaticReviewTest extends TestCase
 
     public function testGetReporter()
     {
-        $this->assertSame($this->reporter, $this->staticReview->getReporter());
+        $this->assertSame($this->reporter, $this->GitReview->getReporter());
     }
 
     public function testSetReporter()
     {
-        $newReporter = Mockery::mock('StaticReview\Reporter\ReporterInterface');
+        $newReporter = Mockery::mock('GitReview\Reporter\ReporterInterface');
 
-        $this->assertSame($this->staticReview, $this->staticReview->setReporter($newReporter));
+        $this->assertSame($this->GitReview, $this->GitReview->setReporter($newReporter));
 
-        $this->assertSame($newReporter, $this->staticReview->getReporter());
+        $this->assertSame($newReporter, $this->GitReview->getReporter());
     }
 
     public function testGetReviews()
     {
-        $this->assertTrue($this->staticReview->getReviews() instanceof ReviewCollection);
-        $this->assertCount(0, $this->staticReview->getReviews());
+        $this->assertTrue($this->GitReview->getReviews() instanceof ReviewCollection);
+        $this->assertCount(0, $this->GitReview->getReviews());
 
-        $this->staticReview->addReview($this->review);
-        $this->assertCount(1, $this->staticReview->getReviews());
+        $this->GitReview->addReview($this->review);
+        $this->assertCount(1, $this->GitReview->getReviews());
     }
 
     public function testAddReview()
     {
-        $this->assertCount(0, $this->staticReview->getReviews());
+        $this->assertCount(0, $this->GitReview->getReviews());
 
-        $this->assertSame($this->staticReview, $this->staticReview->addReview($this->review));
-        $this->assertCount(1, $this->staticReview->getReviews());
+        $this->assertSame($this->GitReview, $this->GitReview->addReview($this->review));
+        $this->assertCount(1, $this->GitReview->getReviews());
     }
 
     public function testAddReviews()
     {
-        $this->assertCount(0, $this->staticReview->getReviews());
+        $this->assertCount(0, $this->GitReview->getReviews());
 
         $reviews = new ReviewCollection([$this->review, $this->review]);
 
-        $this->assertSame($this->staticReview, $this->staticReview->addReviews($reviews));
-        $this->assertCount(2, $this->staticReview->getReviews());
+        $this->assertSame($this->GitReview, $this->GitReview->addReviews($reviews));
+        $this->assertCount(2, $this->GitReview->getReviews());
     }
 
     public function testReview()
     {
-        $file = Mockery::mock('StaticReview\File\FileInterface');
+        $file = Mockery::mock('GitReview\File\FileInterface');
 
         $this->reporter->shouldReceive('progress')->once();
         $this->review->shouldReceive('review')->once();
@@ -92,8 +92,8 @@ class StaticReviewTest extends TestCase
         $files = new FileCollection([$file]);
         $reviews = new ReviewCollection([$this->review]);
 
-        $this->staticReview->addReviews($reviews);
+        $this->GitReview->addReviews($reviews);
 
-        $this->assertSame($this->staticReview, $this->staticReview->files($files));
+        $this->assertSame($this->GitReview, $this->GitReview->files($files));
     }
 }

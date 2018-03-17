@@ -11,7 +11,7 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Collection;
+namespace GitReview\Collection;
 
 use Countable;
 use Iterator;

@@ -11,7 +11,7 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Test\Unit\Review\PHP;
+namespace GitReview\Test\Unit\Review\PHP;
 
 use Mockery;
 use PHPUnit_Framework_TestCase as TestCase;
@@ -24,8 +24,8 @@ class PhpLintReviewTest extends TestCase
 
     public function setUp()
     {
-        $this->file   = Mockery::mock('StaticReview\File\FileInterface');
-        $this->review = Mockery::mock('StaticReview\Review\PHP\PhpLintReview[getProcess]');
+        $this->file   = Mockery::mock('GitReview\File\FileInterface');
+        $this->review = Mockery::mock('GitReview\Review\PHP\PhpLintReview[getProcess]');
     }
 
     public function tearDown()
@@ -67,7 +67,7 @@ class PhpLintReviewTest extends TestCase
 
         $this->review->shouldReceive('getProcess')->once()->andReturn($process);
 
-        $reporter = Mockery::mock('StaticReview\Reporter\ReporterInterface');
+        $reporter = Mockery::mock('GitReview\Reporter\ReporterInterface');
         $reporter->shouldReceive('error')->once();
 
         $this->assertNull($this->review->review($reporter, $this->file));

@@ -2,7 +2,7 @@
 <?php
 
 /*
- * This file is part of StaticReview
+ * This file is part of GitReview
  *
  * Copyright (c) 2014 Samuel Parkinson <@samparkinson_>
  *
@@ -12,4 +12,4 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE.md
  */
 
-include(__DIR__ . '/static-review.php');
+include(__DIR__ . '/git-review.php');

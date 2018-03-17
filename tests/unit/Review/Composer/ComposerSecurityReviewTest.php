@@ -11,7 +11,7 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Test\Unit\Review\Composer;
+namespace GitReview\Test\Unit\Review\Composer;
 
 use Mockery;
 use PHPUnit_Framework_TestCase as TestCase;
@@ -22,7 +22,7 @@ class ComposerSecurityReviewTest extends TestCase
 
     public function setUp()
     {
-        $this->review = Mockery::mock('StaticReview\Review\Composer\ComposerSecurityReview[getProcess]');
+        $this->review = Mockery::mock('GitReview\Review\Composer\ComposerSecurityReview[getProcess]');
     }
 
     public function tearDown()
@@ -32,12 +32,12 @@ class ComposerSecurityReviewTest extends TestCase
 
     public function testCanReview()
     {
-        $composerFile = Mockery::mock('StaticReview\File\FileInterface');
+        $composerFile = Mockery::mock('GitReview\File\FileInterface');
         $composerFile->shouldReceive('getFileName')->once()->andReturn('composer.lock');
 
         $this->assertTrue($this->review->canReview($composerFile));
 
-        $normalFile = Mockery::mock('StaticReview\File\FileInterface');
+        $normalFile = Mockery::mock('GitReview\File\FileInterface');
         $normalFile->shouldReceive('getFileName')->once()->andReturn('somefile.php');
 
         $this->assertFalse($this->review->canReview($normalFile));
@@ -45,7 +45,7 @@ class ComposerSecurityReviewTest extends TestCase
 
     public function testReview()
     {
-        $composerFile = Mockery::mock('StaticReview\File\FileInterface');
+        $composerFile = Mockery::mock('GitReview\File\FileInterface');
         $composerFile->shouldReceive('getFullPath')->once()->andReturn('/some/path/composer.lock');
 
         $process = Mockery::mock('Symfony\Component\Process\Process')->makePartial();
@@ -54,7 +54,7 @@ class ComposerSecurityReviewTest extends TestCase
 
         $this->review->shouldReceive('getProcess')->once()->andReturn($process);
 
-        $reporter = Mockery::mock('StaticReview\Reporter\ReporterInterface');
+        $reporter = Mockery::mock('GitReview\Reporter\ReporterInterface');
         $reporter->shouldReceive('error')->once();
 
         $this->assertNull($this->review->review($reporter, $composerFile));

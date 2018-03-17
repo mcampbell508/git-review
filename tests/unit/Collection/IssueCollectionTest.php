@@ -11,12 +11,12 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Test\Unit\Collection;
+namespace GitReview\Test\Unit\Collection;
 
 use Mockery;
 use PHPUnit_Framework_TestCase as TestCase;
-use StaticReview\Collection\IssueCollection;
-use StaticReview\Issue\Issue;
+use GitReview\Collection\IssueCollection;
+use GitReview\Issue\Issue;
 
 class IssueCollectionTest extends TestCase
 {
@@ -29,7 +29,7 @@ class IssueCollectionTest extends TestCase
 
     public function testValidateWithValidObject()
     {
-        $object = Mockery::mock('StaticReview\Issue\IssueInterface');
+        $object = Mockery::mock('GitReview\Issue\IssueInterface');
 
         $this->assertTrue($this->collection->validate($object));
     }
@@ -46,7 +46,7 @@ class IssueCollectionTest extends TestCase
 
     public function testSelectWithTrueCallback()
     {
-        $issue = Mockery::mock('StaticReview\Issue\IssueInterface');
+        $issue = Mockery::mock('GitReview\Issue\IssueInterface');
 
         $this->collection->append($issue);
 
@@ -61,7 +61,7 @@ class IssueCollectionTest extends TestCase
 
     public function testSelectWithFalseCallback()
     {
-        $issue = Mockery::mock('StaticReview\Issue\IssueInterface');
+        $issue = Mockery::mock('GitReview\Issue\IssueInterface');
 
         $this->collection->append($issue);
 
@@ -85,7 +85,7 @@ class IssueCollectionTest extends TestCase
 
     public function testForLevelWithMatchingLevel()
     {
-        $issue = Mockery::mock('StaticReview\Issue\IssueInterface');
+        $issue = Mockery::mock('GitReview\Issue\IssueInterface');
         $issue->shouldReceive('matches')->once()->andReturn(true);
 
         $this->collection->append($issue);
@@ -98,7 +98,7 @@ class IssueCollectionTest extends TestCase
 
     public function testForLevelWithNonMatchingLevel()
     {
-        $issue = Mockery::mock('StaticReview\Issue\IssueInterface');
+        $issue = Mockery::mock('GitReview\Issue\IssueInterface');
         $issue->shouldReceive('matches')->once()->andReturn(false);
 
         $this->collection->append($issue);

@@ -1,6 +1,6 @@
 <?php
 
-namespace StaticReview\Test\Functional;
+namespace GitReview\Test\Functional;
 
 use PHPUnit_Framework_TestCase as TestCase;
 use Symfony\Component\Process\Process;

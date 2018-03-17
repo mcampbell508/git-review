@@ -11,12 +11,12 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\VersionControl;
+namespace GitReview\VersionControl;
 
-use StaticReview\Collection\FileCollection;
-use StaticReview\Commit\CommitMessage;
-use StaticReview\File\File;
-use StaticReview\File\FileInterface;
+use GitReview\Collection\FileCollection;
+use GitReview\Commit\CommitMessage;
+use GitReview\File\File;
+use GitReview\File\FileInterface;
 use Symfony\Component\Process\Process;
 
 class GitVersionControl implements VersionControlInterface

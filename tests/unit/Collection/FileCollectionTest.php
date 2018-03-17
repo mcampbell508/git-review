@@ -11,11 +11,11 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace StaticReview\Test\Unit\Collection;
+namespace GitReview\Test\Unit\Collection;
 
 use Mockery;
 use PHPUnit_Framework_TestCase as TestCase;
-use StaticReview\Collection\FileCollection;
+use GitReview\Collection\FileCollection;
 
 class FileCollectionTest extends TestCase
 {
@@ -28,7 +28,7 @@ class FileCollectionTest extends TestCase
 
     public function testValidateWithValidObject()
     {
-        $object = Mockery::mock('StaticReview\File\FileInterface');
+        $object = Mockery::mock('GitReview\File\FileInterface');
 
         $this->assertTrue($this->collection->validate($object));
     }
@@ -45,7 +45,7 @@ class FileCollectionTest extends TestCase
 
     public function testSelectWithTrueCallback()
     {
-        $file = Mockery::mock('StaticReview\File\FileInterface');
+        $file = Mockery::mock('GitReview\File\FileInterface');
 
         $this->collection->append($file);
 
@@ -60,7 +60,7 @@ class FileCollectionTest extends TestCase
 
     public function testSelectWithFalseCallback()
     {
-        $file = Mockery::mock('StaticReview\File\FileInterface');
+        $file = Mockery::mock('GitReview\File\FileInterface');
 
         $this->collection->append($file);
 
