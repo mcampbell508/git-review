@@ -13,7 +13,7 @@ class GitBranchTest extends FunctionalTestCase
     private $gitBranch;
     private $topicBranchName;
 
-    public function setUp(): void
+    public function setUp()
     {
         parent::setUp();
 
