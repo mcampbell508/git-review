@@ -21,12 +21,12 @@ class FileCollectionTest extends TestCase
 {
     protected $collection;
 
-    public function setUp(): void
+    public function setUp()
     {
         $this->collection = new FileCollection();
     }
 
-    public function testValidateWithValidObject(): void
+    public function testValidateWithValidObject()
     {
         $object = Mockery::mock('StaticReview\File\FileInterface');
 
@@ -36,14 +36,14 @@ class FileCollectionTest extends TestCase
     /**
      * @expectedException InvalidArgumentException
      */
-    public function testValidateWithInvalidObject(): void
+    public function testValidateWithInvalidObject()
     {
         $object = 'Test';
 
         $this->collection->validate($object);
     }
 
-    public function testSelectWithTrueCallback(): void
+    public function testSelectWithTrueCallback()
     {
         $file = Mockery::mock('StaticReview\File\FileInterface');
 
@@ -58,7 +58,7 @@ class FileCollectionTest extends TestCase
         $this->assertCount(1, $files);
     }
 
-    public function testSelectWithFalseCallback(): void
+    public function testSelectWithFalseCallback()
     {
         $file = Mockery::mock('StaticReview\File\FileInterface');
 
@@ -73,7 +73,7 @@ class FileCollectionTest extends TestCase
         $this->assertCount(0, $files);
     }
 
-    public function testSelectWithEmptyCollection(): void
+    public function testSelectWithEmptyCollection()
     {
         $filter = function () {
             return true;

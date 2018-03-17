@@ -22,25 +22,25 @@ class LineEndingsReviewTest extends TestCase
 
     protected $review;
 
-    public function setUp(): void
+    public function setUp()
     {
         $this->file = Mockery::mock('StaticReview\File\FileInterface');
         $this->review = Mockery::mock('StaticReview\Review\General\LineEndingsReview[getProcess]');
     }
 
-    public function tearDown(): void
+    public function tearDown()
     {
         Mockery::close();
     }
 
-    public function testCanReview(): void
+    public function testCanReview()
     {
         $this->file->shouldReceive('getMimeType')->once()->andReturn('text');
 
         $this->assertTrue($this->review->canReview($this->file));
     }
 
-    public function testReview(): void
+    public function testReview()
     {
         $this->file->shouldReceive('getFullPath')->once()->andReturn(__FILE__);
 

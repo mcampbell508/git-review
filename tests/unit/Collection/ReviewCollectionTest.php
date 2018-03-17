@@ -21,12 +21,12 @@ class ReviewCollectionTest extends TestCase
 {
     protected $collection;
 
-    public function setUp(): void
+    public function setUp()
     {
         $this->collection = new ReviewCollection();
     }
 
-    public function testValidateWithValidObject(): void
+    public function testValidateWithValidObject()
     {
         $object = Mockery::mock('StaticReview\Review\ReviewInterface');
 
@@ -36,14 +36,14 @@ class ReviewCollectionTest extends TestCase
     /**
      * @expectedException InvalidArgumentException
      */
-    public function testValidateWithInvalidObject(): void
+    public function testValidateWithInvalidObject()
     {
         $object = 'Test';
 
         $this->collection->validate($object);
     }
 
-    public function testSelectWithTrueCallback(): void
+    public function testSelectWithTrueCallback()
     {
         $review = Mockery::mock('StaticReview\Review\ReviewInterface');
 
@@ -58,7 +58,7 @@ class ReviewCollectionTest extends TestCase
         $this->assertCount(1, $reviews);
     }
 
-    public function testSelectWithFalseCallback(): void
+    public function testSelectWithFalseCallback()
     {
         $review = Mockery::mock('StaticReview\Review\ReviewInterface');
 
@@ -73,7 +73,7 @@ class ReviewCollectionTest extends TestCase
         $this->assertCount(0, $reviews);
     }
 
-    public function testSelectWithEmptyCollection(): void
+    public function testSelectWithEmptyCollection()
     {
         $filter = function () {
             return true;
@@ -82,7 +82,7 @@ class ReviewCollectionTest extends TestCase
         $this->assertEquals(new ReviewCollection(), $this->collection->select($filter));
     }
 
-    public function testForFileWithMatchingFile(): void
+    public function testForFileWithMatchingFile()
     {
         $review = Mockery::mock('StaticReview\Review\ReviewInterface');
         $review->shouldReceive('canReview')->once()->andReturn(true);
@@ -97,7 +97,7 @@ class ReviewCollectionTest extends TestCase
         $this->assertSame($review, $reviews->current());
     }
 
-    public function testForFileWithNonMatchingFile(): void
+    public function testForFileWithNonMatchingFile()
     {
         $review = Mockery::mock('StaticReview\Review\ReviewInterface');
         $review->shouldReceive('canReview')->once()->andReturn(false);

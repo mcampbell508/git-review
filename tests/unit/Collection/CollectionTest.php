@@ -22,19 +22,19 @@ class CollectionTest extends TestCase
 
     protected $item;
 
-    public function setUp(): void
+    public function setUp()
     {
         $this->collection = Mockery::mock('StaticReview\Collection\Collection')->makePartial();
 
         $this->item = 'Example Item';
     }
 
-    public function tearDown(): void
+    public function tearDown()
     {
         Mockery::close();
     }
 
-    public function testConstructorWithArgument(): void
+    public function testConstructorWithArgument()
     {
         $items = [1, 2, 3];
 
@@ -49,7 +49,7 @@ class CollectionTest extends TestCase
         $this->assertCount(3, $this->collection);
     }
 
-    public function testConstructorWithoutArgument(): void
+    public function testConstructorWithoutArgument()
     {
         $this->collection->shouldReceive('validate')->never()->andReturn(true);
 
@@ -58,7 +58,7 @@ class CollectionTest extends TestCase
         $this->assertCount(0, $this->collection);
     }
 
-    public function testAppendWithValidItem(): void
+    public function testAppendWithValidItem()
     {
         $this->collection->shouldReceive('validate')->twice()->andReturn(true);
 
@@ -73,7 +73,7 @@ class CollectionTest extends TestCase
         $this->assertSame($this->item, $this->collection->next());
     }
 
-    public function testAppendWithNotTrueOnValidate(): void
+    public function testAppendWithNotTrueOnValidate()
     {
         $this->collection->shouldReceive('validate')->once()->andReturn(false);
 
@@ -85,7 +85,7 @@ class CollectionTest extends TestCase
     /**
      * @expectedException InvalidArgumentException
      */
-    public function testAppendWithExceptionOnValidate(): void
+    public function testAppendWithExceptionOnValidate()
     {
         $this->collection->shouldReceive('validate')->once()->andThrow(new \InvalidArgumentException());
 
@@ -94,7 +94,7 @@ class CollectionTest extends TestCase
         $this->assertCount(0, $this->collection);
     }
 
-    public function testToString(): void
+    public function testToString()
     {
         $this->collection->shouldReceive('validate')->twice()->andReturn(true);
 

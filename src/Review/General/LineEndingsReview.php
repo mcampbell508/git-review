@@ -41,7 +41,7 @@ class LineEndingsReview extends AbstractFileReview
      *
      * @link http://stackoverflow.com/a/3570574
      */
-    public function review(ReporterInterface $reporter, ReviewableInterface $file): void
+    public function review(ReporterInterface $reporter, ReviewableInterface $file)
     {
         $cmd = sprintf('file %s | grep --fixed-strings --quiet "CRLF"', $file->getFullPath());
 

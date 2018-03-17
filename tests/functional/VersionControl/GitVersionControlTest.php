@@ -22,20 +22,20 @@ class GitVersionControlTest extends FunctionalTestCase
     /** @var GitVersionControl */
     private $gitVersionControl;
 
-    public function setUp(): void
+    public function setUp()
     {
         parent::setUp();
 
         $this->gitVersionControl = new GitVersionControl();
     }
 
-    public function tearDown(): void
+    public function tearDown()
     {
         // Clean up any created files.
         $this->runProcess('rm -rf ' . $this->directory);
     }
 
-    public function testGetStagedFilesWithNoGitRepo(): void
+    public function testGetStagedFilesWithNoGitRepo()
     {
         $collection = $this->gitVersionControl->getStagedFiles();
 
@@ -43,7 +43,7 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->assertCount(0, $collection);
     }
 
-    public function testGetStagedFilesWithGitRepo(): void
+    public function testGetStagedFilesWithGitRepo()
     {
         $cmd  = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
@@ -56,7 +56,7 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->assertCount(0, $collection);
     }
 
-    public function testGetStagedFilesWithNewFile(): void
+    public function testGetStagedFilesWithNewFile()
     {
         $cmd  = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
@@ -75,7 +75,7 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->assertSame('A', $file->getStatus());
     }
 
-    public function testGetStagedFilesWithModifiedFile(): void
+    public function testGetStagedFilesWithModifiedFile()
     {
         $cmd  = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
@@ -97,7 +97,7 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->assertSame('M', $file->getStatus());
     }
 
-    public function testGetStagedFilesWithPartiallyStagedFile(): void
+    public function testGetStagedFilesWithPartiallyStagedFile()
     {
         $cmd  = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
@@ -128,7 +128,7 @@ class GitVersionControlTest extends FunctionalTestCase
      * For some reason a file had to be added and committed, for this test to pass.
      * Also, I could not seem to use the ProcessBuilder.
      */
-    public function testGetBranchName(): void
+    public function testGetBranchName()
     {
         $cmd  = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
@@ -140,7 +140,7 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->assertSame('master', $this->gitVersionControl->getBranch()->getName());
     }
 
-    public function testGetBranchNameAfterChangingBranches(): void
+    public function testGetBranchNameAfterChangingBranches()
     {
         $cmd  = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
@@ -156,7 +156,7 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->assertSame('develop', $this->gitVersionControl->getBranch()->getName());
     }
 
-    public function testGetBranchNameAccountsForDetachedHeadState(): void
+    public function testGetBranchNameAccountsForDetachedHeadState()
     {
         $cmd  = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
@@ -170,14 +170,6 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->causeDetachedHead();
 
         $this->assertSame('(HEAD', $this->gitVersionControl->getBranch()->getName());
-    }
-
-    /**
-     * Cause a detached HEAD scenario.
-     */
-    private function causeDetachedHead(): void
-    {
-        $this->runProcess('git checkout HEAD~1');
     }
 
     public function testGetStagedFilesWithMovedUnrenamedFile()
@@ -237,5 +229,13 @@ class GitVersionControlTest extends FunctionalTestCase
 
         $this->assertSame(basename($newTestFileName), $file->getFileName());
         $this->assertStringStartsWith('R', $file->getStatus());
+    }
+
+    /**
+     * Cause a detached HEAD scenario.
+     */
+    private function causeDetachedHead()
+    {
+        $this->runProcess('git checkout HEAD~1');
     }
 }

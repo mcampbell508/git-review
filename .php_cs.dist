@@ -46,7 +46,6 @@ $rules = [
     'trailing_comma_in_multiline_array' => true,
     'trim_array_spaces' => true,
     'unary_operator_spaces' => true,
-    'void_return' => true,
     'phpdoc_no_empty_return' => true,
     'no_empty_phpdoc' => true,
     'method_separation' => true,

@@ -18,7 +18,7 @@ class SanitizeMessage
         return $this->message;
     }
 
-    private function sanitizeMessage(): void
+    private function sanitizeMessage()
     {
         $this->stripOutDiff();
         $this->removeComments();
@@ -30,7 +30,7 @@ class SanitizeMessage
      *  using `git commit -v` as we should not check it as text.
      *
      */
-    private function stripOutDiff(): void
+    private function stripOutDiff()
     {
         $this->message = preg_split('/# \-+ >8 \-+/', $this->message, 2);
     }
@@ -38,13 +38,13 @@ class SanitizeMessage
     /**
      * Remove all comment lines from the message.
      */
-    private function removeComments(): void
+    private function removeComments()
     {
         list($message) = $this->message;
         $this->message = preg_replace('/^#.*/m', '', $message);
     }
 
-    private function splitMessageByNewLines(): void
+    private function splitMessageByNewLines()
     {
         $this->message = preg_split('/(\r?\n)+/', trim($this->message));
     }

@@ -24,12 +24,12 @@ class CommitMessageTest extends TestCase
      */
     private $fixtures;
 
-    public function setUp(): void
+    public function setUp()
     {
         $this->fixtures = realpath(__DIR__ . '/../../fixtures');
     }
 
-    public function testConstructionSubjectOnly(): void
+    public function testConstructionSubjectOnly()
     {
         $commit = new CommitMessage($this->message('subject-only'));
 
@@ -37,7 +37,7 @@ class CommitMessageTest extends TestCase
         $this->assertSame('', $commit->getBody());
     }
 
-    public function testConstructionSubjectAndBody(): void
+    public function testConstructionSubjectAndBody()
     {
         $commit = new CommitMessage($this->message('subject-and-body'));
 
@@ -45,7 +45,7 @@ class CommitMessageTest extends TestCase
         $this->assertSame('We have the tools.', $commit->getBody());
     }
 
-    public function testConstructionSubjectAndBodyAndComments(): void
+    public function testConstructionSubjectAndBodyAndComments()
     {
         $commit = new CommitMessage($this->message('subject-and-body-and-comments'));
 
@@ -54,7 +54,7 @@ class CommitMessageTest extends TestCase
         $this->assertSame('We have the tools.', $commit->getBody());
     }
 
-    public function testConstructionSubjectAndBodyAndDiff(): void
+    public function testConstructionSubjectAndBodyAndDiff()
     {
         $commit = new CommitMessage($this->message('subject-and-body-and-diff'));
 

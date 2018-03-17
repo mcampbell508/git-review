@@ -19,14 +19,14 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class HookListCommand extends Command
 {
-    protected function configure(): void
+    protected function configure()
     {
         $this->setName('hook:list');
 
         $this->setDescription('Lists all the included hooks.');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         $hooksPath = realpath(__DIR__ . '/../../hooks/');
 

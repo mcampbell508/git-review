@@ -22,12 +22,12 @@ class IssueCollectionTest extends TestCase
 {
     protected $collection;
 
-    public function setUp(): void
+    public function setUp()
     {
         $this->collection = new IssueCollection();
     }
 
-    public function testValidateWithValidObject(): void
+    public function testValidateWithValidObject()
     {
         $object = Mockery::mock('StaticReview\Issue\IssueInterface');
 
@@ -37,14 +37,14 @@ class IssueCollectionTest extends TestCase
     /**
      * @expectedException InvalidArgumentException
      */
-    public function testValidateWithInvalidObject(): void
+    public function testValidateWithInvalidObject()
     {
         $object = 'Test';
 
         $this->collection->validate($object);
     }
 
-    public function testSelectWithTrueCallback(): void
+    public function testSelectWithTrueCallback()
     {
         $issue = Mockery::mock('StaticReview\Issue\IssueInterface');
 
@@ -59,7 +59,7 @@ class IssueCollectionTest extends TestCase
         $this->assertCount(1, $issues);
     }
 
-    public function testSelectWithFalseCallback(): void
+    public function testSelectWithFalseCallback()
     {
         $issue = Mockery::mock('StaticReview\Issue\IssueInterface');
 
@@ -74,7 +74,7 @@ class IssueCollectionTest extends TestCase
         $this->assertCount(0, $issues);
     }
 
-    public function testSelectWithEmptyCollection(): void
+    public function testSelectWithEmptyCollection()
     {
         $filter = function () {
             return true;
@@ -83,7 +83,7 @@ class IssueCollectionTest extends TestCase
         $this->assertEquals(new IssueCollection(), $this->collection->select($filter));
     }
 
-    public function testForLevelWithMatchingLevel(): void
+    public function testForLevelWithMatchingLevel()
     {
         $issue = Mockery::mock('StaticReview\Issue\IssueInterface');
         $issue->shouldReceive('matches')->once()->andReturn(true);
@@ -96,7 +96,7 @@ class IssueCollectionTest extends TestCase
         $this->assertSame($issue, $issues->current());
     }
 
-    public function testForLevelWithNonMatchingLevel(): void
+    public function testForLevelWithNonMatchingLevel()
     {
         $issue = Mockery::mock('StaticReview\Issue\IssueInterface');
         $issue->shouldReceive('matches')->once()->andReturn(false);

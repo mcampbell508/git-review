@@ -26,7 +26,7 @@ class FileTest extends TestCase
 
     protected $file;
 
-    public function setUp(): void
+    public function setUp()
     {
         $this->fileStatus  = 'M';
         $this->filePath    = __FILE__;
@@ -37,26 +37,26 @@ class FileTest extends TestCase
         $this->assertNotNull($this->file);
     }
 
-    public function testGetFileName(): void
+    public function testGetFileName()
     {
         $expected = basename($this->filePath);
 
         $this->assertSame($expected, $this->file->getFileName());
     }
 
-    public function testGetRelativePath(): void
+    public function testGetRelativePath()
     {
         $expected = str_replace($this->projectPath . DIRECTORY_SEPARATOR, '', $this->filePath);
 
         $this->assertSame($expected, $this->file->getRelativePath());
     }
 
-    public function testGetFullPathWithNoCachedPath(): void
+    public function testGetFullPathWithNoCachedPath()
     {
         $this->assertSame($this->filePath, $this->file->getFullPath());
     }
 
-    public function testGetFullPathWithCachedPath(): void
+    public function testGetFullPathWithCachedPath()
     {
         $path = __FILE__;
 
@@ -65,7 +65,7 @@ class FileTest extends TestCase
         $this->assertSame($path, $this->file->getFullPath());
     }
 
-    public function testGetCachedPath(): void
+    public function testGetCachedPath()
     {
         $this->assertNull($this->file->getCachedPath());
 
@@ -76,7 +76,7 @@ class FileTest extends TestCase
         $this->assertSame($path, $this->file->getCachedPath());
     }
 
-    public function testSetCachedPath(): void
+    public function testSetCachedPath()
     {
         $this->assertNull($this->file->getCachedPath());
 
@@ -87,19 +87,19 @@ class FileTest extends TestCase
         $this->assertSame($path, $this->file->getCachedPath());
     }
 
-    public function testGetExtension(): void
+    public function testGetExtension()
     {
         $expected = pathinfo($this->filePath, PATHINFO_EXTENSION);
 
         $this->assertSame($expected, $this->file->getExtension());
     }
 
-    public function testGetStatus(): void
+    public function testGetStatus()
     {
         $this->assertSame($this->fileStatus, $this->file->getStatus());
     }
 
-    public function testGetFormattedStatus(): void
+    public function testGetFormattedStatus()
     {
         $statuses = ['A', 'C', 'M', 'R'];
 
@@ -112,14 +112,14 @@ class FileTest extends TestCase
     /**
      * @expectedException UnexpectedValueException
      */
-    public function testGetLevelNameWithInvalidInput(): void
+    public function testGetLevelNameWithInvalidInput()
     {
         $file = new File('Z', $this->filePath, $this->projectPath);
 
         $this->assertInstanceOf('\UnexpectedValueException', $file->getFormattedStatus());
     }
 
-    public function testGetMimeType(): void
+    public function testGetMimeType()
     {
         $this->assertTrue(strpos($this->file->getMimeType(), 'php') !== false);
     }

@@ -24,7 +24,7 @@ class HookInstallCommand extends Command
     const ARG_SOURCE = 'source';
     const ARG_TARGET = 'target';
 
-    protected function configure(): void
+    protected function configure()
     {
         $this->setName('hook:install');
 
@@ -45,7 +45,7 @@ class HookInstallCommand extends Command
         $this->addOption('force', 'f', InputOption::VALUE_NONE, 'Overrite any existing files at the symlink target.');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output): void
+    protected function execute(InputInterface $input, OutputInterface $output)
     {
         $source = realpath($input->getArgument(self::ARG_SOURCE));
         $target = $input->getArgument(self::ARG_TARGET);

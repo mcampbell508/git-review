@@ -26,7 +26,7 @@ class ReporterTest extends TestCase
 
     protected $reporter;
 
-    public function setUp(): void
+    public function setUp()
     {
         $this->review = Mockery::mock('StaticReview\Review\ReviewInterface');
         $this->file   = Mockery::mock('StaticReview\File\FileInterface');
@@ -34,14 +34,14 @@ class ReporterTest extends TestCase
         $this->reporter = new Reporter();
     }
 
-    public function testReport(): void
+    public function testReport()
     {
         $this->reporter->report(Issue::LEVEL_INFO, 'Test', $this->review, $this->file);
 
         $this->assertCount(1, $this->reporter->getIssues());
     }
 
-    public function testInfo(): void
+    public function testInfo()
     {
         $this->reporter->info('Test', $this->review, $this->file);
 
@@ -52,7 +52,7 @@ class ReporterTest extends TestCase
         $this->assertSame(Issue::LEVEL_INFO, $issues->current()->getLevel());
     }
 
-    public function testWarning(): void
+    public function testWarning()
     {
         $this->reporter->warning('Test', $this->review, $this->file);
 
@@ -63,7 +63,7 @@ class ReporterTest extends TestCase
         $this->assertSame(Issue::LEVEL_WARNING, $issues->current()->getLevel());
     }
 
-    public function testError(): void
+    public function testError()
     {
         $this->reporter->error('Test', $this->review, $this->file);
 
@@ -74,19 +74,19 @@ class ReporterTest extends TestCase
         $this->assertSame(Issue::LEVEL_ERROR, $issues->current()->getLevel());
     }
 
-    public function testHasIssues(): void
+    public function testHasIssues()
     {
         $this->reporter->info('Test', $this->review, $this->file);
 
         $this->assertTrue($this->reporter->hasIssues());
     }
 
-    public function testHasIssuesWithNoIssues(): void
+    public function testHasIssuesWithNoIssues()
     {
         $this->assertFalse($this->reporter->hasIssues());
     }
 
-    public function testGetIssues(): void
+    public function testGetIssues()
     {
         $this->reporter->info('Test', $this->review, $this->file);
 

@@ -33,7 +33,7 @@ class Reporter implements ReporterInterface
         $this->issues = new IssueCollection();
     }
 
-    public function progress($current, $total): void
+    public function progress($current, $total)
     {
         echo sprintf("Reviewing %d of %d.\r", $current, $total);
     }

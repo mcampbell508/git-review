@@ -27,7 +27,7 @@ class StaticReviewTest extends TestCase
 
     protected $staticReview;
 
-    public function setUp(): void
+    public function setUp()
     {
         $this->reporter = Mockery::mock('StaticReview\Reporter\ReporterInterface');
         $this->review   = Mockery::mock('StaticReview\Review\ReviewInterface');
@@ -35,17 +35,17 @@ class StaticReviewTest extends TestCase
         $this->staticReview = new StaticReview($this->reporter);
     }
 
-    public function tearDown(): void
+    public function tearDown()
     {
         Mockery::close();
     }
 
-    public function testGetReporter(): void
+    public function testGetReporter()
     {
         $this->assertSame($this->reporter, $this->staticReview->getReporter());
     }
 
-    public function testSetReporter(): void
+    public function testSetReporter()
     {
         $newReporter = Mockery::mock('StaticReview\Reporter\ReporterInterface');
 
@@ -54,7 +54,7 @@ class StaticReviewTest extends TestCase
         $this->assertSame($newReporter, $this->staticReview->getReporter());
     }
 
-    public function testGetReviews(): void
+    public function testGetReviews()
     {
         $this->assertTrue($this->staticReview->getReviews() instanceof ReviewCollection);
         $this->assertCount(0, $this->staticReview->getReviews());
@@ -63,7 +63,7 @@ class StaticReviewTest extends TestCase
         $this->assertCount(1, $this->staticReview->getReviews());
     }
 
-    public function testAddReview(): void
+    public function testAddReview()
     {
         $this->assertCount(0, $this->staticReview->getReviews());
 
@@ -71,7 +71,7 @@ class StaticReviewTest extends TestCase
         $this->assertCount(1, $this->staticReview->getReviews());
     }
 
-    public function testAddReviews(): void
+    public function testAddReviews()
     {
         $this->assertCount(0, $this->staticReview->getReviews());
 
@@ -81,7 +81,7 @@ class StaticReviewTest extends TestCase
         $this->assertCount(2, $this->staticReview->getReviews());
     }
 
-    public function testReview(): void
+    public function testReview()
     {
         $file = Mockery::mock('StaticReview\File\FileInterface');
 
