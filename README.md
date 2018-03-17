@@ -1,5 +1,10 @@
 # git-review
 
+[![Build Status](http://img.shields.io/travis/mcampbell508/git-review.svg)](https://travis-ci.org/mcampbell508/git-review)
+[![Total Downloads](http://img.shields.io/packagist/dm/mcampbell508/git-review.svg)](https://packagist.org/packages/mcampbell508/git-review)
+[![Latest Stable Version](http://img.shields.io/packagist/v/mcampbell508/git-review.svg)](https://packagist.org/packages/mcampbell508/git-review)
+[![License](http://img.shields.io/badge/license-MIT-lightgrey.svg)](https://github.com/sjparkinson/static-review/blob/master/LICENSE)
+
 This package was forked from [Static Review](https://github.com/sjparkinson/git-review) which has been abandoned.
 I am using this as a personal project and have renamed to `git-review`
 
@@ -8,10 +13,6 @@ I am using this as a personal project and have renamed to `git-review`
 An extendable framework for version control hooks.
 
 ![GitReview Success Demo](http://i.imgur.com/8G3uORp.gif)
-
-[travis]:    https://travis-ci.org/mcampbell508/git-review
-[packagist]: https://packagist.org/packages/mcampbell508/git-review
-[php]:       https://php.net/
 
 ## Usage
 
