@@ -77,11 +77,6 @@ class PhpCsFixerCommand extends Command
 
         $filesFinder = new FilesFinder($changedFiles, $phpCsFixerConfig["paths_to_scan"]);
 
-        if ($filesFinder->count() == 0) {
-            $io->success("No files to scan");
-            exit(0);
-        }
-
         $output->writeln("<options=bold,underscore>Found files...</>\n");
 
         $filePaths = $filesFinder->getFoundFiles()
