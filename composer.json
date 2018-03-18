@@ -59,6 +59,10 @@
             "vendor/bin/phpcs --colors --standard=PSR2 src/ bin/ hooks/ tests/",
             "vendor/bin/phpunit --color=always --testsuite unit",
             "vendor/bin/phpunit --color=always --testsuite functional"
+        ],
+        "code-style": [
+            "php vendor/bin/phpcs",
+            "bin/git-review tools:php-cs-fixer"
         ]
     },
     "config": {
