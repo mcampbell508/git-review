@@ -3,6 +3,7 @@ language: php
 php:
   - 7.0
   - 7.1
+  - 7.2
 
 cache:
   directories:
@@ -19,11 +20,9 @@ before_script:
   - composer install --prefer-source --no-interaction --dev
 
 script:
-  - vendor/bin/phpcs --colors --standard=PSR2 src/ bin/ hooks/ tests/
+  - vendor/bin/phpcs
   - php vendor/bin/phpunit --coverage-text
-  - CHANGED_FILES=$(git diff --name-only --diff-filter=ACMRTUXB "${TRAVIS_COMMIT_RANGE}")
-  - if ! echo "${CHANGED_FILES}" | grep -qE "^(\\.php_cs(\\.dist)?|composer\\.lock)$"; then IFS=$'\n' EXTRA_ARGS=('--path-mode=intersection' '--' ${CHANGED_FILES[@]}); fi
-  - vendor/bin/php-cs-fixer fix --config=.php_cs.dist -v --dry-run --stop-on-violation --using-cache=no "${EXTRA_ARGS[@]}"
+  - bin/git-review tools:php-cs-fixer
 
 matrix:
   fast_finish: true

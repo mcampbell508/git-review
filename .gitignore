@@ -7,6 +7,8 @@ phpunit.xml
 vendor/
 build/
 .php_cs
+/git-review.yml
+phpcs.xml
 
 # OS Generated Files #
 ######################

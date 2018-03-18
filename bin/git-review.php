@@ -36,6 +36,7 @@ if (!$included) {
 use GitReview\Command\HookInstallCommand;
 use GitReview\Command\HookListCommand;
 use GitReview\Command\HookRunCommand;
+use GitReview\Command\PhpCsFixerCommand;
 use Symfony\Component\Console\Application;
 
 $name    = 'GitReview Command Line Tool';
@@ -47,6 +48,7 @@ $console->addCommands([
     new HookListCommand(),
     new HookInstallCommand(),
     new HookRunCommand(),
+    new PhpCsFixerCommand(),
 ]);
 
 $console->run();

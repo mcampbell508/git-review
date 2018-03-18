@@ -1,0 +1,17 @@
+---
+
+tools:
+  php_cs_fixer:
+    bin_path: "vendor/bin/php-cs-fixer"
+    config_path: "./.php_cs.dist"
+    verbose: true
+    dry_run: true
+    stop_on_violation: false
+    use_cache: false
+    allow_risky: false
+    paths_to_scan:
+      - "bin/*"
+      - "hooks/*"
+      - "src/*"
+      - "tests/*"
+      - ".php_cs.dist"

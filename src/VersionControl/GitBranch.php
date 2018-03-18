@@ -42,14 +42,6 @@ class GitBranch implements GitBranchInterface
 
         $fileCollection->addFiles(\array_filter(\explode("\n", $committedFilesProcess->getOutput())));
 
-        if ($this->isDirty()) {
-            $files = $this->processFactory->create("git status --short | sort | uniq")->getOutput();
-
-            if (strlen($files) > 0) {
-                $fileCollection->addFiles(\array_filter(\explode("\n", $files)));
-            }
-        }
-
         return $fileCollection->getFileCollection();
     }
 
