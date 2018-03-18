@@ -32,7 +32,7 @@ if (empty($argv[1]) || !is_file($argv[1])) {
 }
 
 // Reference the required classes and the reviews you want to use.
-use League\CLImate\CLImate;
+use GitReview\GitReview;
 use GitReview\Reporter\Reporter;
 use GitReview\Review\Message\BodyLineLengthReview;
 use GitReview\Review\Message\SubjectImperativeReview;
@@ -40,8 +40,8 @@ use GitReview\Review\Message\SubjectLineCapitalReview;
 use GitReview\Review\Message\SubjectLineLengthReview;
 use GitReview\Review\Message\SubjectLinePeriodReview;
 use GitReview\Review\Message\WorkInProgressReview;
-use GitReview\GitReview;
 use GitReview\VersionControl\GitVersionControl;
+use League\CLImate\CLImate;
 
 $reporter = new Reporter();
 $climate  = new CLImate();

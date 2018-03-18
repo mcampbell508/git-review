@@ -25,7 +25,7 @@ if (!$included) {
 }
 
 // Reference the required classes and the reviews you want to use.
-use League\CLImate\CLImate;
+use GitReview\GitReview;
 use GitReview\Reporter\Reporter;
 use GitReview\Review\Composer\ComposerLintReview;
 use GitReview\Review\Composer\ComposerSecurityReview;
@@ -33,8 +33,8 @@ use GitReview\Review\General\LineEndingsReview;
 use GitReview\Review\PHP\PhpCodeSnifferReview;
 use GitReview\Review\PHP\PhpLeadingLineReview;
 use GitReview\Review\PHP\PhpLintReview;
-use GitReview\GitReview;
 use GitReview\VersionControl\GitVersionControl;
+use League\CLImate\CLImate;
 
 $reporter = new Reporter();
 $climate  = new CLImate();

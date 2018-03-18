@@ -13,10 +13,10 @@
 
 namespace GitReview\Test\Unit\Reporter;
 
-use Mockery;
-use PHPUnit_Framework_TestCase as TestCase;
 use GitReview\Issue\Issue;
 use GitReview\Reporter\Reporter;
+use Mockery;
+use PHPUnit_Framework_TestCase as TestCase;
 
 class ReporterTest extends TestCase
 {

@@ -13,8 +13,8 @@
 
 namespace GitReview\Test\Unit\Classes;
 
-use PHPUnit_Framework_TestCase as TestCase;
 use GitReview\File\File;
+use PHPUnit_Framework_TestCase as TestCase;
 
 class FileTest extends TestCase
 {
