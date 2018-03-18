@@ -13,9 +13,8 @@
 
 namespace GitReview\Test\Unit\Commit;
 
-use PHPUnit_Framework_TestCase as TestCase;
-
 use GitReview\Commit\CommitMessage;
+use PHPUnit_Framework_TestCase as TestCase;
 
 class CommitMessageTest extends TestCase
 {

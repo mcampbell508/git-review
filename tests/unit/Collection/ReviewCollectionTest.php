@@ -13,9 +13,9 @@
 
 namespace GitReview\Test\Unit\Collection;
 
+use GitReview\Collection\ReviewCollection;
 use Mockery;
 use PHPUnit_Framework_TestCase as TestCase;
-use GitReview\Collection\ReviewCollection;
 
 class ReviewCollectionTest extends TestCase
 {

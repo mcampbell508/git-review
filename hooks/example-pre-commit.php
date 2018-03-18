@@ -25,9 +25,9 @@ if (!$included) {
 }
 
 // Reference the required classes and the reviews you want to use.
+use GitReview\GitReview;
 use GitReview\Reporter\Reporter;
 use GitReview\Review\General\LineEndingsReview;
-use GitReview\GitReview;
 use GitReview\VersionControl\GitVersionControl;
 
 $reporter = new Reporter();

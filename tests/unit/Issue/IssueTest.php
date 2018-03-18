@@ -13,9 +13,9 @@
 
 namespace GitReview\Test\Unit\Issue;
 
+use GitReview\Issue\Issue;
 use Mockery;
 use PHPUnit_Framework_TestCase as TestCase;
-use GitReview\Issue\Issue;
 
 class IssueTest extends TestCase
 {

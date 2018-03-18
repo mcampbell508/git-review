@@ -13,11 +13,11 @@
 
 namespace GitReview\Test\Unit;
 
-use Mockery;
-use PHPUnit_Framework_TestCase as TestCase;
 use GitReview\Collection\FileCollection;
 use GitReview\Collection\ReviewCollection;
 use GitReview\GitReview;
+use Mockery;
+use PHPUnit_Framework_TestCase as TestCase;
 
 class GitReviewTest extends TestCase
 {
