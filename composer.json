@@ -60,7 +60,8 @@
         "test": [
             "vendor/bin/phpcs --colors --standard=PSR2 src/ bin/ hooks/ tests/",
             "vendor/bin/phpunit --color=always --testsuite unit",
-            "vendor/bin/phpunit --color=always --testsuite functional"
+            "vendor/bin/phpunit --color=always --testsuite functional",
+            "php vendor/bin/phpstan analyse app bin hooks src tests .php_cs.dist"
         ],
         "code-style": [
             "php vendor/bin/phpcs",
