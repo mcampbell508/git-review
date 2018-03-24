@@ -99,9 +99,9 @@ class CollectionTest extends TestCase
         $this->collection->shouldReceive('validate')->twice()->andReturn(true);
 
         $this->collection->append($this->item);
-        $this->assertStringEndsWith('(1)', (string) $this->collection);
+        $this->assertStringEndsWith('(1)', (string)$this->collection);
 
         $this->collection->append($this->item);
-        $this->assertStringEndsWith('(2)', (string) $this->collection);
+        $this->assertStringEndsWith('(2)', (string)$this->collection);
     }
 }

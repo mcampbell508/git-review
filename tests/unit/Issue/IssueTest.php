@@ -185,7 +185,7 @@ class IssueTest extends TestCase
         $file->shouldReceive('getName')
              ->andReturn($file->getRelativePath());
 
-        $issueString = (string) $this->issue;
+        $issueString = (string)$this->issue;
 
         // Replace common punctuation with spaces for a better explode.
         $issueStringTokens = explode(' ', str_replace([',', '.', ':', ';'], ' ', $issueString));

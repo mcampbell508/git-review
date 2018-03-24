@@ -46,7 +46,7 @@ class BodyLineLengthReview extends AbstractMessageReview
 
     public function setAllowLongUrls($enable)
     {
-        $this->urls = (bool) $enable;
+        $this->urls = (bool)$enable;
     }
 
     public function getAllowLongUrls()
