@@ -21,10 +21,10 @@ class Issue implements IssueInterface
     /**
      * Issue level flags.
      */
-    const LEVEL_INFO    = 1;
+    const LEVEL_INFO = 1;
     const LEVEL_WARNING = 2;
-    const LEVEL_ERROR   = 4;
-    const LEVEL_ALL     = 7;
+    const LEVEL_ERROR = 4;
+    const LEVEL_ALL = 7;
 
     private $level;
 
@@ -48,9 +48,9 @@ class Issue implements IssueInterface
         ReviewInterface $review,
         ReviewableInterface $subject
     ) {
-        $this->level   = $level;
+        $this->level = $level;
         $this->message = $message;
-        $this->review  = $review;
+        $this->review = $review;
         $this->subject = $subject;
     }
 

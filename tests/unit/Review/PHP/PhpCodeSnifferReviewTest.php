@@ -24,7 +24,7 @@ class PhpCodeSnifferReviewTest extends TestCase
 
     public function setUp()
     {
-        $this->file   = Mockery::mock('GitReview\File\FileInterface');
+        $this->file = Mockery::mock('GitReview\File\FileInterface');
         $this->review = Mockery::mock('GitReview\Review\PHP\PhpCodeSnifferReview[getProcess]');
     }
 
@@ -125,7 +125,7 @@ class PhpCodeSnifferReviewTest extends TestCase
         $process->shouldReceive('run')->once();
         $process->shouldReceive('isSuccessful')->once()->andReturn(false);
 
-        $testOutput  = '{"files":{"test.php":{"errors":1,"warnings":0,"messages":[{"message":"Message","line":2}]}}}';
+        $testOutput = '{"files":{"test.php":{"errors":1,"warnings":0,"messages":[{"message":"Message","line":2}]}}}';
 
         $process->shouldReceive('getOutput')->once()->andReturn($testOutput);
 

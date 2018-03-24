@@ -24,7 +24,7 @@ class PhpLintReviewTest extends TestCase
 
     public function setUp()
     {
-        $this->file   = Mockery::mock('GitReview\File\FileInterface');
+        $this->file = Mockery::mock('GitReview\File\FileInterface');
         $this->review = Mockery::mock('GitReview\Review\PHP\PhpLintReview[getProcess]');
     }
 

@@ -44,10 +44,10 @@ use GitReview\VersionControl\GitVersionControl;
 use League\CLImate\CLImate;
 
 $reporter = new Reporter();
-$climate  = new CLImate();
-$git      = new GitVersionControl();
+$climate = new CLImate();
+$git = new GitVersionControl();
 
-$review   = new GitReview($reporter);
+$review = new GitReview($reporter);
 
 // Add any reviews to the StaticReview instance, supports a fluent interface.
 $review->addReview(new BodyLineLengthReview())

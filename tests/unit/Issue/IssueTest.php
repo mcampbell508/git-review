@@ -30,10 +30,10 @@ class IssueTest extends TestCase
 
     public function setUp()
     {
-        $this->issueLevel   = Issue::LEVEL_INFO;
+        $this->issueLevel = Issue::LEVEL_INFO;
         $this->issueMessage = 'Test';
-        $this->issueReview  = Mockery::mock('GitReview\Review\ReviewInterface');
-        $this->issueFile    = Mockery::mock('GitReview\File\FileInterface');
+        $this->issueReview = Mockery::mock('GitReview\Review\ReviewInterface');
+        $this->issueFile = Mockery::mock('GitReview\File\FileInterface');
 
         $this->issue = new Issue(
             $this->issueLevel,

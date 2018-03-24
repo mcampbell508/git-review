@@ -31,7 +31,7 @@ use GitReview\Review\General\LineEndingsReview;
 use GitReview\VersionControl\GitVersionControl;
 
 $reporter = new Reporter();
-$review   = new GitReview($reporter);
+$review = new GitReview($reporter);
 
 // Add any reviews to the StaticReview instance, supports a fluent interface.
 $review->addReview(new LineEndingsReview());

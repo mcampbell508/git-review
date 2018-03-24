@@ -28,8 +28,8 @@ class FileTest extends TestCase
 
     public function setUp()
     {
-        $this->fileStatus  = 'M';
-        $this->filePath    = __FILE__;
+        $this->fileStatus = 'M';
+        $this->filePath = __FILE__;
         $this->projectPath = __DIR__;
 
         $this->file = new File($this->fileStatus, $this->filePath, $this->projectPath);

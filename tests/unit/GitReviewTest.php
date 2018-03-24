@@ -30,7 +30,7 @@ class GitReviewTest extends TestCase
     public function setUp()
     {
         $this->reporter = Mockery::mock('GitReview\Reporter\ReporterInterface');
-        $this->review   = Mockery::mock('GitReview\Review\ReviewInterface');
+        $this->review = Mockery::mock('GitReview\Review\ReviewInterface');
 
         $this->GitReview = new GitReview($this->reporter);
     }

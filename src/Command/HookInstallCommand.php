@@ -49,7 +49,7 @@ class HookInstallCommand extends Command
     {
         $source = realpath($input->getArgument(self::ARG_SOURCE));
         $target = $input->getArgument(self::ARG_TARGET);
-        $force  = $input->getOption('force');
+        $force = $input->getOption('force');
 
         if ($output->isVeryVerbose()) {
             $message = sprintf('<info>Using %s as the hook.</info>', $source);

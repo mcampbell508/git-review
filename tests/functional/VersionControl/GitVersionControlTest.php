@@ -45,7 +45,7 @@ class GitVersionControlTest extends FunctionalTestCase
 
     public function testGetStagedFilesWithGitRepo()
     {
-        $cmd  = 'touch ' . $this->testFileName;
+        $cmd = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
 
         $this->runProcess($cmd);
@@ -58,7 +58,7 @@ class GitVersionControlTest extends FunctionalTestCase
 
     public function testGetStagedFilesWithNewFile()
     {
-        $cmd  = 'touch ' . $this->testFileName;
+        $cmd = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
         $cmd .= ' && git add ' . $this->testFileName;
 
@@ -77,7 +77,7 @@ class GitVersionControlTest extends FunctionalTestCase
 
     public function testGetStagedFilesWithModifiedFile()
     {
-        $cmd  = 'touch ' . $this->testFileName;
+        $cmd = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
         $cmd .= ' && git add ' . $this->testFileName;
         $cmd .= ' && git commit -m \'test\'';
@@ -99,7 +99,7 @@ class GitVersionControlTest extends FunctionalTestCase
 
     public function testGetStagedFilesWithPartiallyStagedFile()
     {
-        $cmd  = 'touch ' . $this->testFileName;
+        $cmd = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
         $cmd .= ' && git add ' . $this->testFileName;
         $cmd .= ' && git commit -m \'test\'';
@@ -128,7 +128,7 @@ class GitVersionControlTest extends FunctionalTestCase
     {
         $testFolderName = 'test_folder';
 
-        $cmd  = 'touch ' . $this->testFileName;
+        $cmd = 'touch ' . $this->testFileName;
         $cmd .= ' && echo \'test\' > ' . $this->testFileName;
         $cmd .= ' && git init';
         $cmd .= ' && git add ' . $this->testFileName;
@@ -158,7 +158,7 @@ class GitVersionControlTest extends FunctionalTestCase
         $testFolderName = 'test_folder';
         $newTestFileName = 'test_new.txt';
 
-        $cmd  = 'touch ' . $this->testFileName;
+        $cmd = 'touch ' . $this->testFileName;
         $cmd .= ' && echo \'test\' > ' . $this->testFileName;
         $cmd .= ' && git init';
         $cmd .= ' && git add ' . $this->testFileName;
