@@ -21,22 +21,7 @@ if (!$included) {
     exit(1);
 }
 
-use GitReview\Command\HookInstallCommand;
-use GitReview\Command\HookListCommand;
-use GitReview\Command\HookRunCommand;
-use GitReview\Command\PhpCsFixerCommand;
-use Symfony\Component\Console\Application;
 
-$name    = 'GitReview Command Line Tool';
-$version = '3.0.0';
+require __DIR__ . '/../vendor/autoload.php';
 
-$console = new Application($name, $version);
-
-$console->addCommands([
-    new HookListCommand(),
-    new HookInstallCommand(),
-    new HookRunCommand(),
-    new PhpCsFixerCommand(),
-]);
-
-$console->run();
+$container = require(__DIR__ . '/config/container.php');

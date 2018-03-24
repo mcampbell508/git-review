@@ -12,6 +12,11 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
+use GitReview\Console\Application;
 
 require __DIR__ . '/../app/bootstrap.php';
 
+/** @var Application $application */
+$console = $container['application'];
+
+$console->run();
