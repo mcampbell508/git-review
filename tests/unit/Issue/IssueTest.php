@@ -11,7 +11,7 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace GitReview\Test\Unit\Issue;
+namespace GitReview\Tests\Unit\Issue;
 
 use GitReview\Issue\Issue;
 use Mockery;
@@ -25,6 +25,7 @@ class IssueTest extends TestCase
     protected $issueLevel;
     protected $issueMessage;
     protected $issueFile;
+    protected $issueReview;
 
     protected $levels = [Issue::LEVEL_INFO, Issue::LEVEL_WARNING, Issue::LEVEL_ERROR];
 

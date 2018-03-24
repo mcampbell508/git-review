@@ -11,7 +11,7 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace GitReview\Test\Unit\Review\General;
+namespace GitReview\Tests\Unit\Review\General;
 
 use Mockery;
 use PHPUnit_Framework_TestCase as TestCase;

@@ -16,7 +16,11 @@ use GitReview\Console\Application;
 
 require __DIR__ . '/../app/bootstrap.php';
 
-/** @var Application $application */
+use GitReview\Container\Container;
+
+$container = new Container();
+
+/** @var Application $console */
 $console = $container['application'];
 
 $console->run();

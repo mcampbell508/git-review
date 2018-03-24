@@ -11,9 +11,9 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace GitReview\Test\Functional\VersionControl;
+namespace GitReview\Tests\Functional\VersionControl;
 
-use GitReview\Test\Functional\FunctionalTestCase;
+use GitReview\Tests\Functional\FunctionalTestCase;
 use GitReview\VersionControl\GitVersionControl;
 use Symfony\Component\Process\Process;
 

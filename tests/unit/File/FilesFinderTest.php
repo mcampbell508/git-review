@@ -1,6 +1,6 @@
 <?php
 
-namespace GitReview\Test\Unit\Classes;
+namespace GitReview\Tests\Unit\Classes;
 
 use GitReview\File\File;
 use GitReview\File\FilesFinder;

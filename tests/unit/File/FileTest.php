@@ -11,7 +11,7 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace GitReview\Test\Unit\Classes;
+namespace GitReview\Tests\Unit\Classes;
 
 use GitReview\File\File;
 use PHPUnit_Framework_TestCase as TestCase;

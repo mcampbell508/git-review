@@ -11,7 +11,7 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace GitReview\Test\Unit\Commit;
+namespace GitReview\Tests\Unit\Commit;
 
 use GitReview\Commit\CommitMessage;
 use PHPUnit_Framework_TestCase as TestCase;
