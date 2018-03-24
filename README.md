@@ -14,6 +14,10 @@ An extendable framework for version control hooks.
 
 ![GitReview Success Demo](http://i.imgur.com/8G3uORp.gif)
 
+## Requirements
+
+- PHP 7.1 and greater
+
 ## Usage
 
 For a [composer][composer] managed project you can simply run the following ...
