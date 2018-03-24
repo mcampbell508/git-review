@@ -108,7 +108,7 @@ class Reporter implements ReporterInterface
      */
     public function hasIssues()
     {
-        return (\count($this->issues) > 0);
+        return \count($this->issues) > 0;
     }
 
     /**

@@ -33,7 +33,7 @@ class NoCommitTagReview extends AbstractFileReview
         $mime = $file->getMimeType();
 
         // check to see if the mime-type starts with 'text'
-        return (\mb_substr($mime, 0, 4) === 'text');
+        return \mb_substr($mime, 0, 4) === 'text';
     }
 
     /**

@@ -30,7 +30,7 @@ class PhpLintReview extends AbstractFileReview
     {
         $extension = $file->getExtension();
 
-        return ($extension === 'php' || $extension === 'phtml');
+        return $extension === 'php' || $extension === 'phtml';
     }
 
     /**

@@ -153,6 +153,6 @@ class Issue implements IssueInterface
     {
         $result = ($this->getLevel() & $option);
 
-        return ($result === $this->getLevel());
+        return $result === $this->getLevel();
     }
 }

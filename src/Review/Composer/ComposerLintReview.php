@@ -29,7 +29,7 @@ class ComposerLintReview extends AbstractFileReview
     public function canReviewFile(FileInterface $file)
     {
         // only if the filename is "composer.json"
-        return ($file->getFileName() === 'composer.json');
+        return $file->getFileName() === 'composer.json';
     }
 
     /**

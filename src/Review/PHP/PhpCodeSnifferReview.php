@@ -81,7 +81,7 @@ class PhpCodeSnifferReview extends AbstractFileReview
      */
     public function canReviewFile(FileInterface $file)
     {
-        return ($file->getExtension() === 'php');
+        return $file->getExtension() === 'php';
     }
 
     /**
