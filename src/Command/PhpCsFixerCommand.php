@@ -144,7 +144,7 @@ class PhpCsFixerCommand extends Command
 
         return (new Collection($iterator))
             ->mapWithKeys(function (\Symfony\Component\Finder\SplFileInfo $fileInfo) {
-                return [$fileInfo->getFileName() => $fileInfo->getRealPath()];
+                return [$fileInfo->getFilename() => $fileInfo->getRealPath()];
             })
             ->sort()
             ->first(function ($item, $key) {
