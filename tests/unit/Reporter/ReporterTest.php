@@ -11,7 +11,7 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace GitReview\Test\Unit\Reporter;
+namespace GitReview\Tests\Unit\Reporter;
 
 use GitReview\Issue\Issue;
 use GitReview\Reporter\Reporter;

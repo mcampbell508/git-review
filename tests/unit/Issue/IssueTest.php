@@ -11,7 +11,7 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-namespace GitReview\Test\Unit\Issue;
+namespace GitReview\Tests\Unit\Issue;
 
 use GitReview\Issue\Issue;
 use Mockery;

@@ -1,6 +1,6 @@
 <?php
 
-namespace GitReview\Test\Unit\Process;
+namespace GitReview\Tests\Unit\Process;
 
 use GitReview\Process\ProcessFactory;
 use GitReview\Process\ProcessInterface;

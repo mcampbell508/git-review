@@ -1,10 +1,10 @@
 <?php
 
-namespace GitReview\Test\Functional\VersionControl;
+namespace GitReview\Tests\Functional\VersionControl;
 
 use Faker\Factory;
 use GitReview\File\File;
-use GitReview\Test\Functional\FunctionalTestCase;
+use GitReview\Tests\Functional\FunctionalTestCase;
 use GitReview\VersionControl\GitBranch;
 
 class GitBranchTest extends FunctionalTestCase

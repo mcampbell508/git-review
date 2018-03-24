@@ -26,8 +26,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "GitReview\\Test\\Unit\\": "tests/unit/",
-            "GitReview\\Test\\Functional\\": "tests/functional/"
+            "GitReview\\Tests\\Unit\\": "tests/unit/",
+            "GitReview\\Tests\\Functional\\": "tests/functional/"
         }
     },
     "bin": [
