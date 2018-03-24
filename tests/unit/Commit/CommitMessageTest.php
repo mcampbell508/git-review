@@ -23,12 +23,12 @@ class CommitMessageTest extends TestCase
      */
     private $fixtures;
 
-    public function setUp()
+    public function setUp(): void
     {
-        $this->fixtures = realpath(__DIR__ . '/../../fixtures');
+        $this->fixtures = \realpath(__DIR__ . '/../../fixtures');
     }
 
-    public function testConstructionSubjectOnly()
+    public function testConstructionSubjectOnly(): void
     {
         $commit = new CommitMessage($this->message('subject-only'));
 
@@ -36,7 +36,7 @@ class CommitMessageTest extends TestCase
         $this->assertSame('', $commit->getBody());
     }
 
-    public function testConstructionSubjectAndBody()
+    public function testConstructionSubjectAndBody(): void
     {
         $commit = new CommitMessage($this->message('subject-and-body'));
 
@@ -44,7 +44,7 @@ class CommitMessageTest extends TestCase
         $this->assertSame('We have the tools.', $commit->getBody());
     }
 
-    public function testConstructionSubjectAndBodyAndComments()
+    public function testConstructionSubjectAndBodyAndComments(): void
     {
         $commit = new CommitMessage($this->message('subject-and-body-and-comments'));
 
@@ -53,7 +53,7 @@ class CommitMessageTest extends TestCase
         $this->assertSame('We have the tools.', $commit->getBody());
     }
 
-    public function testConstructionSubjectAndBodyAndDiff()
+    public function testConstructionSubjectAndBodyAndDiff(): void
     {
         $commit = new CommitMessage($this->message('subject-and-body-and-diff'));
 
@@ -71,6 +71,6 @@ class CommitMessageTest extends TestCase
      */
     private function message(string $name): string
     {
-        return file_get_contents($this->fixtures . '/commit-message-' . $name . '.txt');
+        return \file_get_contents($this->fixtures . '/commit-message-' . $name . '.txt');
     }
 }

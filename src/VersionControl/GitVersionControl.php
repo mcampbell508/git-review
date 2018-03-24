@@ -21,7 +21,7 @@ use Symfony\Component\Process\Process;
 
 class GitVersionControl implements VersionControlInterface
 {
-    const CACHE_DIR = '/sjparkinson.static-review/cached/';
+    public const CACHE_DIR = '/sjparkinson.static-review/cached/';
 
     /**
      * Gets a list of the files currently staged under git.
@@ -40,11 +40,11 @@ class GitVersionControl implements VersionControlInterface
         $files = new FileCollection();
 
         foreach ($this->getFiles() as $file) {
-            $fileData = explode("\t", $file);
-            $status = reset($fileData);
-            $relativePath = end($fileData);
+            $fileData = \explode("\t", $file);
+            $status = \reset($fileData);
+            $relativePath = \end($fileData);
 
-            $fullPath = rtrim($base . DIRECTORY_SEPARATOR . $relativePath);
+            $fullPath = \rtrim($base . DIRECTORY_SEPARATOR . $relativePath);
 
             $file = new File($status, $fullPath, $base);
             $this->saveFileToCache($file);
@@ -66,9 +66,9 @@ class GitVersionControl implements VersionControlInterface
     {
         if ($file) {
             $hash = null;
-            $message = file_get_contents($file);
+            $message = \file_get_contents($file);
         } else {
-            list($hash, $message) = explode(PHP_EOL, $this->getLastCommitMessage(), 2);
+            [$hash, $message] = \explode(PHP_EOL, $this->getLastCommitMessage(), 2);
         }
 
         return new CommitMessage($message, $hash);
@@ -94,7 +94,7 @@ class GitVersionControl implements VersionControlInterface
         $process = new Process('git rev-parse --show-toplevel');
         $process->run();
 
-        return trim($process->getOutput());
+        return \trim($process->getOutput());
     }
 
     /**
@@ -108,7 +108,7 @@ class GitVersionControl implements VersionControlInterface
         $process->run();
 
         if ($process->isSuccessful()) {
-            return array_filter(explode("\n", $process->getOutput()));
+            return \array_filter(\explode("\n", $process->getOutput()));
         }
 
         return [];
@@ -122,13 +122,13 @@ class GitVersionControl implements VersionControlInterface
      */
     private function saveFileToCache(FileInterface $file)
     {
-        $cachedPath = sys_get_temp_dir() . self::CACHE_DIR . $file->getRelativePath();
+        $cachedPath = \sys_get_temp_dir() . self::CACHE_DIR . $file->getRelativePath();
 
-        if (!is_dir(dirname($cachedPath))) {
-            mkdir(dirname($cachedPath), 0700, true);
+        if (!\is_dir(\dirname($cachedPath))) {
+            \mkdir(\dirname($cachedPath), 0700, true);
         }
 
-        $cmd = sprintf('git show :%s > %s', $file->getRelativePath(), $cachedPath);
+        $cmd = \sprintf('git show :%s > %s', $file->getRelativePath(), $cachedPath);
         $process = new Process($cmd);
         $process->run();
 
@@ -150,6 +150,6 @@ class GitVersionControl implements VersionControlInterface
         $process = new Process('git log -1 --format="%h%n%s%n%b"');
         $process->run();
 
-        return trim($process->getOutput());
+        return \trim($process->getOutput());
     }
 }

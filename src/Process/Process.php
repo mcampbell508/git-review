@@ -8,6 +8,6 @@ final class Process extends SymfonyProcess implements ProcessInterface
 {
     public function getOutput()
     {
-        return trim(parent::getOutput());
+        return \trim(parent::getOutput());
     }
 }

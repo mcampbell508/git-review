@@ -19,11 +19,11 @@ use GitReview\Review\ReviewableInterface;
 
 class WorkInProgressReview extends AbstractMessageReview
 {
-    public function review(ReporterInterface $reporter, ReviewableInterface $commit)
+    public function review(ReporterInterface $reporter, ReviewableInterface $commit): void
     {
         $fulltext = $commit->getSubject() . PHP_EOL . $commit->getBody();
 
-        if (preg_match('/\bwip\b/i', $fulltext)) {
+        if (\preg_match('/\bwip\b/i', $fulltext)) {
             $message = 'Do not commit WIP to shared branches';
             $reporter->error($message, $this, $commit);
         }

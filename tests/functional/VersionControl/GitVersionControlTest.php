@@ -22,20 +22,20 @@ class GitVersionControlTest extends FunctionalTestCase
     /** @var GitVersionControl */
     private $gitVersionControl;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
         $this->gitVersionControl = new GitVersionControl();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         // Clean up any created files.
         $this->runProcess('rm -rf ' . $this->directory);
     }
 
-    public function testGetStagedFilesWithNoGitRepo()
+    public function testGetStagedFilesWithNoGitRepo(): void
     {
         $collection = $this->gitVersionControl->getStagedFiles();
 
@@ -43,9 +43,9 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->assertCount(0, $collection);
     }
 
-    public function testGetStagedFilesWithGitRepo()
+    public function testGetStagedFilesWithGitRepo(): void
     {
-        $cmd  = 'touch ' . $this->testFileName;
+        $cmd = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
 
         $this->runProcess($cmd);
@@ -56,9 +56,9 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->assertCount(0, $collection);
     }
 
-    public function testGetStagedFilesWithNewFile()
+    public function testGetStagedFilesWithNewFile(): void
     {
-        $cmd  = 'touch ' . $this->testFileName;
+        $cmd = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
         $cmd .= ' && git add ' . $this->testFileName;
 
@@ -71,13 +71,13 @@ class GitVersionControlTest extends FunctionalTestCase
 
         $file = $collection->current();
 
-        $this->assertSame(basename($this->testFileName), $file->getFileName());
+        $this->assertSame(\basename($this->testFileName), $file->getFileName());
         $this->assertSame('A', $file->getStatus());
     }
 
-    public function testGetStagedFilesWithModifiedFile()
+    public function testGetStagedFilesWithModifiedFile(): void
     {
-        $cmd  = 'touch ' . $this->testFileName;
+        $cmd = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
         $cmd .= ' && git add ' . $this->testFileName;
         $cmd .= ' && git commit -m \'test\'';
@@ -93,13 +93,13 @@ class GitVersionControlTest extends FunctionalTestCase
 
         $file = $collection->current();
 
-        $this->assertSame(basename($this->testFileName), $file->getFileName());
+        $this->assertSame(\basename($this->testFileName), $file->getFileName());
         $this->assertSame('M', $file->getStatus());
     }
 
-    public function testGetStagedFilesWithPartiallyStagedFile()
+    public function testGetStagedFilesWithPartiallyStagedFile(): void
     {
-        $cmd  = 'touch ' . $this->testFileName;
+        $cmd = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
         $cmd .= ' && git add ' . $this->testFileName;
         $cmd .= ' && git commit -m \'test\'';
@@ -116,25 +116,25 @@ class GitVersionControlTest extends FunctionalTestCase
 
         $file = $collection->current();
 
-        $this->assertSame(basename($this->testFileName), $file->getFileName());
+        $this->assertSame(\basename($this->testFileName), $file->getFileName());
         $this->assertSame('M', $file->getStatus());
 
         $process = $this->runProcess('cat ' . $file->getFullPath());
 
-        $this->assertSame('test', trim($process->getOutput()));
+        $this->assertSame('test', \trim($process->getOutput()));
     }
 
-    public function testGetStagedFilesWithMovedUnrenamedFile()
+    public function testGetStagedFilesWithMovedUnrenamedFile(): void
     {
         $testFolderName = 'test_folder';
 
-        $cmd  = 'touch ' . $this->testFileName;
+        $cmd = 'touch ' . $this->testFileName;
         $cmd .= ' && echo \'test\' > ' . $this->testFileName;
         $cmd .= ' && git init';
         $cmd .= ' && git add ' . $this->testFileName;
         $cmd .= ' && git commit -m \'test\'';
         $cmd .= ' && mkdir ' . $testFolderName;
-        $cmd .= ' && git mv ' .  $this->testFileName . ' ' . $testFolderName;
+        $cmd .= ' && git mv ' . $this->testFileName . ' ' . $testFolderName;
         $cmd .= ' && git add ' . $this->testFileName;
         $cmd .= ' && git add ' . $testFolderName;
 
@@ -149,22 +149,22 @@ class GitVersionControlTest extends FunctionalTestCase
 
         $file = $collection->current();
 
-        $this->assertSame(basename($this->testFileName), $file->getFileName());
+        $this->assertSame(\basename($this->testFileName), $file->getFileName());
         $this->assertStringStartsWith('R', $file->getStatus());
     }
 
-    public function testGetStagedFilesWithMovedRenamedFile()
+    public function testGetStagedFilesWithMovedRenamedFile(): void
     {
         $testFolderName = 'test_folder';
         $newTestFileName = 'test_new.txt';
 
-        $cmd  = 'touch ' . $this->testFileName;
+        $cmd = 'touch ' . $this->testFileName;
         $cmd .= ' && echo \'test\' > ' . $this->testFileName;
         $cmd .= ' && git init';
         $cmd .= ' && git add ' . $this->testFileName;
         $cmd .= ' && git commit -m \'test\'';
         $cmd .= ' && mkdir ' . $testFolderName;
-        $cmd .= ' && mv ' .  $this->testFileName . ' ' . $testFolderName . DIRECTORY_SEPARATOR . $newTestFileName;
+        $cmd .= ' && mv ' . $this->testFileName . ' ' . $testFolderName . DIRECTORY_SEPARATOR . $newTestFileName;
         $cmd .= ' && git add ' . $this->testFileName;
         $cmd .= ' && git add ' . $testFolderName;
 
@@ -179,7 +179,7 @@ class GitVersionControlTest extends FunctionalTestCase
 
         $file = $collection->current();
 
-        $this->assertSame(basename($newTestFileName), $file->getFileName());
+        $this->assertSame(\basename($newTestFileName), $file->getFileName());
         $this->assertStringStartsWith('R', $file->getStatus());
     }
 }

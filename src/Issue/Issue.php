@@ -21,10 +21,10 @@ class Issue implements IssueInterface
     /**
      * Issue level flags.
      */
-    const LEVEL_INFO    = 1;
-    const LEVEL_WARNING = 2;
-    const LEVEL_ERROR   = 4;
-    const LEVEL_ALL     = 7;
+    public const LEVEL_INFO = 1;
+    public const LEVEL_WARNING = 2;
+    public const LEVEL_ERROR = 4;
+    public const LEVEL_ALL = 7;
 
     private $level;
 
@@ -48,9 +48,9 @@ class Issue implements IssueInterface
         ReviewInterface $review,
         ReviewableInterface $subject
     ) {
-        $this->level   = $level;
+        $this->level = $level;
         $this->message = $message;
-        $this->review  = $review;
+        $this->review = $review;
         $this->subject = $subject;
     }
 
@@ -59,7 +59,7 @@ class Issue implements IssueInterface
      */
     public function __toString()
     {
-        return sprintf(
+        return \sprintf(
             "%s %s: %s in %s",
             $this->getReviewName(),
             $this->getLevelName(),
@@ -89,9 +89,9 @@ class Issue implements IssueInterface
      */
     public function getReviewName()
     {
-        $classPath = explode('\\', get_class($this->review));
+        $classPath = \explode('\\', \get_class($this->review));
 
-        return end($classPath);
+        return \end($classPath);
     }
 
     /**
@@ -153,6 +153,6 @@ class Issue implements IssueInterface
     {
         $result = ($this->getLevel() & $option);
 
-        return ($result === $this->getLevel());
+        return $result === $this->getLevel();
     }
 }

@@ -19,31 +19,31 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class HookListCommand extends Command
 {
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName('hook:list');
 
         $this->setDescription('Lists all the included hooks.');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): void
     {
-        $hooksPath = realpath(__DIR__ . '/../../hooks/');
+        $hooksPath = \realpath(__DIR__ . '/../../hooks/');
 
         $output->writeln("<info>Avaliable hooks:</info>");
 
-        if ($handle = opendir($hooksPath)) {
-            while (false !== ($entry = readdir($handle))) {
-                if (pathinfo($entry, PATHINFO_EXTENSION) === 'php') {
+        if ($handle = \opendir($hooksPath)) {
+            while (false !== ($entry = \readdir($handle))) {
+                if (\pathinfo($entry, PATHINFO_EXTENSION) === 'php') {
                     if ($output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE) {
                         $output->writeln($hooksPath . DIRECTORY_SEPARATOR . $entry);
                     } else {
-                        $output->writeln(pathinfo($entry, PATHINFO_FILENAME));
+                        $output->writeln(\pathinfo($entry, PATHINFO_FILENAME));
                     }
                 }
             }
 
-            closedir($handle);
+            \closedir($handle);
         }
     }
 }

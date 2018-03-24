@@ -15,10 +15,10 @@ class FileCollection
         $this->path = $path;
     }
 
-    public function addFiles(array $files)
+    public function addFiles(array $files): void
     {
         foreach ($files as $file) {
-            list($status, $relativePath) = explode("\t", $file);
+            [$status, $relativePath] = \explode("\t", $file);
 
             $fullPath = \rtrim($this->path . DIRECTORY_SEPARATOR . $relativePath);
 
@@ -27,7 +27,7 @@ class FileCollection
         }
     }
 
-    public function append(File $file)
+    public function append(File $file): void
     {
         $this->fileCollection->push($file);
     }

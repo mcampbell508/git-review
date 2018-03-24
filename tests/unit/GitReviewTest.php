@@ -27,25 +27,25 @@ class GitReviewTest extends TestCase
 
     protected $GitReview;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->reporter = Mockery::mock('GitReview\Reporter\ReporterInterface');
-        $this->review   = Mockery::mock('GitReview\Review\ReviewInterface');
+        $this->review = Mockery::mock('GitReview\Review\ReviewInterface');
 
         $this->GitReview = new GitReview($this->reporter);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         Mockery::close();
     }
 
-    public function testGetReporter()
+    public function testGetReporter(): void
     {
         $this->assertSame($this->reporter, $this->GitReview->getReporter());
     }
 
-    public function testSetReporter()
+    public function testSetReporter(): void
     {
         $newReporter = Mockery::mock('GitReview\Reporter\ReporterInterface');
 
@@ -54,7 +54,7 @@ class GitReviewTest extends TestCase
         $this->assertSame($newReporter, $this->GitReview->getReporter());
     }
 
-    public function testGetReviews()
+    public function testGetReviews(): void
     {
         $this->assertTrue($this->GitReview->getReviews() instanceof ReviewCollection);
         $this->assertCount(0, $this->GitReview->getReviews());
@@ -63,7 +63,7 @@ class GitReviewTest extends TestCase
         $this->assertCount(1, $this->GitReview->getReviews());
     }
 
-    public function testAddReview()
+    public function testAddReview(): void
     {
         $this->assertCount(0, $this->GitReview->getReviews());
 
@@ -71,7 +71,7 @@ class GitReviewTest extends TestCase
         $this->assertCount(1, $this->GitReview->getReviews());
     }
 
-    public function testAddReviews()
+    public function testAddReviews(): void
     {
         $this->assertCount(0, $this->GitReview->getReviews());
 
@@ -81,7 +81,7 @@ class GitReviewTest extends TestCase
         $this->assertCount(2, $this->GitReview->getReviews());
     }
 
-    public function testReview()
+    public function testReview(): void
     {
         $file = Mockery::mock('GitReview\File\FileInterface');
 

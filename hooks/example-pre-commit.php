@@ -12,7 +12,7 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-$included = include file_exists(__DIR__ . '/../vendor/autoload.php')
+$included = include \file_exists(__DIR__ . '/../vendor/autoload.php')
     ? __DIR__ . '/../vendor/autoload.php'
     : __DIR__ . '/../../../autoload.php';
 
@@ -31,7 +31,7 @@ use GitReview\Review\General\LineEndingsReview;
 use GitReview\VersionControl\GitVersionControl;
 
 $reporter = new Reporter();
-$review   = new GitReview($reporter);
+$review = new GitReview($reporter);
 
 // Add any reviews to the StaticReview instance, supports a fluent interface.
 $review->addReview(new LineEndingsReview());

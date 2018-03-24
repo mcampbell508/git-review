@@ -26,7 +26,7 @@ class CommitMessage implements CommitMessageInterface
     protected $body = '';
 
     /**
-     * @var boolean Commit identifier.
+     * @var bool Commit identifier.
      */
     protected $hash;
 
@@ -40,10 +40,10 @@ class CommitMessage implements CommitMessageInterface
     {
         $message = (new SanitizeMessage($message))->getSanitizedMessage();
 
-        $this->subject = array_shift($message);
+        $this->subject = \array_shift($message);
 
         if ($message) {
-            $this->body = implode("\n", $message);
+            $this->body = \implode("\n", $message);
         }
 
         $this->hash = $hash;

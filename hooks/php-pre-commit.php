@@ -12,7 +12,7 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-$included = include file_exists(__DIR__ . '/../vendor/autoload.php')
+$included = include \file_exists(__DIR__ . '/../vendor/autoload.php')
     ? __DIR__ . '/../vendor/autoload.php'
     : __DIR__ . '/../../../autoload.php';
 
@@ -36,17 +36,17 @@ use GitReview\VersionControl\GitVersionControl;
 use League\CLImate\CLImate;
 
 $reporter = new Reporter();
-$climate  = new CLImate();
-$git      = new GitVersionControl();
+$climate = new CLImate();
+$git = new GitVersionControl();
 
 $review = new GitReview($reporter);
 
 // Add any reviews to the StaticReview instance, supports a fluent interface.
 $review->addReview(new LineEndingsReview())
-       ->addReview(new PhpLeadingLineReview())
-       ->addReview(new NoCommitTagReview())
-       ->addReview(new PhpLintReview())
-       ->addReview(new ComposerLintReview());
+    ->addReview(new PhpLeadingLineReview())
+    ->addReview(new NoCommitTagReview())
+    ->addReview(new PhpLintReview())
+    ->addReview(new ComposerLintReview());
 
 // Review the staged files.
 $review->files($git->getStagedFiles());

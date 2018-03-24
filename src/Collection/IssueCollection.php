@@ -44,7 +44,7 @@ class IssueCollection extends Collection
             return new self();
         }
 
-        $filtered = array_filter($this->collection, $filter);
+        $filtered = \array_filter($this->collection, $filter);
 
         return new self($filtered);
     }

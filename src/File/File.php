@@ -15,12 +15,12 @@ namespace GitReview\File;
 
 class File implements FileInterface
 {
-    const STATUS_ADDED    = 'A';
-    const STATUS_COPIED   = 'C';
-    const STATUS_MODIFIED = 'M';
-    const STATUS_RENAMED  = 'R';
-    const STATUS_DELETED  = 'D';
-    const STATUS_UNSTAGED  = '??';
+    public const STATUS_ADDED = 'A';
+    public const STATUS_COPIED = 'C';
+    public const STATUS_MODIFIED = 'M';
+    public const STATUS_RENAMED = 'R';
+    public const STATUS_DELETED = 'D';
+    public const STATUS_UNSTAGED = '??';
 
     /**
      * The full path to the file.
@@ -54,8 +54,8 @@ class File implements FileInterface
         $filePath,
         $projectPath
     ) {
-        $this->fileStatus  = $fileStatus;
-        $this->filePath    = $filePath;
+        $this->fileStatus = $fileStatus;
+        $this->filePath = $filePath;
         $this->projectPath = $projectPath;
     }
 
@@ -66,7 +66,7 @@ class File implements FileInterface
      */
     public function getFileName()
     {
-        return basename($this->filePath);
+        return \basename($this->filePath);
     }
 
     /**
@@ -76,7 +76,7 @@ class File implements FileInterface
      */
     public function getRelativePath()
     {
-        return str_replace($this->projectPath . DIRECTORY_SEPARATOR, '', $this->filePath);
+        return \str_replace($this->projectPath . DIRECTORY_SEPARATOR, '', $this->filePath);
     }
 
     /**
@@ -86,7 +86,7 @@ class File implements FileInterface
      */
     public function getFullPath()
     {
-        if (file_exists($this->getCachedPath())) {
+        if (\file_exists($this->getCachedPath())) {
             return $this->getCachedPath();
         }
 
@@ -123,7 +123,7 @@ class File implements FileInterface
      */
     public function getExtension()
     {
-        return pathinfo($this->filePath, PATHINFO_EXTENSION);
+        return \pathinfo($this->filePath, PATHINFO_EXTENSION);
     }
 
     /**
@@ -159,7 +159,7 @@ class File implements FileInterface
             case '??':
                 return 'modified changes but not yet staged';
             default:
-                throw new \UnexpectedValueException("Unknown file status: $this->fileStatus.");
+                throw new \UnexpectedValueException("Unknown file status: {$this->fileStatus}.");
         }
     }
 
@@ -172,9 +172,9 @@ class File implements FileInterface
     public function getMimeType()
     {
         // return mime type ala mimetype extension
-        $finfo = finfo_open(FILEINFO_MIME);
+        $finfo = \finfo_open(FILEINFO_MIME);
 
-        $mime = finfo_file($finfo, $this->getFullPath());
+        $mime = \finfo_file($finfo, $this->getFullPath());
 
         return $mime;
     }

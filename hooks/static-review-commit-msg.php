@@ -12,7 +12,7 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-$included = include file_exists(__DIR__ . '/../vendor/autoload.php')
+$included = include \file_exists(__DIR__ . '/../vendor/autoload.php')
     ? __DIR__ . '/../vendor/autoload.php'
     : __DIR__ . '/../../../autoload.php';
 
@@ -24,7 +24,7 @@ if (!$included) {
     exit(1);
 }
 
-if (empty($argv[1]) || !is_file($argv[1])) {
+if (empty($argv[1]) || !\is_file($argv[1])) {
     echo 'WARNING: Skipping commit message check because the Git hook was not ' . PHP_EOL
        . 'passed the commit message file path; normally `.git/COMMIT_EDITMSG`' . PHP_EOL;
 
@@ -44,18 +44,18 @@ use GitReview\VersionControl\GitVersionControl;
 use League\CLImate\CLImate;
 
 $reporter = new Reporter();
-$climate  = new CLImate();
-$git      = new GitVersionControl();
+$climate = new CLImate();
+$git = new GitVersionControl();
 
-$review   = new GitReview($reporter);
+$review = new GitReview($reporter);
 
 // Add any reviews to the StaticReview instance, supports a fluent interface.
 $review->addReview(new BodyLineLengthReview())
-       ->addReview(new SubjectImperativeReview())
-       ->addReview(new SubjectLineCapitalReview())
-       ->addReview(new SubjectLineLengthReview())
-       ->addReview(new SubjectLinePeriodReview())
-       ->addReview(new WorkInProgressReview());
+    ->addReview(new SubjectImperativeReview())
+    ->addReview(new SubjectLineCapitalReview())
+    ->addReview(new SubjectLineLengthReview())
+    ->addReview(new SubjectLinePeriodReview())
+    ->addReview(new WorkInProgressReview());
 
 // Check the commit message.
 $review->message($git->getCommitMessage($argv[1]));

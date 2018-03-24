@@ -21,9 +21,9 @@ use Symfony\Component\Process\Process;
 
 class HookRunCommand extends Command
 {
-    const ARGUMENT_HOOK = 'hook';
+    public const ARGUMENT_HOOK = 'hook';
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName('hook:run');
 
@@ -32,17 +32,17 @@ class HookRunCommand extends Command
         $this->addArgument(self::ARGUMENT_HOOK, InputArgument::REQUIRED, 'The hook file to run.');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): void
     {
         $hookArg = $input->getArgument(self::ARGUMENT_HOOK);
         $path = $this->getTargetPath($hookArg);
 
-        if (file_exists($path)) {
+        if (\file_exists($path)) {
             $cmd = 'php ' . $path;
 
             $process = new Process($cmd);
 
-            $process->run(function ($type, $buffer) use ($output) {
+            $process->run(function ($type, $buffer) use ($output): void {
                 $output->write($buffer);
             });
         }
@@ -54,15 +54,15 @@ class HookRunCommand extends Command
      */
     protected function getTargetPath($hookArgument)
     {
-        if (file_exists($hookArgument)) {
-            $target = realpath($hookArgument);
+        if (\file_exists($hookArgument)) {
+            $target = \realpath($hookArgument);
         } else {
             $path = '%s/%s.php';
-            $target = sprintf($path, realpath(__DIR__ . '/../../hooks/'), $hookArgument);
+            $target = \sprintf($path, \realpath(__DIR__ . '/../../hooks/'), $hookArgument);
         }
 
-        if (!file_exists($target)) {
-            $error = sprintf('<error>The hook %s does not exist!</error>', $target);
+        if (!\file_exists($target)) {
+            $error = \sprintf('<error>The hook %s does not exist!</error>', $target);
             $output->writeln($error);
             exit(1);
         }

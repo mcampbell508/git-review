@@ -13,7 +13,7 @@ class GitBranchTest extends FunctionalTestCase
     private $gitBranch;
     private $topicBranchName;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -21,7 +21,7 @@ class GitBranchTest extends FunctionalTestCase
 
         $command = <<<EOT
 git init && touch master-file-a.txt && git add master-file-a.txt && git commit -m "master commit a" &&
-\git checkout -b $this->topicBranchName && touch test-branch-file-a.txt && git add test-branch-file-a.txt &&
+\git checkout -b {$this->topicBranchName} && touch test-branch-file-a.txt && git add test-branch-file-a.txt &&
 \git commit -m "test branch commit a" && touch test-branch-file-b.txt &&
 \git add test-branch-file-b.txt && git commit -m "test branch commit b" &&
 \git checkout master && touch master-file-b.txt && git add . && git commit -m "master commit b"
@@ -34,7 +34,7 @@ EOT;
         $this->assertFalse($this->gitBranch->isDirty());
     }
 
-    public function testItCanRetrieveBranchName()
+    public function testItCanRetrieveBranchName(): void
     {
         $branchName = $this->gitBranch->getName();
 
@@ -47,7 +47,7 @@ EOT;
         $this->assertEquals($this->topicBranchName, $branchName);
     }
 
-    public function testItCanSeeIfBranchIsDirty()
+    public function testItCanSeeIfBranchIsDirty(): void
     {
         $this->runProcess("touch modified-file.txt");
 
@@ -58,16 +58,16 @@ EOT;
         $this->assertFalse($this->gitBranch->isDirty());
     }
 
-    public function testItCanGetParentHashAtPointerToMaster()
+    public function testItCanGetParentHashAtPointerToMaster(): void
     {
-        $masterCommitId = trim($this->runProcess("git log --grep='master commit a' --format='%H'")->getOutput());
+        $masterCommitId = \trim($this->runProcess("git log --grep='master commit a' --format='%H'")->getOutput());
 
         $this->checkoutBranch($this->topicBranchName);
 
         $this->assertEquals($masterCommitId, $this->gitBranch->getParentHash());
     }
 
-    public function testItCanGetAllChangedFilesOnBranchIncludingUncommitted()
+    public function testItCanGetAllChangedFilesOnBranchIncludingUncommitted(): void
     {
         $this->checkoutBranch($this->topicBranchName);
 
@@ -84,8 +84,8 @@ EOT;
         }));
     }
 
-    private function checkoutBranch($branchName)
+    private function checkoutBranch($branchName): void
     {
-        $this->runProcess("/usr/bin/git checkout $branchName");
+        $this->runProcess("/usr/bin/git checkout ${branchName}");
     }
 }

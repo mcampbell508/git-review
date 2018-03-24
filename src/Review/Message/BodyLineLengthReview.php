@@ -25,16 +25,16 @@ use GitReview\Review\ReviewableInterface;
 class BodyLineLengthReview extends AbstractMessageReview
 {
     /**
-     * @var integer Allowed length limit.
+     * @var int Allowed length limit.
      */
     protected $maximum = 72;
 
     /**
-     * @var boolean Allow long URLs to exceed the maximum.
+     * @var bool Allow long URLs to exceed the maximum.
      */
     protected $urls = true;
 
-    public function setMaximumLength($length)
+    public function setMaximumLength($length): void
     {
         $this->maximum = $length;
     }
@@ -44,9 +44,9 @@ class BodyLineLengthReview extends AbstractMessageReview
         return $this->maximum;
     }
 
-    public function setAllowLongUrls($enable)
+    public function setAllowLongUrls($enable): void
     {
-        $this->urls = (bool) $enable;
+        $this->urls = (bool)$enable;
     }
 
     public function getAllowLongUrls()
@@ -54,15 +54,15 @@ class BodyLineLengthReview extends AbstractMessageReview
         return $this->urls;
     }
 
-    public function review(ReporterInterface $reporter, ReviewableInterface $commit)
+    public function review(ReporterInterface $reporter, ReviewableInterface $commit): void
     {
-        $lines = preg_split('/(\r?\n)+/', $commit->getBody());
+        $lines = \preg_split('/(\r?\n)+/', $commit->getBody());
         foreach ($lines as $line) {
             if ($this->isLineTooLong($line) && !$this->doesContainUrl($line)) {
-                $message = sprintf(
+                $message = \sprintf(
                     'Body line is greater than %d characters ( "%s ..." )',
                     $this->getMaximumLength(),
-                    substr($line, 0, 16)
+                    \mb_substr($line, 0, 16)
                 );
                 $reporter->error($message, $this, $commit);
             }
@@ -71,7 +71,7 @@ class BodyLineLengthReview extends AbstractMessageReview
 
     private function isLineTooLong($line)
     {
-        return strlen($line) > $this->getMaximumLength();
+        return \mb_strlen($line) > $this->getMaximumLength();
     }
 
     private function doesContainUrl($line)
@@ -81,6 +81,6 @@ class BodyLineLengthReview extends AbstractMessageReview
             return false;
         }
 
-        return strpos($line, '://') !== false;
+        return \mb_strpos($line, '://') !== false;
     }
 }

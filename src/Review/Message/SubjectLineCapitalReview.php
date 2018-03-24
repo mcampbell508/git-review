@@ -24,9 +24,9 @@ use GitReview\Review\ReviewableInterface;
  */
 class SubjectLineCapitalReview extends AbstractMessageReview
 {
-    public function review(ReporterInterface $reporter, ReviewableInterface $commit)
+    public function review(ReporterInterface $reporter, ReviewableInterface $commit): void
     {
-        if (!preg_match('/^[A-Z]/u', $commit->getSubject())) {
+        if (!\preg_match('/^[A-Z]/u', $commit->getSubject())) {
             $message = 'Subject line must begin with a capital letter';
             $reporter->error($message, $this, $commit);
         }

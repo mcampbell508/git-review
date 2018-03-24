@@ -22,39 +22,39 @@ class PhpLintReviewTest extends TestCase
 
     protected $review;
 
-    public function setUp()
+    public function setUp(): void
     {
-        $this->file   = Mockery::mock('GitReview\File\FileInterface');
+        $this->file = Mockery::mock('GitReview\File\FileInterface');
         $this->review = Mockery::mock('GitReview\Review\PHP\PhpLintReview[getProcess]');
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         Mockery::close();
     }
 
-    public function testCanReviewWithPhpExtension()
+    public function testCanReviewWithPhpExtension(): void
     {
         $this->file->shouldReceive('getExtension')->once()->andReturn('php');
 
         $this->assertTrue($this->review->canReview($this->file));
     }
 
-    public function testCanReviewWithPhtmlExtension()
+    public function testCanReviewWithPhtmlExtension(): void
     {
         $this->file->shouldReceive('getExtension')->once()->andReturn('phtml');
 
         $this->assertTrue($this->review->canReview($this->file));
     }
 
-    public function testCanReviewWithInvalidExtension()
+    public function testCanReviewWithInvalidExtension(): void
     {
         $this->file->shouldReceive('getExtension')->once()->andReturn('txt');
 
         $this->assertFalse($this->review->canReview($this->file));
     }
 
-    public function testReview()
+    public function testReview(): void
     {
         $this->file->shouldReceive('getFullPath')->twice()->andReturn(__FILE__);
 
@@ -62,8 +62,8 @@ class PhpLintReviewTest extends TestCase
         $process->shouldReceive('run')->once();
         $process->shouldReceive('isSuccessful')->once()->andReturn(false);
         $process->shouldReceive('getOutput')
-                ->once()
-                ->andReturn('Parse error: syntax error, test in ' . __FILE__ . PHP_EOL . 'test' . PHP_EOL);
+            ->once()
+            ->andReturn('Parse error: syntax error, test in ' . __FILE__ . PHP_EOL . 'test' . PHP_EOL);
 
         $this->review->shouldReceive('getProcess')->once()->andReturn($process);
 

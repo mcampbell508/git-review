@@ -12,5 +12,5 @@ interface GitBranchInterface
 
     public function getParentHash();
 
-    public function isDirty():bool;
+    public function isDirty(): bool;
 }

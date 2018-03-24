@@ -25,11 +25,11 @@ use GitReview\Review\ReviewableInterface;
 class SubjectLineLengthReview extends AbstractMessageReview
 {
     /**
-     * @var integer Allowed length limit.
+     * @var int Allowed length limit.
      */
     protected $maximum = 50;
 
-    public function setMaximumLength($length)
+    public function setMaximumLength($length): void
     {
         $this->maximum = $length;
     }
@@ -39,10 +39,10 @@ class SubjectLineLengthReview extends AbstractMessageReview
         return $this->maximum;
     }
 
-    public function review(ReporterInterface $reporter, ReviewableInterface $commit)
+    public function review(ReporterInterface $reporter, ReviewableInterface $commit): void
     {
-        if (strlen($commit->getSubject()) > $this->getMaximumLength()) {
-            $message = sprintf(
+        if (\mb_strlen($commit->getSubject()) > $this->getMaximumLength()) {
+            $message = \sprintf(
                 'Subject line is greater than %d characters',
                 $this->getMaximumLength()
             );

@@ -28,7 +28,7 @@ class PhpLeadingLineReview extends AbstractFileReview
      */
     public function canReviewFile(FileInterface $file)
     {
-        return ($file->getExtension() === 'php');
+        return $file->getExtension() === 'php';
     }
 
     /**
@@ -37,14 +37,14 @@ class PhpLeadingLineReview extends AbstractFileReview
      *
      * @link http://stackoverflow.com/a/2440685
      */
-    public function review(ReporterInterface $reporter, ReviewableInterface $file)
+    public function review(ReporterInterface $reporter, ReviewableInterface $file): void
     {
-        $cmd = sprintf('read -r LINE < %s && echo $LINE', $file->getFullPath());
+        $cmd = \sprintf('read -r LINE < %s && echo $LINE', $file->getFullPath());
 
         $process = $this->getProcess($cmd);
         $process->run();
 
-        if (!in_array(trim($process->getOutput()), ['<?php', '#!/usr/bin/env php'])) {
+        if (!\in_array(\trim($process->getOutput()), ['<?php', '#!/usr/bin/env php'])) {
             $message = 'File must begin with `<?php` or `#!/usr/bin/env php`';
             $reporter->error($message, $this, $file);
         }

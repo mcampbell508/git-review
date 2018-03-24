@@ -81,15 +81,15 @@ class PhpCodeSnifferReview extends AbstractFileReview
      */
     public function canReviewFile(FileInterface $file)
     {
-        return ($file->getExtension() === 'php');
+        return $file->getExtension() === 'php';
     }
 
     /**
      * Checks PHP files using PHP_CodeSniffer.
      */
-    public function review(ReporterInterface $reporter, ReviewableInterface $file)
+    public function review(ReporterInterface $reporter, ReviewableInterface $file): void
     {
-        $bin = str_replace(['/', '\\'], DIRECTORY_SEPARATOR, 'vendor/bin/phpcs');
+        $bin = \str_replace(['/', '\\'], DIRECTORY_SEPARATOR, 'vendor/bin/phpcs');
         $cmd = $bin . ' --report=json ';
 
         if ($this->getOptionsForConsole()) {
@@ -103,7 +103,7 @@ class PhpCodeSnifferReview extends AbstractFileReview
 
         if (!$process->isSuccessful()) {
             // Create the array of outputs and remove empty values.
-            $output = json_decode($process->getOutput(), true);
+            $output = \json_decode($process->getOutput(), true);
 
             $filter = function ($acc, $file) {
                 if ($file['errors'] > 0 || $file['warnings'] > 0) {
@@ -111,7 +111,7 @@ class PhpCodeSnifferReview extends AbstractFileReview
                 }
             };
 
-            foreach (array_reduce($output['files'], $filter, []) as $error) {
+            foreach (\array_reduce($output['files'], $filter, []) as $error) {
                 $message = $error['message'] . ' on line ' . $error['line'];
                 $reporter->warning($message, $this, $file);
             }

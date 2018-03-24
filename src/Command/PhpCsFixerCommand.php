@@ -17,13 +17,13 @@ use Tightenco\Collect\Support\Collection;
 
 class PhpCsFixerCommand extends Command
 {
-    const CONFIG_PATH = 'yml-config-path';
+    public const CONFIG_PATH = 'yml-config-path';
     private $useCache = false;
     private $verbose = false;
     private $allowRisky = false;
     private $dryRun = false;
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName('tools:php-cs-fixer');
 
@@ -39,9 +39,9 @@ class PhpCsFixerCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $io = new SymfonyStyle($input, $output);
-        $currentWorkingDirectory = getcwd();
+        $currentWorkingDirectory = \getcwd();
 
-        $io->note("Current working directory: $currentWorkingDirectory");
+        $io->note("Current working directory: ${currentWorkingDirectory}");
 
         $configPath = $this->getYamlConfigurationFilePath(
             $currentWorkingDirectory,
@@ -51,17 +51,17 @@ class PhpCsFixerCommand extends Command
         if (!$configPath) {
             $io->error(
                 "Configuration not found! Please ensure you setup the config file and run this command in the "
-                ."appropriate root of your project"
+                . "appropriate root of your project"
             );
             exit(1);
         }
 
-        $io->note("Using configuration file: $configPath");
+        $io->note("Using configuration file: ${configPath}");
 
         $branch = new GitBranch($currentWorkingDirectory);
 
         try {
-            $config = Yaml::parse(file_get_contents($configPath));
+            $config = Yaml::parse(\file_get_contents($configPath));
         } catch (ParseException $exception) {
             $io->error('Unable to parse the YAML string: %s', $exception->getMessage());
 
@@ -84,7 +84,7 @@ class PhpCsFixerCommand extends Command
                 return $file->getRelativePath();
             })
             ->reject(function (File $file) {
-                return !file_exists($file->getRelativePath());
+                return !\file_exists($file->getRelativePath());
             })
             ->map(function (File $file) {
                 return $file->getRelativePath();
@@ -103,7 +103,7 @@ class PhpCsFixerCommand extends Command
         $command = $this->getCommand($phpCsFixerConfig, $filePaths, $branch->getName());
 
         $output->writeln("\n<options=bold,underscore>Running command:</>\n");
-        $io->writeln("<info>$command</info>\n");
+        $io->writeln("<info>${command}</info>\n");
         $process = new \Symfony\Component\Process\Process($command);
         $process->start();
 

@@ -23,7 +23,7 @@ abstract class AbstractReview implements ReviewInterface
      * Determine if the subject can be reviewed.
      *
      * @param  ReviewableInterface $subject
-     * @return boolean
+     * @return bool
      */
     public function canReview(ReviewableInterface $subject)
     {
@@ -76,15 +76,15 @@ abstract class AbstractReview implements ReviewInterface
         static $root;
 
         if (!$root) {
-            $working = getcwd();
-            $myself  = __DIR__;
+            $working = \getcwd();
+            $myself = __DIR__;
 
-            if (0 === strpos($myself, $working)) {
+            if (0 === \mb_strpos($myself, $working)) {
                 // Local installation, the working directory is the root
                 $root = $working;
             } else {
                 // Global installation, back up above the vendor/ directory
-                $root = realpath($myself . '/../../../../../');
+                $root = \realpath($myself . '/../../../../../');
             }
         }
 

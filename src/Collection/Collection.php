@@ -35,7 +35,7 @@ abstract class Collection implements Iterator, Countable
      */
     public function __toString()
     {
-        return sprintf('%s(%s)', get_class($this), $this->count());
+        return \sprintf('%s(%s)', \get_class($this), $this->count());
     }
 
     /**
@@ -70,7 +70,7 @@ abstract class Collection implements Iterator, Countable
      */
     public function count()
     {
-        return count($this->collection);
+        return \count($this->collection);
     }
 
     /**
@@ -78,7 +78,7 @@ abstract class Collection implements Iterator, Countable
      */
     public function current()
     {
-        return current($this->collection);
+        return \current($this->collection);
     }
 
     /**
@@ -86,7 +86,7 @@ abstract class Collection implements Iterator, Countable
      */
     public function key()
     {
-        return key($this->collection);
+        return \key($this->collection);
     }
 
     /**
@@ -94,7 +94,7 @@ abstract class Collection implements Iterator, Countable
      */
     public function next()
     {
-        return next($this->collection);
+        return \next($this->collection);
     }
 
     /**
@@ -102,7 +102,7 @@ abstract class Collection implements Iterator, Countable
      */
     public function rewind()
     {
-        reset($this->collection);
+        \reset($this->collection);
 
         return $this;
     }
@@ -112,6 +112,6 @@ abstract class Collection implements Iterator, Countable
      */
     public function valid()
     {
-        return key($this->collection) !== null;
+        return \key($this->collection) !== null;
     }
 }
