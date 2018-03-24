@@ -40,7 +40,7 @@ class SanitizeMessage
      */
     private function removeComments()
     {
-        list($message) = $this->message;
+        [$message] = $this->message;
         $this->message = \preg_replace('/^#.*/m', '', $message);
     }
 

@@ -68,7 +68,7 @@ class GitVersionControl implements VersionControlInterface
             $hash = null;
             $message = \file_get_contents($file);
         } else {
-            list($hash, $message) = \explode(PHP_EOL, $this->getLastCommitMessage(), 2);
+            [$hash, $message] = \explode(PHP_EOL, $this->getLastCommitMessage(), 2);
         }
 
         return new CommitMessage($message, $hash);

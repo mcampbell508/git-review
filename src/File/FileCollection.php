@@ -18,7 +18,7 @@ class FileCollection
     public function addFiles(array $files)
     {
         foreach ($files as $file) {
-            list($status, $relativePath) = \explode("\t", $file);
+            [$status, $relativePath] = \explode("\t", $file);
 
             $fullPath = \rtrim($this->path . DIRECTORY_SEPARATOR . $relativePath);
 
