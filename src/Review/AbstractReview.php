@@ -23,7 +23,7 @@ abstract class AbstractReview implements ReviewInterface
      * Determine if the subject can be reviewed.
      *
      * @param  ReviewableInterface $subject
-     * @return boolean
+     * @return bool
      */
     public function canReview(ReviewableInterface $subject)
     {

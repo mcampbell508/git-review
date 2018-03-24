@@ -25,7 +25,7 @@ use GitReview\Review\ReviewableInterface;
 class SubjectLineLengthReview extends AbstractMessageReview
 {
     /**
-     * @var integer Allowed length limit.
+     * @var int Allowed length limit.
      */
     protected $maximum = 50;
 

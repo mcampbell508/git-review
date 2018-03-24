@@ -26,7 +26,7 @@ class CommitMessage implements CommitMessageInterface
     protected $body = '';
 
     /**
-     * @var boolean Commit identifier.
+     * @var bool Commit identifier.
      */
     protected $hash;
 

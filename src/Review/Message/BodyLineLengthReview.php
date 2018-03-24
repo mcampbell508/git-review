@@ -25,12 +25,12 @@ use GitReview\Review\ReviewableInterface;
 class BodyLineLengthReview extends AbstractMessageReview
 {
     /**
-     * @var integer Allowed length limit.
+     * @var int Allowed length limit.
      */
     protected $maximum = 72;
 
     /**
-     * @var boolean Allow long URLs to exceed the maximum.
+     * @var bool Allow long URLs to exceed the maximum.
      */
     protected $urls = true;
 
