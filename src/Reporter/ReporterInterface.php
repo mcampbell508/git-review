@@ -13,20 +13,28 @@
 
 namespace GitReview\Reporter;
 
+use GitReview\Collection\IssueCollection;
 use GitReview\Review\ReviewableInterface;
 use GitReview\Review\ReviewInterface;
 
 interface ReporterInterface
 {
-    public function report($level, $message, ReviewInterface $review, ReviewableInterface $subject);
+    public function report(
+        int $level,
+        string $message,
+        ReviewInterface $review,
+        ReviewableInterface $subject
+    ): Reporter;
 
-    public function info($message, ReviewInterface $review, ReviewableInterface $subject);
+    public function info(string $message, ReviewInterface $review, ReviewableInterface $subject): Reporter;
 
-    public function warning($message, ReviewInterface $review, ReviewableInterface $subject);
+    public function warning(string $message, ReviewInterface $review, ReviewableInterface $subject): Reporter;
 
-    public function error($message, ReviewInterface $review, ReviewableInterface $subject);
+    public function error(string $message, ReviewInterface $review, ReviewableInterface $subject): Reporter;
 
-    public function hasIssues();
+    public function hasIssues(): bool;
 
-    public function getIssues();
+    public function getIssues(): IssueCollection;
+
+    public function progress(int $current, int $total);
 }

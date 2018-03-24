@@ -20,11 +20,9 @@ class IssueCollection extends Collection
     /**
      * Validates that $object is an instance of IssueInterface.
      *
-     * @param  IssueInterface           $object
-     * @return bool
      * @throws InvalidArgumentException
      */
-    public function validate($object)
+    public function validate(IssueInterface $object): bool
     {
         if ($object instanceof IssueInterface) {
             return true;
@@ -33,12 +31,7 @@ class IssueCollection extends Collection
         throw new \InvalidArgumentException($object . ' was not an instance of IssueInterface.');
     }
 
-    /**
-     * Filters the collection with the given closure, returning a new collection.
-     *
-     * @return IssueCollection
-     */
-    public function select(callable $filter)
+    public function select(callable $filter): Collection
     {
         if (!$this->collection) {
             return new self();
@@ -49,13 +42,7 @@ class IssueCollection extends Collection
         return new self($filtered);
     }
 
-    /**
-     * Returns a new IssueCollection filtered by the given level option.
-     *
-     * @param  int             $level
-     * @return IssueCollection
-     */
-    public function forLevel($option)
+    public function forLevel(int $option): IssueCollection
     {
         // Only return issues matching the level.
         $filter = function ($issue) use ($option) {
