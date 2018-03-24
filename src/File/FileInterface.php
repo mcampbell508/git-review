@@ -25,7 +25,7 @@ interface FileInterface extends ReviewableInterface
 
     public function getCachedPath();
 
-    public function setCachedPath($path);
+    public function setCachedPath(string $path): File;
 
     public function getExtension();
 
