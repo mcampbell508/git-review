@@ -48,11 +48,7 @@ class HookRunCommand extends Command
         }
     }
 
-    /**
-     * @param $hookArgument string
-     * @return string
-     */
-    protected function getTargetPath($hookArgument, OutputInterface $output)
+    protected function getTargetPath(string $hookArgument, OutputInterface $output): string
     {
         if (\file_exists($hookArgument)) {
             $target = \realpath($hookArgument);
