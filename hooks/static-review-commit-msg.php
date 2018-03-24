@@ -51,11 +51,11 @@ $review = new GitReview($reporter);
 
 // Add any reviews to the StaticReview instance, supports a fluent interface.
 $review->addReview(new BodyLineLengthReview())
-       ->addReview(new SubjectImperativeReview())
-       ->addReview(new SubjectLineCapitalReview())
-       ->addReview(new SubjectLineLengthReview())
-       ->addReview(new SubjectLinePeriodReview())
-       ->addReview(new WorkInProgressReview());
+    ->addReview(new SubjectImperativeReview())
+    ->addReview(new SubjectLineCapitalReview())
+    ->addReview(new SubjectLineLengthReview())
+    ->addReview(new SubjectLinePeriodReview())
+    ->addReview(new WorkInProgressReview());
 
 // Check the commit message.
 $review->message($git->getCommitMessage($argv[1]));

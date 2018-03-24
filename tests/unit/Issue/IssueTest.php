@@ -180,10 +180,10 @@ class IssueTest extends TestCase
         $file = $this->issue->getSubject();
 
         $file->shouldReceive('getRelativePath')
-             ->andReturn('/Test');
+            ->andReturn('/Test');
 
         $file->shouldReceive('getName')
-             ->andReturn($file->getRelativePath());
+            ->andReturn($file->getRelativePath());
 
         $issueString = (string)$this->issue;
 

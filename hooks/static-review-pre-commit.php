@@ -44,10 +44,10 @@ $review = new GitReview($reporter);
 
 // Add any reviews to the StaticReview instance, supports a fluent interface.
 $review->addReview(new LineEndingsReview())
-       ->addReview(new PhpLeadingLineReview())
-       ->addReview(new PhpLintReview())
-       ->addReview(new ComposerLintReview())
-       ->addReview(new ComposerSecurityReview());
+    ->addReview(new PhpLeadingLineReview())
+    ->addReview(new PhpLintReview())
+    ->addReview(new ComposerLintReview())
+    ->addReview(new ComposerSecurityReview());
 
 $codeSniffer = new PhpCodeSnifferReview();
 $codeSniffer->setOption('standard', 'PSR2');

@@ -62,8 +62,8 @@ class PhpLintReviewTest extends TestCase
         $process->shouldReceive('run')->once();
         $process->shouldReceive('isSuccessful')->once()->andReturn(false);
         $process->shouldReceive('getOutput')
-                ->once()
-                ->andReturn('Parse error: syntax error, test in ' . __FILE__ . PHP_EOL . 'test' . PHP_EOL);
+            ->once()
+            ->andReturn('Parse error: syntax error, test in ' . __FILE__ . PHP_EOL . 'test' . PHP_EOL);
 
         $this->review->shouldReceive('getProcess')->once()->andReturn($process);
 

@@ -106,9 +106,9 @@ class PhpCodeSnifferReviewTest extends TestCase
         $process->shouldReceive('getOutput')->never();
 
         $this->review->shouldReceive('getProcess')
-                     ->once()
-                     ->with('vendor/bin/phpcs --report=json --standard=PSR2 ' . __FILE__)
-                     ->andReturn($process);
+            ->once()
+            ->with('vendor/bin/phpcs --report=json --standard=PSR2 ' . __FILE__)
+            ->andReturn($process);
 
         $reporter = Mockery::mock('GitReview\Reporter\ReporterInterface');
 

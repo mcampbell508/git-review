@@ -43,10 +43,10 @@ $review = new GitReview($reporter);
 
 // Add any reviews to the StaticReview instance, supports a fluent interface.
 $review->addReview(new LineEndingsReview())
-       ->addReview(new PhpLeadingLineReview())
-       ->addReview(new NoCommitTagReview())
-       ->addReview(new PhpLintReview())
-       ->addReview(new ComposerLintReview());
+    ->addReview(new PhpLeadingLineReview())
+    ->addReview(new NoCommitTagReview())
+    ->addReview(new PhpLintReview())
+    ->addReview(new ComposerLintReview());
 
 // Review the staged files.
 $review->files($git->getStagedFiles());
