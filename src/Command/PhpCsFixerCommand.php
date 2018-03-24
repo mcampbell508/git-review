@@ -51,7 +51,7 @@ class PhpCsFixerCommand extends Command
         if (!$configPath) {
             $io->error(
                 "Configuration not found! Please ensure you setup the config file and run this command in the "
-                ."appropriate root of your project"
+                . "appropriate root of your project"
             );
             exit(1);
         }
