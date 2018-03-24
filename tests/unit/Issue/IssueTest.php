@@ -25,6 +25,7 @@ class IssueTest extends TestCase
     protected $issueLevel;
     protected $issueMessage;
     protected $issueFile;
+    protected $issueReview;
 
     protected $levels = [Issue::LEVEL_INFO, Issue::LEVEL_WARNING, Issue::LEVEL_ERROR];
 
