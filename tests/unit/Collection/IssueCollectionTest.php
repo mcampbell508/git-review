@@ -22,12 +22,12 @@ class IssueCollectionTest extends TestCase
 {
     protected $collection;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->collection = new IssueCollection();
     }
 
-    public function testValidateWithValidObject()
+    public function testValidateWithValidObject(): void
     {
         $object = Mockery::mock('GitReview\Issue\IssueInterface');
 
@@ -37,14 +37,14 @@ class IssueCollectionTest extends TestCase
     /**
      * @expectedException InvalidArgumentException
      */
-    public function testValidateWithInvalidObject()
+    public function testValidateWithInvalidObject(): void
     {
         $object = 'Test';
 
         $this->collection->validate($object);
     }
 
-    public function testSelectWithTrueCallback()
+    public function testSelectWithTrueCallback(): void
     {
         $issue = Mockery::mock('GitReview\Issue\IssueInterface');
 
@@ -59,7 +59,7 @@ class IssueCollectionTest extends TestCase
         $this->assertCount(1, $issues);
     }
 
-    public function testSelectWithFalseCallback()
+    public function testSelectWithFalseCallback(): void
     {
         $issue = Mockery::mock('GitReview\Issue\IssueInterface');
 
@@ -74,7 +74,7 @@ class IssueCollectionTest extends TestCase
         $this->assertCount(0, $issues);
     }
 
-    public function testSelectWithEmptyCollection()
+    public function testSelectWithEmptyCollection(): void
     {
         $filter = function () {
             return true;
@@ -83,7 +83,7 @@ class IssueCollectionTest extends TestCase
         $this->assertEquals(new IssueCollection(), $this->collection->select($filter));
     }
 
-    public function testForLevelWithMatchingLevel()
+    public function testForLevelWithMatchingLevel(): void
     {
         $issue = Mockery::mock('GitReview\Issue\IssueInterface');
         $issue->shouldReceive('matches')->once()->andReturn(true);
@@ -96,7 +96,7 @@ class IssueCollectionTest extends TestCase
         $this->assertSame($issue, $issues->current());
     }
 
-    public function testForLevelWithNonMatchingLevel()
+    public function testForLevelWithNonMatchingLevel(): void
     {
         $issue = Mockery::mock('GitReview\Issue\IssueInterface');
         $issue->shouldReceive('matches')->once()->andReturn(false);

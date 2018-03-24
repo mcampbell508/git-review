@@ -33,7 +33,7 @@ class FilesFinder
         return \count($this->getFoundFiles());
     }
 
-    private function findFilesByGivenCriteria()
+    private function findFilesByGivenCriteria(): void
     {
         $this->files->filter(function (File $file) {
             $found = false;
@@ -47,17 +47,17 @@ class FilesFinder
             }
 
             return $found;
-        })->each(function (File $file) {
+        })->each(function (File $file): void {
             $this->addFile($file);
         });
     }
 
-    private function addFile($file)
+    private function addFile($file): void
     {
         $this->foundFiles->push($file);
     }
 
-    private function formatCriteria()
+    private function formatCriteria(): void
     {
         $this->pathCriteria = \array_map(function ($value) {
             $escapeChars = \str_replace("/*", "/.*", $value);

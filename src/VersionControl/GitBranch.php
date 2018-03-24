@@ -61,7 +61,7 @@ class GitBranch implements GitBranchInterface
         return !empty($this->processFactory->create("git status --short")->getOutput());
     }
 
-    private function getProjectBase()
+    private function getProjectBase(): void
     {
         $this->processFactory->create('git rev-parse --show-toplevel')->getOutput();
     }

@@ -38,7 +38,7 @@ class ComposerLintReview extends AbstractFileReview
      * @param ReporterInterface $reporter
      * @param FileInterface     $file
      */
-    public function review(ReporterInterface $reporter, ReviewableInterface $file)
+    public function review(ReporterInterface $reporter, ReviewableInterface $file): void
     {
         $cmd = \sprintf('composer validate %s', $file->getFullPath());
 

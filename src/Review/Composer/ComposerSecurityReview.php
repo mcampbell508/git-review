@@ -42,7 +42,7 @@ class ComposerSecurityReview extends AbstractFileReview
      * @param ReporterInterface $reporter
      * @param FileInterface     $file
      */
-    public function review(ReporterInterface $reporter, ReviewableInterface $file)
+    public function review(ReporterInterface $reporter, ReviewableInterface $file): void
     {
         $executable = \str_replace(['/', '\\'], DIRECTORY_SEPARATOR, 'vendor/bin/security-checker');
 

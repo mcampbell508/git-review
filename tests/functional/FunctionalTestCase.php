@@ -10,7 +10,7 @@ class FunctionalTestCase extends TestCase
     protected $directory;
     protected $testFileName;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->directory = \sys_get_temp_dir() . '/git-review-functional-tests/';
 
@@ -27,7 +27,7 @@ class FunctionalTestCase extends TestCase
         \chdir($this->directory);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         // Clean up any created files.
         $this->runProcess('rm -rf ' . $this->directory);

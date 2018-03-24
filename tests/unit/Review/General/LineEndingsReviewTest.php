@@ -22,25 +22,25 @@ class LineEndingsReviewTest extends TestCase
 
     protected $review;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->file = Mockery::mock('GitReview\File\FileInterface');
         $this->review = Mockery::mock('GitReview\Review\General\LineEndingsReview[getProcess]');
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         Mockery::close();
     }
 
-    public function testCanReview()
+    public function testCanReview(): void
     {
         $this->file->shouldReceive('getMimeType')->once()->andReturn('text');
 
         $this->assertTrue($this->review->canReview($this->file));
     }
 
-    public function testReview()
+    public function testReview(): void
     {
         $this->file->shouldReceive('getFullPath')->once()->andReturn(__FILE__);
 

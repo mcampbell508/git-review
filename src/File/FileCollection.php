@@ -15,7 +15,7 @@ class FileCollection
         $this->path = $path;
     }
 
-    public function addFiles(array $files)
+    public function addFiles(array $files): void
     {
         foreach ($files as $file) {
             [$status, $relativePath] = \explode("\t", $file);
@@ -27,7 +27,7 @@ class FileCollection
         }
     }
 
-    public function append(File $file)
+    public function append(File $file): void
     {
         $this->fileCollection->push($file);
     }

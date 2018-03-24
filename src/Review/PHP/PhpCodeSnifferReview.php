@@ -87,7 +87,7 @@ class PhpCodeSnifferReview extends AbstractFileReview
     /**
      * Checks PHP files using PHP_CodeSniffer.
      */
-    public function review(ReporterInterface $reporter, ReviewableInterface $file)
+    public function review(ReporterInterface $reporter, ReviewableInterface $file): void
     {
         $bin = \str_replace(['/', '\\'], DIRECTORY_SEPARATOR, 'vendor/bin/phpcs');
         $cmd = $bin . ' --report=json ';

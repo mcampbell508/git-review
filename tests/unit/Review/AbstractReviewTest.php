@@ -18,7 +18,7 @@ use PHPUnit_Framework_TestCase as TestCase;
 
 class AbstractReviewTest extends TestCase
 {
-    public function testGetProcess()
+    public function testGetProcess(): void
     {
         $review = Mockery::mock('GitReview\Review\AbstractReview')->makePartial();
 
@@ -27,7 +27,7 @@ class AbstractReviewTest extends TestCase
         $this->assertInstanceOf('Symfony\Component\Process\Process', $process);
     }
 
-    public function testGetProcessWorkingDirectory()
+    public function testGetProcessWorkingDirectory(): void
     {
         $review = Mockery::mock('GitReview\Review\AbstractReview')->makePartial();
 

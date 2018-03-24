@@ -22,32 +22,32 @@ class PhpLeadingLineReviewTest extends TestCase
 
     protected $review;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->file = Mockery::mock('GitReview\File\FileInterface');
         $this->review = Mockery::mock('GitReview\Review\PHP\PhpLeadingLineReview[getProcess]');
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         Mockery::close();
     }
 
-    public function testCanReview()
+    public function testCanReview(): void
     {
         $this->file->shouldReceive('getExtension')->once()->andReturn('php');
 
         $this->assertTrue($this->review->canReview($this->file));
     }
 
-    public function testCanReviewWithInvalidExtension()
+    public function testCanReviewWithInvalidExtension(): void
     {
         $this->file->shouldReceive('getExtension')->once()->andReturn('txt');
 
         $this->assertFalse($this->review->canReview($this->file));
     }
 
-    public function testReviewWithBadBeginning()
+    public function testReviewWithBadBeginning(): void
     {
         $this->file->shouldReceive('getFullPath')->once()->andReturn(__FILE__);
 
@@ -63,7 +63,7 @@ class PhpLeadingLineReviewTest extends TestCase
         $this->assertNull($this->review->review($reporter, $this->file));
     }
 
-    public function testReviewWithDefaultBeginning()
+    public function testReviewWithDefaultBeginning(): void
     {
         $this->file->shouldReceive('getFullPath')->once()->andReturn(__FILE__);
 
@@ -78,7 +78,7 @@ class PhpLeadingLineReviewTest extends TestCase
         $this->assertNull($this->review->review($reporter, $this->file));
     }
 
-    public function testReviewWithScriptBeginning()
+    public function testReviewWithScriptBeginning(): void
     {
         $this->file->shouldReceive('getFullPath')->once()->andReturn(__FILE__);
 

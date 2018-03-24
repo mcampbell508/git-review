@@ -36,7 +36,7 @@ class PhpLintReview extends AbstractFileReview
     /**
      * Checks PHP files using the builtin PHP linter, `php -l`.
      */
-    public function review(ReporterInterface $reporter, ReviewableInterface $file)
+    public function review(ReporterInterface $reporter, ReviewableInterface $file): void
     {
         $cmd = \sprintf('php --syntax-check %s', $file->getFullPath());
 

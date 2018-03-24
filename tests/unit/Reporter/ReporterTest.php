@@ -26,7 +26,7 @@ class ReporterTest extends TestCase
 
     protected $reporter;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->review = Mockery::mock('GitReview\Review\ReviewInterface');
         $this->file = Mockery::mock('GitReview\File\FileInterface');
@@ -34,14 +34,14 @@ class ReporterTest extends TestCase
         $this->reporter = new Reporter();
     }
 
-    public function testReport()
+    public function testReport(): void
     {
         $this->reporter->report(Issue::LEVEL_INFO, 'Test', $this->review, $this->file);
 
         $this->assertCount(1, $this->reporter->getIssues());
     }
 
-    public function testInfo()
+    public function testInfo(): void
     {
         $this->reporter->info('Test', $this->review, $this->file);
 
@@ -52,7 +52,7 @@ class ReporterTest extends TestCase
         $this->assertSame(Issue::LEVEL_INFO, $issues->current()->getLevel());
     }
 
-    public function testWarning()
+    public function testWarning(): void
     {
         $this->reporter->warning('Test', $this->review, $this->file);
 
@@ -63,7 +63,7 @@ class ReporterTest extends TestCase
         $this->assertSame(Issue::LEVEL_WARNING, $issues->current()->getLevel());
     }
 
-    public function testError()
+    public function testError(): void
     {
         $this->reporter->error('Test', $this->review, $this->file);
 
@@ -74,19 +74,19 @@ class ReporterTest extends TestCase
         $this->assertSame(Issue::LEVEL_ERROR, $issues->current()->getLevel());
     }
 
-    public function testHasIssues()
+    public function testHasIssues(): void
     {
         $this->reporter->info('Test', $this->review, $this->file);
 
         $this->assertTrue($this->reporter->hasIssues());
     }
 
-    public function testHasIssuesWithNoIssues()
+    public function testHasIssuesWithNoIssues(): void
     {
         $this->assertFalse($this->reporter->hasIssues());
     }
 
-    public function testGetIssues()
+    public function testGetIssues(): void
     {
         $this->reporter->info('Test', $this->review, $this->file);
 

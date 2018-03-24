@@ -23,7 +23,7 @@ class PhpCsFixerCommand extends Command
     private $allowRisky = false;
     private $dryRun = false;
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName('tools:php-cs-fixer');
 

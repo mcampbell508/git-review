@@ -24,7 +24,7 @@ use GitReview\Review\ReviewableInterface;
  */
 class SubjectLinePeriodReview extends AbstractMessageReview
 {
-    public function review(ReporterInterface $reporter, ReviewableInterface $commit)
+    public function review(ReporterInterface $reporter, ReviewableInterface $commit): void
     {
         if (\mb_substr($commit->getSubject(), -1) === '.') {
             $message = 'Subject line must not end with a period';

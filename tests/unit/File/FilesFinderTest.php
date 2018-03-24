@@ -9,7 +9,7 @@ use Tightenco\Collect\Support\Collection;
 
 class FilesFinderTest extends TestCase
 {
-    public function testGetFileCount()
+    public function testGetFileCount(): void
     {
         $files = new Collection([
             new File('A', 'a/b/c.txt', '/tmp/repo-base'),
@@ -21,7 +21,7 @@ class FilesFinderTest extends TestCase
         $this->assertEquals(1, $foundFiles->count());
     }
 
-    public function testGetFoundFilesCanAccommodateWildcardDirectorySearch()
+    public function testGetFoundFilesCanAccommodateWildcardDirectorySearch(): void
     {
         $files = new Collection([
             new File('A', 'example/test1/subfolder/file.txt', '/tmp/repo-base'),

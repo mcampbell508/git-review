@@ -22,20 +22,20 @@ class GitVersionControlTest extends FunctionalTestCase
     /** @var GitVersionControl */
     private $gitVersionControl;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
         $this->gitVersionControl = new GitVersionControl();
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         // Clean up any created files.
         $this->runProcess('rm -rf ' . $this->directory);
     }
 
-    public function testGetStagedFilesWithNoGitRepo()
+    public function testGetStagedFilesWithNoGitRepo(): void
     {
         $collection = $this->gitVersionControl->getStagedFiles();
 
@@ -43,7 +43,7 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->assertCount(0, $collection);
     }
 
-    public function testGetStagedFilesWithGitRepo()
+    public function testGetStagedFilesWithGitRepo(): void
     {
         $cmd = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
@@ -56,7 +56,7 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->assertCount(0, $collection);
     }
 
-    public function testGetStagedFilesWithNewFile()
+    public function testGetStagedFilesWithNewFile(): void
     {
         $cmd = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
@@ -75,7 +75,7 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->assertSame('A', $file->getStatus());
     }
 
-    public function testGetStagedFilesWithModifiedFile()
+    public function testGetStagedFilesWithModifiedFile(): void
     {
         $cmd = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
@@ -97,7 +97,7 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->assertSame('M', $file->getStatus());
     }
 
-    public function testGetStagedFilesWithPartiallyStagedFile()
+    public function testGetStagedFilesWithPartiallyStagedFile(): void
     {
         $cmd = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
@@ -124,7 +124,7 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->assertSame('test', \trim($process->getOutput()));
     }
 
-    public function testGetStagedFilesWithMovedUnrenamedFile()
+    public function testGetStagedFilesWithMovedUnrenamedFile(): void
     {
         $testFolderName = 'test_folder';
 
@@ -153,7 +153,7 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->assertStringStartsWith('R', $file->getStatus());
     }
 
-    public function testGetStagedFilesWithMovedRenamedFile()
+    public function testGetStagedFilesWithMovedRenamedFile(): void
     {
         $testFolderName = 'test_folder';
         $newTestFileName = 'test_new.txt';

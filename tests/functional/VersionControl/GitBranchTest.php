@@ -13,7 +13,7 @@ class GitBranchTest extends FunctionalTestCase
     private $gitBranch;
     private $topicBranchName;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -34,7 +34,7 @@ EOT;
         $this->assertFalse($this->gitBranch->isDirty());
     }
 
-    public function testItCanRetrieveBranchName()
+    public function testItCanRetrieveBranchName(): void
     {
         $branchName = $this->gitBranch->getName();
 
@@ -47,7 +47,7 @@ EOT;
         $this->assertEquals($this->topicBranchName, $branchName);
     }
 
-    public function testItCanSeeIfBranchIsDirty()
+    public function testItCanSeeIfBranchIsDirty(): void
     {
         $this->runProcess("touch modified-file.txt");
 
@@ -58,7 +58,7 @@ EOT;
         $this->assertFalse($this->gitBranch->isDirty());
     }
 
-    public function testItCanGetParentHashAtPointerToMaster()
+    public function testItCanGetParentHashAtPointerToMaster(): void
     {
         $masterCommitId = \trim($this->runProcess("git log --grep='master commit a' --format='%H'")->getOutput());
 
@@ -67,7 +67,7 @@ EOT;
         $this->assertEquals($masterCommitId, $this->gitBranch->getParentHash());
     }
 
-    public function testItCanGetAllChangedFilesOnBranchIncludingUncommitted()
+    public function testItCanGetAllChangedFilesOnBranchIncludingUncommitted(): void
     {
         $this->checkoutBranch($this->topicBranchName);
 
@@ -84,7 +84,7 @@ EOT;
         }));
     }
 
-    private function checkoutBranch($branchName)
+    private function checkoutBranch($branchName): void
     {
         $this->runProcess("/usr/bin/git checkout ${branchName}");
     }
