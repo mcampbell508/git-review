@@ -97,7 +97,7 @@ class IssueTest extends TestCase
                 $this->issueFile
             );
 
-            $this->assertTrue(\is_string($issue->getLevelName()));
+            $this->assertInternalType('string', $issue->getLevelName());
         }
     }
 

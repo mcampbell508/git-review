@@ -105,7 +105,7 @@ class FileTest extends TestCase
 
         foreach ($statuses as $status) {
             $file = new File($status, $this->filePath, $this->projectPath);
-            $this->assertTrue(\is_string($file->getFormattedStatus()));
+            $this->assertInternalType('string', $file->getFormattedStatus());
         }
     }
 
