@@ -41,7 +41,7 @@ class SubjectLineLengthReview extends AbstractMessageReview
 
     public function review(ReporterInterface $reporter, ReviewableInterface $commit)
     {
-        if (strlen($commit->getSubject()) > $this->getMaximumLength()) {
+        if (mb_strlen($commit->getSubject()) > $this->getMaximumLength()) {
             $message = sprintf(
                 'Subject line is greater than %d characters',
                 $this->getMaximumLength()

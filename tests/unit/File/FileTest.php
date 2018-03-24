@@ -121,6 +121,6 @@ class FileTest extends TestCase
 
     public function testGetMimeType()
     {
-        $this->assertTrue(strpos($this->file->getMimeType(), 'php') !== false);
+        $this->assertTrue(mb_strpos($this->file->getMimeType(), 'php') !== false);
     }
 }

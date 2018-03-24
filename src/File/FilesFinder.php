@@ -63,7 +63,7 @@ class FilesFinder
             $escapeChars = str_replace("/*", "/.*", $value);
             $escapeChars = str_replace("/", "\/", $escapeChars);
 
-            return "/$escapeChars/";
+            return "/${escapeChars}/";
         }, $this->pathCriteria);
     }
 }

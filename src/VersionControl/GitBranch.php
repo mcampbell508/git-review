@@ -32,7 +32,7 @@ class GitBranch implements GitBranchInterface
 
         $committedFilesProcess = $this->processFactory
             ->create(
-                "git log --name-status --pretty=format: {$this->getParentHash()}..$branchName" .
+                "git log --name-status --pretty=format: {$this->getParentHash()}..${branchName}" .
                 " | grep -E '^[A-Z]\b' | sort | uniq"
             );
 

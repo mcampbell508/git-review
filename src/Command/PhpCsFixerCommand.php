@@ -41,7 +41,7 @@ class PhpCsFixerCommand extends Command
         $io = new SymfonyStyle($input, $output);
         $currentWorkingDirectory = getcwd();
 
-        $io->note("Current working directory: $currentWorkingDirectory");
+        $io->note("Current working directory: ${currentWorkingDirectory}");
 
         $configPath = $this->getYamlConfigurationFilePath(
             $currentWorkingDirectory,
@@ -56,7 +56,7 @@ class PhpCsFixerCommand extends Command
             exit(1);
         }
 
-        $io->note("Using configuration file: $configPath");
+        $io->note("Using configuration file: ${configPath}");
 
         $branch = new GitBranch($currentWorkingDirectory);
 
@@ -103,7 +103,7 @@ class PhpCsFixerCommand extends Command
         $command = $this->getCommand($phpCsFixerConfig, $filePaths, $branch->getName());
 
         $output->writeln("\n<options=bold,underscore>Running command:</>\n");
-        $io->writeln("<info>$command</info>\n");
+        $io->writeln("<info>${command}</info>\n");
         $process = new \Symfony\Component\Process\Process($command);
         $process->start();
 

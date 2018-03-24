@@ -21,7 +21,7 @@ class GitBranchTest extends FunctionalTestCase
 
         $command = <<<EOT
 git init && touch master-file-a.txt && git add master-file-a.txt && git commit -m "master commit a" &&
-\git checkout -b $this->topicBranchName && touch test-branch-file-a.txt && git add test-branch-file-a.txt &&
+\git checkout -b {$this->topicBranchName} && touch test-branch-file-a.txt && git add test-branch-file-a.txt &&
 \git commit -m "test branch commit a" && touch test-branch-file-b.txt &&
 \git add test-branch-file-b.txt && git commit -m "test branch commit b" &&
 \git checkout master && touch master-file-b.txt && git add . && git commit -m "master commit b"
@@ -86,6 +86,6 @@ EOT;
 
     private function checkoutBranch($branchName)
     {
-        $this->runProcess("/usr/bin/git checkout $branchName");
+        $this->runProcess("/usr/bin/git checkout ${branchName}");
     }
 }

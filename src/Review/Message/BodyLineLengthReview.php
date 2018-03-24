@@ -62,7 +62,7 @@ class BodyLineLengthReview extends AbstractMessageReview
                 $message = sprintf(
                     'Body line is greater than %d characters ( "%s ..." )',
                     $this->getMaximumLength(),
-                    substr($line, 0, 16)
+                    mb_substr($line, 0, 16)
                 );
                 $reporter->error($message, $this, $commit);
             }
@@ -71,7 +71,7 @@ class BodyLineLengthReview extends AbstractMessageReview
 
     private function isLineTooLong($line)
     {
-        return strlen($line) > $this->getMaximumLength();
+        return mb_strlen($line) > $this->getMaximumLength();
     }
 
     private function doesContainUrl($line)
@@ -81,6 +81,6 @@ class BodyLineLengthReview extends AbstractMessageReview
             return false;
         }
 
-        return strpos($line, '://') !== false;
+        return mb_strpos($line, '://') !== false;
     }
 }

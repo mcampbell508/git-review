@@ -159,7 +159,7 @@ class File implements FileInterface
             case '??':
                 return 'modified changes but not yet staged';
             default:
-                throw new \UnexpectedValueException("Unknown file status: $this->fileStatus.");
+                throw new \UnexpectedValueException("Unknown file status: {$this->fileStatus}.");
         }
     }
 

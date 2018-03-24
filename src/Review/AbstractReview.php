@@ -79,7 +79,7 @@ abstract class AbstractReview implements ReviewInterface
             $working = getcwd();
             $myself = __DIR__;
 
-            if (0 === strpos($myself, $working)) {
+            if (0 === mb_strpos($myself, $working)) {
                 // Local installation, the working directory is the root
                 $root = $working;
             } else {

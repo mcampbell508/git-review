@@ -50,7 +50,7 @@ class PhpLintReview extends AbstractFileReview
 
         if (!$process->isSuccessful()) {
             foreach (array_slice($output, 0, count($output) - 1) as $error) {
-                $raw = ucfirst(substr($error, strlen($needle)));
+                $raw = ucfirst(mb_substr($error, mb_strlen($needle)));
                 $message = str_replace(' in ' . $file->getFullPath(), '', $raw);
                 $reporter->error($message, $this, $file);
             }
