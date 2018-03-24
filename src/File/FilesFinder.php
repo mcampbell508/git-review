@@ -30,7 +30,7 @@ class FilesFinder
 
     public function count(): int
     {
-        return count($this->getFoundFiles());
+        return \count($this->getFoundFiles());
     }
 
     private function findFilesByGivenCriteria()
@@ -60,8 +60,8 @@ class FilesFinder
     private function formatCriteria()
     {
         $this->pathCriteria = \array_map(function ($value) {
-            $escapeChars = str_replace("/*", "/.*", $value);
-            $escapeChars = str_replace("/", "\/", $escapeChars);
+            $escapeChars = \str_replace("/*", "/.*", $value);
+            $escapeChars = \str_replace("/", "\/", $escapeChars);
 
             return "/${escapeChars}/";
         }, $this->pathCriteria);

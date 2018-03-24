@@ -33,7 +33,7 @@ class NoCommitTagReview extends AbstractFileReview
         $mime = $file->getMimeType();
 
         // check to see if the mime-type starts with 'text'
-        return (mb_substr($mime, 0, 4) === 'text');
+        return (\mb_substr($mime, 0, 4) === 'text');
     }
 
     /**
@@ -43,7 +43,7 @@ class NoCommitTagReview extends AbstractFileReview
      */
     public function review(ReporterInterface $reporter, ReviewableInterface $file)
     {
-        $cmd = sprintf('grep --fixed-strings --ignore-case --quiet "NOCOMMIT" %s', $file->getFullPath());
+        $cmd = \sprintf('grep --fixed-strings --ignore-case --quiet "NOCOMMIT" %s', $file->getFullPath());
 
         $process = $this->getProcess($cmd);
         $process->run();

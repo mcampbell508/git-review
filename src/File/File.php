@@ -66,7 +66,7 @@ class File implements FileInterface
      */
     public function getFileName()
     {
-        return basename($this->filePath);
+        return \basename($this->filePath);
     }
 
     /**
@@ -76,7 +76,7 @@ class File implements FileInterface
      */
     public function getRelativePath()
     {
-        return str_replace($this->projectPath . DIRECTORY_SEPARATOR, '', $this->filePath);
+        return \str_replace($this->projectPath . DIRECTORY_SEPARATOR, '', $this->filePath);
     }
 
     /**
@@ -86,7 +86,7 @@ class File implements FileInterface
      */
     public function getFullPath()
     {
-        if (file_exists($this->getCachedPath())) {
+        if (\file_exists($this->getCachedPath())) {
             return $this->getCachedPath();
         }
 
@@ -123,7 +123,7 @@ class File implements FileInterface
      */
     public function getExtension()
     {
-        return pathinfo($this->filePath, PATHINFO_EXTENSION);
+        return \pathinfo($this->filePath, PATHINFO_EXTENSION);
     }
 
     /**
@@ -172,9 +172,9 @@ class File implements FileInterface
     public function getMimeType()
     {
         // return mime type ala mimetype extension
-        $finfo = finfo_open(FILEINFO_MIME);
+        $finfo = \finfo_open(FILEINFO_MIME);
 
-        $mime = finfo_file($finfo, $this->getFullPath());
+        $mime = \finfo_file($finfo, $this->getFullPath());
 
         return $mime;
     }

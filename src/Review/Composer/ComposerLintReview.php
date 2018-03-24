@@ -40,7 +40,7 @@ class ComposerLintReview extends AbstractFileReview
      */
     public function review(ReporterInterface $reporter, ReviewableInterface $file)
     {
-        $cmd = sprintf('composer validate %s', $file->getFullPath());
+        $cmd = \sprintf('composer validate %s', $file->getFullPath());
 
         $process = $this->getProcess($cmd);
         $process->run();

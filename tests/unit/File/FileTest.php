@@ -39,14 +39,14 @@ class FileTest extends TestCase
 
     public function testGetFileName()
     {
-        $expected = basename($this->filePath);
+        $expected = \basename($this->filePath);
 
         $this->assertSame($expected, $this->file->getFileName());
     }
 
     public function testGetRelativePath()
     {
-        $expected = str_replace($this->projectPath . DIRECTORY_SEPARATOR, '', $this->filePath);
+        $expected = \str_replace($this->projectPath . DIRECTORY_SEPARATOR, '', $this->filePath);
 
         $this->assertSame($expected, $this->file->getRelativePath());
     }
@@ -89,7 +89,7 @@ class FileTest extends TestCase
 
     public function testGetExtension()
     {
-        $expected = pathinfo($this->filePath, PATHINFO_EXTENSION);
+        $expected = \pathinfo($this->filePath, PATHINFO_EXTENSION);
 
         $this->assertSame($expected, $this->file->getExtension());
     }
@@ -105,7 +105,7 @@ class FileTest extends TestCase
 
         foreach ($statuses as $status) {
             $file = new File($status, $this->filePath, $this->projectPath);
-            $this->assertTrue(is_string($file->getFormattedStatus()));
+            $this->assertTrue(\is_string($file->getFormattedStatus()));
         }
     }
 
@@ -121,6 +121,6 @@ class FileTest extends TestCase
 
     public function testGetMimeType()
     {
-        $this->assertTrue(mb_strpos($this->file->getMimeType(), 'php') !== false);
+        $this->assertTrue(\mb_strpos($this->file->getMimeType(), 'php') !== false);
     }
 }

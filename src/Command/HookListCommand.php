@@ -28,22 +28,22 @@ class HookListCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $hooksPath = realpath(__DIR__ . '/../../hooks/');
+        $hooksPath = \realpath(__DIR__ . '/../../hooks/');
 
         $output->writeln("<info>Avaliable hooks:</info>");
 
-        if ($handle = opendir($hooksPath)) {
-            while (false !== ($entry = readdir($handle))) {
-                if (pathinfo($entry, PATHINFO_EXTENSION) === 'php') {
+        if ($handle = \opendir($hooksPath)) {
+            while (false !== ($entry = \readdir($handle))) {
+                if (\pathinfo($entry, PATHINFO_EXTENSION) === 'php') {
                     if ($output->getVerbosity() >= OutputInterface::VERBOSITY_VERBOSE) {
                         $output->writeln($hooksPath . DIRECTORY_SEPARATOR . $entry);
                     } else {
-                        $output->writeln(pathinfo($entry, PATHINFO_FILENAME));
+                        $output->writeln(\pathinfo($entry, PATHINFO_FILENAME));
                     }
                 }
             }
 
-            closedir($handle);
+            \closedir($handle);
         }
     }
 }

@@ -32,7 +32,7 @@ class SanitizeMessage
      */
     private function stripOutDiff()
     {
-        $this->message = preg_split('/# \-+ >8 \-+/', $this->message, 2);
+        $this->message = \preg_split('/# \-+ >8 \-+/', $this->message, 2);
     }
 
     /**
@@ -41,11 +41,11 @@ class SanitizeMessage
     private function removeComments()
     {
         list($message) = $this->message;
-        $this->message = preg_replace('/^#.*/m', '', $message);
+        $this->message = \preg_replace('/^#.*/m', '', $message);
     }
 
     private function splitMessageByNewLines()
     {
-        $this->message = preg_split('/(\r?\n)+/', trim($this->message));
+        $this->message = \preg_split('/(\r?\n)+/', \trim($this->message));
     }
 }

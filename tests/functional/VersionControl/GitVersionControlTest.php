@@ -71,7 +71,7 @@ class GitVersionControlTest extends FunctionalTestCase
 
         $file = $collection->current();
 
-        $this->assertSame(basename($this->testFileName), $file->getFileName());
+        $this->assertSame(\basename($this->testFileName), $file->getFileName());
         $this->assertSame('A', $file->getStatus());
     }
 
@@ -93,7 +93,7 @@ class GitVersionControlTest extends FunctionalTestCase
 
         $file = $collection->current();
 
-        $this->assertSame(basename($this->testFileName), $file->getFileName());
+        $this->assertSame(\basename($this->testFileName), $file->getFileName());
         $this->assertSame('M', $file->getStatus());
     }
 
@@ -116,12 +116,12 @@ class GitVersionControlTest extends FunctionalTestCase
 
         $file = $collection->current();
 
-        $this->assertSame(basename($this->testFileName), $file->getFileName());
+        $this->assertSame(\basename($this->testFileName), $file->getFileName());
         $this->assertSame('M', $file->getStatus());
 
         $process = $this->runProcess('cat ' . $file->getFullPath());
 
-        $this->assertSame('test', trim($process->getOutput()));
+        $this->assertSame('test', \trim($process->getOutput()));
     }
 
     public function testGetStagedFilesWithMovedUnrenamedFile()
@@ -149,7 +149,7 @@ class GitVersionControlTest extends FunctionalTestCase
 
         $file = $collection->current();
 
-        $this->assertSame(basename($this->testFileName), $file->getFileName());
+        $this->assertSame(\basename($this->testFileName), $file->getFileName());
         $this->assertStringStartsWith('R', $file->getStatus());
     }
 
@@ -179,7 +179,7 @@ class GitVersionControlTest extends FunctionalTestCase
 
         $file = $collection->current();
 
-        $this->assertSame(basename($newTestFileName), $file->getFileName());
+        $this->assertSame(\basename($newTestFileName), $file->getFileName());
         $this->assertStringStartsWith('R', $file->getStatus());
     }
 }

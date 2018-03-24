@@ -47,43 +47,43 @@ class HookInstallCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $source = realpath($input->getArgument(self::ARG_SOURCE));
+        $source = \realpath($input->getArgument(self::ARG_SOURCE));
         $target = $input->getArgument(self::ARG_TARGET);
         $force = $input->getOption('force');
 
         if ($output->isVeryVerbose()) {
-            $message = sprintf('<info>Using %s as the hook.</info>', $source);
+            $message = \sprintf('<info>Using %s as the hook.</info>', $source);
             $output->writeln($message);
 
-            $message = sprintf('<info>Using %s for the install path.</info>', $target);
+            $message = \sprintf('<info>Using %s for the install path.</info>', $target);
             $output->writeln($message);
         }
 
-        if (!file_exists($source)) {
-            $error = sprintf('<error>The hook %s does not exist!</error>', $source);
+        if (!\file_exists($source)) {
+            $error = \sprintf('<error>The hook %s does not exist!</error>', $source);
             $output->writeln($error);
             exit(1);
         }
 
-        if (!is_dir(dirname($target))) {
-            $message = sprintf('<error>The directory at %s does not exist.</error>', $target);
+        if (!\is_dir(\dirname($target))) {
+            $message = \sprintf('<error>The directory at %s does not exist.</error>', $target);
             $output->writeln($message);
             exit(1);
         }
 
-        if (file_exists($target) && $force) {
-            unlink($target);
+        if (\file_exists($target) && $force) {
+            \unlink($target);
 
-            $message = sprintf('<comment>Removed existing file at %s.</comment>', $target);
+            $message = \sprintf('<comment>Removed existing file at %s.</comment>', $target);
             $output->writeln($message);
         }
 
-        if (!file_exists($target) || $force) {
-            symlink($source, $target);
-            chmod($target, 0755);
+        if (!\file_exists($target) || $force) {
+            \symlink($source, $target);
+            \chmod($target, 0755);
             $output->writeln('Symlink created.');
         } else {
-            $message = sprintf('<error>A file at %s already exists.</error>', $target);
+            $message = \sprintf('<error>A file at %s already exists.</error>', $target);
             $output->writeln($message);
             exit(1);
         }

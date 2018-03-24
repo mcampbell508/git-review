@@ -60,7 +60,7 @@ EOT;
 
     public function testItCanGetParentHashAtPointerToMaster()
     {
-        $masterCommitId = trim($this->runProcess("git log --grep='master commit a' --format='%H'")->getOutput());
+        $masterCommitId = \trim($this->runProcess("git log --grep='master commit a' --format='%H'")->getOutput());
 
         $this->checkoutBranch($this->topicBranchName);
 

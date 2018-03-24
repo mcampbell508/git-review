@@ -63,7 +63,7 @@ class IssueTest extends TestCase
     public function testGetReviewName()
     {
         // Mocked classes doesn't have a namespace so just expect the full class name.
-        $expected = get_class($this->issueReview);
+        $expected = \get_class($this->issueReview);
 
         $this->assertSame($expected, $this->issue->getReviewName());
     }
@@ -97,7 +97,7 @@ class IssueTest extends TestCase
                 $this->issueFile
             );
 
-            $this->assertTrue(is_string($issue->getLevelName()));
+            $this->assertTrue(\is_string($issue->getLevelName()));
         }
     }
 
@@ -188,7 +188,7 @@ class IssueTest extends TestCase
         $issueString = (string)$this->issue;
 
         // Replace common punctuation with spaces for a better explode.
-        $issueStringTokens = explode(' ', str_replace([',', '.', ':', ';'], ' ', $issueString));
+        $issueStringTokens = \explode(' ', \str_replace([',', '.', ':', ';'], ' ', $issueString));
 
         $this->assertContains($this->issue->getReviewName(), $issueStringTokens);
         $this->assertContains($this->issue->getLevelName(), $issueStringTokens);

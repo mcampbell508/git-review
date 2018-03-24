@@ -35,7 +35,7 @@ class Reporter implements ReporterInterface
 
     public function progress($current, $total)
     {
-        echo sprintf("Reviewing %d of %d.\r", $current, $total);
+        echo \sprintf("Reviewing %d of %d.\r", $current, $total);
     }
 
     /**
@@ -108,7 +108,7 @@ class Reporter implements ReporterInterface
      */
     public function hasIssues()
     {
-        return (count($this->issues) > 0);
+        return (\count($this->issues) > 0);
     }
 
     /**

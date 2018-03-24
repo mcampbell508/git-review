@@ -79,7 +79,7 @@ class PhpCodeSnifferReviewTest extends TestCase
 
     public function testSetOptionReturnsReview()
     {
-        $this->assertInstanceOf(get_class($this->review), $this->review->setOption('test', 'test'));
+        $this->assertInstanceOf(\get_class($this->review), $this->review->setOption('test', 'test'));
     }
 
     public function testCanReview()

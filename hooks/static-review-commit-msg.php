@@ -12,7 +12,7 @@
  * @see http://github.com/sjparkinson/static-review/blob/master/LICENSE
  */
 
-$included = include file_exists(__DIR__ . '/../vendor/autoload.php')
+$included = include \file_exists(__DIR__ . '/../vendor/autoload.php')
     ? __DIR__ . '/../vendor/autoload.php'
     : __DIR__ . '/../../../autoload.php';
 
@@ -24,7 +24,7 @@ if (!$included) {
     exit(1);
 }
 
-if (empty($argv[1]) || !is_file($argv[1])) {
+if (empty($argv[1]) || !\is_file($argv[1])) {
     echo 'WARNING: Skipping commit message check because the Git hook was not ' . PHP_EOL
        . 'passed the commit message file path; normally `.git/COMMIT_EDITMSG`' . PHP_EOL;
 

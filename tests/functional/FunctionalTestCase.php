@@ -12,19 +12,19 @@ class FunctionalTestCase extends TestCase
 
     public function setUp()
     {
-        $this->directory = sys_get_temp_dir() . '/git-review-functional-tests/';
+        $this->directory = \sys_get_temp_dir() . '/git-review-functional-tests/';
 
-        if (!is_dir($this->directory)) {
-            mkdir($this->directory, 0755, true);
+        if (!\is_dir($this->directory)) {
+            \mkdir($this->directory, 0755, true);
         } else {
             // Clean up any created files.
             $this->runProcess('rm -rf ' . $this->directory . DIRECTORY_SEPARATOR . '*');
         }
 
-        $this->directory = realpath($this->directory);
+        $this->directory = \realpath($this->directory);
         $this->testFileName = 'test.txt';
 
-        chdir($this->directory);
+        \chdir($this->directory);
     }
 
     public function tearDown()

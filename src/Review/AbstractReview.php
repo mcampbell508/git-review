@@ -76,15 +76,15 @@ abstract class AbstractReview implements ReviewInterface
         static $root;
 
         if (!$root) {
-            $working = getcwd();
+            $working = \getcwd();
             $myself = __DIR__;
 
-            if (0 === mb_strpos($myself, $working)) {
+            if (0 === \mb_strpos($myself, $working)) {
                 // Local installation, the working directory is the root
                 $root = $working;
             } else {
                 // Global installation, back up above the vendor/ directory
-                $root = realpath($myself . '/../../../../../');
+                $root = \realpath($myself . '/../../../../../');
             }
         }
 

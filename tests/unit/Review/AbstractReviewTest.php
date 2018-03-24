@@ -34,21 +34,21 @@ class AbstractReviewTest extends TestCase
         $process = $review->getProcess('whoami');
 
         // By default, the working directory should be the current directory.
-        $this->assertSame(getcwd(), $process->getWorkingDirectory());
+        $this->assertSame(\getcwd(), $process->getWorkingDirectory());
 
-        $cwd = getcwd();
+        $cwd = \getcwd();
 
         // Move out of the current working directory, which should cause the
         // process root directory to match the original root rather than the
         // current directory. This is done to handle global installation.
-        chdir(sys_get_temp_dir());
+        \chdir(\sys_get_temp_dir());
 
         $process = $review->getProcess('whoami');
 
         $this->assertSame($cwd, $process->getWorkingDirectory());
-        $this->assertNotSame(getcwd(), $process->getWorkingDirectory());
+        $this->assertNotSame(\getcwd(), $process->getWorkingDirectory());
 
         // Restore original working directory.
-        chdir($cwd);
+        \chdir($cwd);
     }
 }

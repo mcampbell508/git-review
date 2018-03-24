@@ -56,13 +56,13 @@ class BodyLineLengthReview extends AbstractMessageReview
 
     public function review(ReporterInterface $reporter, ReviewableInterface $commit)
     {
-        $lines = preg_split('/(\r?\n)+/', $commit->getBody());
+        $lines = \preg_split('/(\r?\n)+/', $commit->getBody());
         foreach ($lines as $line) {
             if ($this->isLineTooLong($line) && !$this->doesContainUrl($line)) {
-                $message = sprintf(
+                $message = \sprintf(
                     'Body line is greater than %d characters ( "%s ..." )',
                     $this->getMaximumLength(),
-                    mb_substr($line, 0, 16)
+                    \mb_substr($line, 0, 16)
                 );
                 $reporter->error($message, $this, $commit);
             }
@@ -71,7 +71,7 @@ class BodyLineLengthReview extends AbstractMessageReview
 
     private function isLineTooLong($line)
     {
-        return mb_strlen($line) > $this->getMaximumLength();
+        return \mb_strlen($line) > $this->getMaximumLength();
     }
 
     private function doesContainUrl($line)
@@ -81,6 +81,6 @@ class BodyLineLengthReview extends AbstractMessageReview
             return false;
         }
 
-        return mb_strpos($line, '://') !== false;
+        return \mb_strpos($line, '://') !== false;
     }
 }

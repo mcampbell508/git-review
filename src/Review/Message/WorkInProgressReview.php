@@ -23,7 +23,7 @@ class WorkInProgressReview extends AbstractMessageReview
     {
         $fulltext = $commit->getSubject() . PHP_EOL . $commit->getBody();
 
-        if (preg_match('/\bwip\b/i', $fulltext)) {
+        if (\preg_match('/\bwip\b/i', $fulltext)) {
             $message = 'Do not commit WIP to shared branches';
             $reporter->error($message, $this, $commit);
         }

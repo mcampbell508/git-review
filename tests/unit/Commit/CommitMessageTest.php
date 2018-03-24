@@ -25,7 +25,7 @@ class CommitMessageTest extends TestCase
 
     public function setUp()
     {
-        $this->fixtures = realpath(__DIR__ . '/../../fixtures');
+        $this->fixtures = \realpath(__DIR__ . '/../../fixtures');
     }
 
     public function testConstructionSubjectOnly()
@@ -71,6 +71,6 @@ class CommitMessageTest extends TestCase
      */
     private function message(string $name): string
     {
-        return file_get_contents($this->fixtures . '/commit-message-' . $name . '.txt');
+        return \file_get_contents($this->fixtures . '/commit-message-' . $name . '.txt');
     }
 }

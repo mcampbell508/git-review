@@ -38,11 +38,11 @@ class CollectionTest extends TestCase
     {
         $items = [1, 2, 3];
 
-        $this->collection->shouldReceive('validate')->times(count($items))->andReturn(true);
+        $this->collection->shouldReceive('validate')->times(\count($items))->andReturn(true);
 
         $this->collection->__construct($items);
 
-        for ($i = 0; $i > count($this->collection); $i++) {
+        for ($i = 0; $i > \count($this->collection); $i++) {
             $this->assertSame($items[$i], $this->collection[$i]);
         }
 

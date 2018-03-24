@@ -39,7 +39,7 @@ class PhpCsFixerCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $io = new SymfonyStyle($input, $output);
-        $currentWorkingDirectory = getcwd();
+        $currentWorkingDirectory = \getcwd();
 
         $io->note("Current working directory: ${currentWorkingDirectory}");
 
@@ -61,7 +61,7 @@ class PhpCsFixerCommand extends Command
         $branch = new GitBranch($currentWorkingDirectory);
 
         try {
-            $config = Yaml::parse(file_get_contents($configPath));
+            $config = Yaml::parse(\file_get_contents($configPath));
         } catch (ParseException $exception) {
             $io->error('Unable to parse the YAML string: %s', $exception->getMessage());
 
@@ -84,7 +84,7 @@ class PhpCsFixerCommand extends Command
                 return $file->getRelativePath();
             })
             ->reject(function (File $file) {
-                return !file_exists($file->getRelativePath());
+                return !\file_exists($file->getRelativePath());
             })
             ->map(function (File $file) {
                 return $file->getRelativePath();

@@ -59,7 +59,7 @@ class Issue implements IssueInterface
      */
     public function __toString()
     {
-        return sprintf(
+        return \sprintf(
             "%s %s: %s in %s",
             $this->getReviewName(),
             $this->getLevelName(),
@@ -89,9 +89,9 @@ class Issue implements IssueInterface
      */
     public function getReviewName()
     {
-        $classPath = explode('\\', get_class($this->review));
+        $classPath = \explode('\\', \get_class($this->review));
 
-        return end($classPath);
+        return \end($classPath);
     }
 
     /**
