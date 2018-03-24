@@ -63,7 +63,7 @@ class PhpCsFixerCommand extends Command
         try {
             $config = Yaml::parse(\file_get_contents($configPath));
         } catch (ParseException $exception) {
-            $io->error('Unable to parse the YAML string: %s', $exception->getMessage());
+            $io->error("Unable to parse the YAML string: {$exception->getMessage()}");
 
             exit(1);
         }
