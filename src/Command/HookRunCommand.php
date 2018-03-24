@@ -35,7 +35,7 @@ class HookRunCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): void
     {
         $hookArg = $input->getArgument(self::ARGUMENT_HOOK);
-        $path = $this->getTargetPath($hookArg);
+        $path = $this->getTargetPath($hookArg, $output);
 
         if (\file_exists($path)) {
             $cmd = 'php ' . $path;
@@ -52,7 +52,7 @@ class HookRunCommand extends Command
      * @param $hookArgument string
      * @return string
      */
-    protected function getTargetPath($hookArgument)
+    protected function getTargetPath($hookArgument, OutputInterface $output)
     {
         if (\file_exists($hookArgument)) {
             $target = \realpath($hookArgument);
