@@ -43,59 +43,31 @@ class GitReview
         $this->setReporter($reporter);
     }
 
-    /**
-     * Gets the ReporterInterface instance.
-     *
-     * @return ReporterInterface
-     */
-    public function getReporter()
+    public function getReporter(): ReporterInterface
     {
         return $this->reporter;
     }
 
-    /**
-     * Sets the ReporterInterface instance.
-     *
-     * @param  ReporterInterface $reporter
-     * @return StaticReview
-     */
-    public function setReporter(ReporterInterface $reporter)
+    public function setReporter(ReporterInterface $reporter): self
     {
         $this->reporter = $reporter;
 
         return $this;
     }
 
-    /**
-     * Returns the list of reviews.
-     *
-     * @return ReviewCollection
-     */
-    public function getReviews()
+    public function getReviews(): ReviewCollection
     {
         return $this->reviews;
     }
 
-    /**
-     * Adds a Review to be run.
-     *
-     * @param  ReviewInterface $check
-     * @return StaticReview
-     */
-    public function addReview(ReviewInterface $review)
+    public function addReview(ReviewInterface $review): self
     {
         $this->reviews->append($review);
 
         return $this;
     }
 
-    /**
-     * Appends a ReviewCollection to the current list of reviews.
-     *
-     * @param  ReviewCollection $checks
-     * @return StaticReview
-     */
-    public function addReviews(ReviewCollection $reviews)
+    public function addReviews(ReviewCollection $reviews): self
     {
         foreach ($reviews as $review) {
             $this->reviews->append($review);
@@ -106,10 +78,8 @@ class GitReview
 
     /**
      * Runs through each review on each file, collecting any errors.
-     *
-     * @return StaticReview
      */
-    public function files(FileCollection $files)
+    public function files(FileCollection $files): self
     {
         foreach ($files as $key => $file) {
             $this->getReporter()->progress($key + 1, \count($files));
@@ -124,10 +94,8 @@ class GitReview
 
     /**
      * Runs through each review on the commit, collecting any errors.
-     *
-     * @return StaticReview
      */
-    public function message(CommitMessageInterface $message)
+    public function message(CommitMessageInterface $message): self
     {
         foreach ($this->getReviews()->forMessage($message) as $review) {
             $review->review($this->getReporter(), $message);
