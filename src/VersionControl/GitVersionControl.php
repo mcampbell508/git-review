@@ -21,7 +21,7 @@ use Symfony\Component\Process\Process;
 
 class GitVersionControl implements VersionControlInterface
 {
-    const CACHE_DIR = '/sjparkinson.static-review/cached/';
+    public const CACHE_DIR = '/sjparkinson.static-review/cached/';
 
     /**
      * Gets a list of the files currently staged under git.

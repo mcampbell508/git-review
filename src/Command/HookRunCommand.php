@@ -21,7 +21,7 @@ use Symfony\Component\Process\Process;
 
 class HookRunCommand extends Command
 {
-    const ARGUMENT_HOOK = 'hook';
+    public const ARGUMENT_HOOK = 'hook';
 
     protected function configure()
     {

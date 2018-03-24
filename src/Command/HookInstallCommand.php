@@ -21,8 +21,8 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class HookInstallCommand extends Command
 {
-    const ARG_SOURCE = 'source';
-    const ARG_TARGET = 'target';
+    public const ARG_SOURCE = 'source';
+    public const ARG_TARGET = 'target';
 
     protected function configure()
     {

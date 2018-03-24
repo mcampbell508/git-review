@@ -21,10 +21,10 @@ class Issue implements IssueInterface
     /**
      * Issue level flags.
      */
-    const LEVEL_INFO = 1;
-    const LEVEL_WARNING = 2;
-    const LEVEL_ERROR = 4;
-    const LEVEL_ALL = 7;
+    public const LEVEL_INFO = 1;
+    public const LEVEL_WARNING = 2;
+    public const LEVEL_ERROR = 4;
+    public const LEVEL_ALL = 7;
 
     private $level;
 

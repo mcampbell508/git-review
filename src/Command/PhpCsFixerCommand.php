@@ -17,7 +17,7 @@ use Tightenco\Collect\Support\Collection;
 
 class PhpCsFixerCommand extends Command
 {
-    const CONFIG_PATH = 'yml-config-path';
+    public const CONFIG_PATH = 'yml-config-path';
     private $useCache = false;
     private $verbose = false;
     private $allowRisky = false;
