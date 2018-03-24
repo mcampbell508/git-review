@@ -17,9 +17,9 @@ use GitReview\Review\ReviewableInterface;
 
 interface CommitMessageInterface extends ReviewableInterface
 {
-    public function getSubject();
+    public function getSubject():? string;
 
-    public function getBody();
+    public function getBody():? string;
 
     public function getHash();
 }

@@ -188,4 +188,14 @@ class File implements FileInterface
     {
         return $this->getRelativePath();
     }
+
+    public function getBody():? string
+    {
+        return null;
+    }
+
+    public function getSubject():? string
+    {
+        return null;
+    }
 }
