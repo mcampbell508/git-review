@@ -25,7 +25,7 @@ class ReviewCollection extends Collection
      *
      * @throws InvalidArgumentException
      */
-    public function validate(IssueInterface $object): bool
+    public function validate($object): bool
     {
         if ($object instanceof ReviewInterface) {
             return true;

@@ -56,7 +56,7 @@ class File implements FileInterface
         return $this->filePath;
     }
 
-    public function getCachedPath(): string
+    public function getCachedPath():? string
     {
         return $this->cachedPath;
     }

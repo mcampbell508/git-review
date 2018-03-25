@@ -13,6 +13,7 @@
 
 namespace GitReview\Tests\Unit\Collection;
 
+use GitReview\Issue\IssueInterface;
 use Mockery;
 use PHPUnit_Framework_TestCase as TestCase;
 
@@ -36,9 +37,15 @@ class CollectionTest extends TestCase
 
     public function testConstructorWithArgument(): void
     {
-        $items = [1, 2, 3];
+        $items = [
+            Mockery::mock(IssueInterface::class),
+            Mockery::mock(IssueInterface::class),
+            Mockery::mock(IssueInterface::class)
+        ];
 
-        $this->collection->shouldReceive('validate')->times(\count($items))->andReturn(true);
+        $this->collection->shouldReceive('validate')
+            ->times(\count($items))
+            ->andReturn(true);
 
         $this->collection->__construct($items);
 
@@ -62,22 +69,24 @@ class CollectionTest extends TestCase
     {
         $this->collection->shouldReceive('validate')->twice()->andReturn(true);
 
-        $this->collection->append($this->item);
+        $mock = Mockery::mock(IssueInterface::class);
+        $this->collection->append($mock);
 
         $this->assertCount(1, $this->collection);
-        $this->assertSame($this->item, $this->collection->current());
+        $this->assertSame($mock, $this->collection->current());
 
-        $this->collection->append($this->item);
+        $this->collection->append($mock);
 
         $this->assertCount(2, $this->collection);
-        $this->assertSame($this->item, $this->collection->next());
+        $this->assertSame($mock, $this->collection->next());
     }
 
     public function testAppendWithNotTrueOnValidate(): void
     {
         $this->collection->shouldReceive('validate')->once()->andReturn(false);
+        $mock = Mockery::mock(IssueInterface::class);
 
-        $this->collection->append($this->item);
+        $this->collection->append($mock);
 
         $this->assertCount(0, $this->collection);
     }
@@ -88,8 +97,9 @@ class CollectionTest extends TestCase
     public function testAppendWithExceptionOnValidate(): void
     {
         $this->collection->shouldReceive('validate')->once()->andThrow(new \InvalidArgumentException());
+        $mock = Mockery::mock(IssueInterface::class);
 
-        $this->collection->append($this->item);
+        $this->collection->append($mock);
 
         $this->assertCount(0, $this->collection);
     }
@@ -97,11 +107,12 @@ class CollectionTest extends TestCase
     public function testToString(): void
     {
         $this->collection->shouldReceive('validate')->twice()->andReturn(true);
+        $mock = Mockery::mock(IssueInterface::class);
 
-        $this->collection->append($this->item);
+        $this->collection->append($mock);
         $this->assertStringEndsWith('(1)', (string)$this->collection);
 
-        $this->collection->append($this->item);
+        $this->collection->append($mock);
         $this->assertStringEndsWith('(2)', (string)$this->collection);
     }
 }

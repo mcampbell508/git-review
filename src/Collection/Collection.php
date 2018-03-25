@@ -39,7 +39,7 @@ abstract class Collection implements Iterator, Countable
      *
      * @throws InvalidArgumentException
      */
-    abstract public function validate(IssueInterface $item): bool;
+    abstract public function validate($item): bool;
 
     abstract public function select(callable $filter): Collection;
 

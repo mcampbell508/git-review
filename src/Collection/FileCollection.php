@@ -14,7 +14,6 @@
 namespace GitReview\Collection;
 
 use GitReview\File\FileInterface;
-use GitReview\Issue\IssueInterface;
 
 class FileCollection extends Collection
 {
@@ -23,7 +22,7 @@ class FileCollection extends Collection
      *
      * @throws InvalidArgumentException
      */
-    public function validate(IssueInterface $object): bool
+    public function validate($object): bool
     {
         if ($object instanceof FileInterface) {
             return true;

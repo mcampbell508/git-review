@@ -22,7 +22,7 @@ class IssueCollection extends Collection
      *
      * @throws InvalidArgumentException
      */
-    public function validate(IssueInterface $object): bool
+    public function validate($object): bool
     {
         if ($object instanceof IssueInterface) {
             return true;
@@ -42,7 +42,7 @@ class IssueCollection extends Collection
         return new self($filtered);
     }
 
-    public function forLevel(int $option): IssueCollection
+    public function forLevel(int $option): Collection
     {
         // Only return issues matching the level.
         $filter = function ($issue) use ($option) {
