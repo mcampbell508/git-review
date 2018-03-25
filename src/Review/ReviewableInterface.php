@@ -19,7 +19,7 @@ interface ReviewableInterface
 
     public function getFullPath();
 
-    public function getBody():? string;
+    public function getBody(): ?string;
 
-    public function getSubject():? string;
+    public function getSubject(): ?string;
 }

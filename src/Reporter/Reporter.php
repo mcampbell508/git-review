@@ -32,7 +32,7 @@ class Reporter implements ReporterInterface
         echo \sprintf("Reviewing %d of %d.\r", $current, $total);
     }
 
-    public function report(int $level, string $message, ReviewInterface $review, ReviewableInterface $subject): Reporter
+    public function report(int $level, string $message, ReviewInterface $review, ReviewableInterface $subject): self
     {
         $issue = new Issue($level, $message, $review, $subject);
 
@@ -41,21 +41,21 @@ class Reporter implements ReporterInterface
         return $this;
     }
 
-    public function info(string $message, ReviewInterface $review, ReviewableInterface $subject): Reporter
+    public function info(string $message, ReviewInterface $review, ReviewableInterface $subject): self
     {
         $this->report(Issue::LEVEL_INFO, $message, $review, $subject);
 
         return $this;
     }
 
-    public function warning(string $message, ReviewInterface $review, ReviewableInterface $subject): Reporter
+    public function warning(string $message, ReviewInterface $review, ReviewableInterface $subject): self
     {
         $this->report(Issue::LEVEL_WARNING, $message, $review, $subject);
 
         return $this;
     }
 
-    public function error(string $message, ReviewInterface $review, ReviewableInterface $subject): Reporter
+    public function error(string $message, ReviewInterface $review, ReviewableInterface $subject): self
     {
         $this->report(Issue::LEVEL_ERROR, $message, $review, $subject);
 

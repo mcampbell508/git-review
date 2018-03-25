@@ -15,7 +15,6 @@ namespace GitReview\Collection;
 
 use GitReview\Commit\CommitMessageInterface;
 use GitReview\File\FileInterface;
-use GitReview\Issue\IssueInterface;
 use GitReview\Review\ReviewInterface;
 
 class ReviewCollection extends Collection

@@ -56,12 +56,12 @@ class File implements FileInterface
         return $this->filePath;
     }
 
-    public function getCachedPath():? string
+    public function getCachedPath(): ?string
     {
         return $this->cachedPath;
     }
 
-    public function setCachedPath(string $path): File
+    public function setCachedPath(string $path): self
     {
         $this->cachedPath = $path;
 
@@ -124,12 +124,12 @@ class File implements FileInterface
         return $this->getRelativePath();
     }
 
-    public function getBody():? string
+    public function getBody(): ?string
     {
         return null;
     }
 
-    public function getSubject():? string
+    public function getSubject(): ?string
     {
         return null;
     }

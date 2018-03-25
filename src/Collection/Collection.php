@@ -14,7 +14,6 @@
 namespace GitReview\Collection;
 
 use Countable;
-use GitReview\Issue\IssueInterface;
 use Iterator;
 
 abstract class Collection implements Iterator, Countable
@@ -41,9 +40,9 @@ abstract class Collection implements Iterator, Countable
      */
     abstract public function validate($item): bool;
 
-    abstract public function select(callable $filter): Collection;
+    abstract public function select(callable $filter): self;
 
-    public function append($item): Collection
+    public function append($item): self
     {
         if ($this->validate($item)) {
             $this->collection[] = $item;
@@ -75,7 +74,7 @@ abstract class Collection implements Iterator, Countable
         return \next($this->collection);
     }
 
-    public function rewind(): Collection
+    public function rewind(): self
     {
         \reset($this->collection);
 

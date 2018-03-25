@@ -40,7 +40,7 @@ class CollectionTest extends TestCase
         $items = [
             Mockery::mock(IssueInterface::class),
             Mockery::mock(IssueInterface::class),
-            Mockery::mock(IssueInterface::class)
+            Mockery::mock(IssueInterface::class),
         ];
 
         $this->collection->shouldReceive('validate')
