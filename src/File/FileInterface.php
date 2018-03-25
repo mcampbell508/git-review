@@ -21,7 +21,7 @@ interface FileInterface extends ReviewableInterface
 
     public function getRelativePath();
 
-    public function getFullPath();
+    public function getFullPath(): ?string;
 
     public function getCachedPath(): ?string;
 

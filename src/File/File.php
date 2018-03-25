@@ -47,7 +47,7 @@ class File implements FileInterface
         return \str_replace($this->projectPath . DIRECTORY_SEPARATOR, '', $this->filePath);
     }
 
-    public function getFullPath(): string
+    public function getFullPath(): ?string
     {
         if (\file_exists($this->getCachedPath())) {
             return $this->getCachedPath();
