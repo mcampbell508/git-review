@@ -22,11 +22,9 @@ class ReviewCollection extends Collection
     /**
      * Validates that $object is an instance of ReviewInterface.
      *
-     * @param  ReviewInterface          $object
-     * @return bool
      * @throws InvalidArgumentException
      */
-    public function validate($object)
+    public function validate($object): bool
     {
         if ($object instanceof ReviewInterface) {
             return true;
@@ -35,12 +33,7 @@ class ReviewCollection extends Collection
         throw new \InvalidArgumentException($object . ' was not an instance of ReviewInterface.');
     }
 
-    /**
-     * Filters the collection with the given closure, returning a new collection.
-     *
-     * @return ReviewCollection
-     */
-    public function select(callable $filter)
+    public function select(callable $filter): Collection
     {
         if (!$this->collection) {
             return new self();
@@ -51,14 +44,7 @@ class ReviewCollection extends Collection
         return new self($filtered);
     }
 
-    /**
-     * Returns a filtered ReviewCollection that should be run against the given
-     * file.
-     *
-     * @param  FileInterface $file
-     * @return ReviewCollection
-     */
-    public function forFile(FileInterface $file)
+    public function forFile(FileInterface $file): Collection
     {
         $filter = function ($review) use ($file) {
             if ($review->canReview($file)) {
@@ -71,14 +57,7 @@ class ReviewCollection extends Collection
         return $this->select($filter);
     }
 
-    /**
-     * Returns a filtered ReviewCollection that should be run against the given
-     * message.
-     *
-     * @param  CommitMessage $message
-     * @return ReviewCollection
-     */
-    public function forMessage(CommitMessageInterface $message)
+    public function forMessage(CommitMessageInterface $message): Collection
     {
         $filter = function ($review) use ($message) {
             if ($review->canReview($message)) {

@@ -33,12 +33,7 @@ class FunctionalTestCase extends TestCase
         $this->runProcess('rm -rf ' . $this->directory);
     }
 
-    /**
-     * @param $command
-     *
-     * @return Process
-     */
-    protected function runProcess($command): Process
+    protected function runProcess(string $command): Process
     {
         $process = new Process($command, $this->directory);
         $process->run();

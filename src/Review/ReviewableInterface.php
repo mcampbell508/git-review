@@ -16,4 +16,10 @@ namespace GitReview\Review;
 interface ReviewableInterface
 {
     public function getName();
+
+    public function getFullPath();
+
+    public function getBody(): ?string;
+
+    public function getSubject(): ?string;
 }

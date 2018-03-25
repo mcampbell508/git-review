@@ -20,11 +20,9 @@ class FileCollection extends Collection
     /**
      * Validates that $object is an instance of FileInterface.
      *
-     * @param  FileInterface            $object
-     * @return bool
      * @throws InvalidArgumentException
      */
-    public function validate($object)
+    public function validate($object): bool
     {
         if ($object instanceof FileInterface) {
             return true;
@@ -35,12 +33,7 @@ class FileCollection extends Collection
         throw new \InvalidArgumentException($exceptionMessage);
     }
 
-    /**
-     * Filters the collection with the given closure, returning a new collection.
-     *
-     * @return FileCollection
-     */
-    public function select(callable $filter)
+    public function select(callable $filter): Collection
     {
         if (!$this->collection) {
             return new self();

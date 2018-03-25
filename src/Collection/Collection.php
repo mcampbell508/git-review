@@ -20,9 +20,6 @@ abstract class Collection implements Iterator, Countable
 {
     protected $collection = [];
 
-    /**
-     * Initializes a new instance of the Collection class.
-     */
     public function __construct(array $items = [])
     {
         foreach ($items as $item) {
@@ -30,9 +27,6 @@ abstract class Collection implements Iterator, Countable
         }
     }
 
-    /**
-     * @return string
-     */
     public function __toString()
     {
         return \sprintf('%s(%s)', \get_class($this), $this->count());
@@ -42,21 +36,13 @@ abstract class Collection implements Iterator, Countable
      * Method should throw an InvalidArgumentException if $item is not the
      * expected type.
      *
-     * @return bool
      * @throws InvalidArgumentException
      */
-    abstract public function validate($item);
+    abstract public function validate($item): bool;
 
-    /**
-     * @param  callable   $filter
-     * @return Collection
-     */
-    abstract public function select(callable $filter);
+    abstract public function select(callable $filter): self;
 
-    /**
-     * @return Collection
-     */
-    public function append($item)
+    public function append($item): self
     {
         if ($this->validate($item)) {
             $this->collection[] = $item;
@@ -65,10 +51,7 @@ abstract class Collection implements Iterator, Countable
         return $this;
     }
 
-    /**
-     * @return int
-     */
-    public function count()
+    public function count(): int
     {
         return \count($this->collection);
     }
@@ -81,36 +64,24 @@ abstract class Collection implements Iterator, Countable
         return \current($this->collection);
     }
 
-    /**
-     * @return string
-     */
-    public function key()
+    public function key(): string
     {
         return \key($this->collection);
     }
 
-    /**
-     * @return mixed
-     */
     public function next()
     {
         return \next($this->collection);
     }
 
-    /**
-     * @return Collection
-     */
-    public function rewind()
+    public function rewind(): self
     {
         \reset($this->collection);
 
         return $this;
     }
 
-    /**
-     * @return bool
-     */
-    public function valid()
+    public function valid(): bool
     {
         return \key($this->collection) !== null;
     }

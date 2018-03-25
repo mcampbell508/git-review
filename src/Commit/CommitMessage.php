@@ -88,4 +88,9 @@ class CommitMessage implements CommitMessageInterface
     {
         return $this->getHash() ?: 'current commit';
     }
+
+    public function getFullPath(): ?string
+    {
+        return null;
+    }
 }

@@ -1,4 +1,6 @@
 parameters:
     ignoreErrors:
         - '#Mockery\\MockInterface::shouldReceive\(\)#'
+        - '#Call to an undefined method Mockery\\Mock::[a-zA-Z0-9_]+\(\)#'
+        - '#Call to an undefined method Mockery\\MockInterface::[a-zA-Z0-9_]+\(\)#'
     reportUnmatchedIgnoredErrors: false
