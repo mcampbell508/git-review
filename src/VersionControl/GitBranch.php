@@ -37,7 +37,7 @@ class GitBranch implements GitBranchInterface
             );
 
         if (!$committedFilesProcess->isSuccessful()) {
-            return'dssd';
+            return new Collection();
         }
 
         $fileCollection->addFiles(\array_filter(\explode("\n", $committedFilesProcess->getOutput())));

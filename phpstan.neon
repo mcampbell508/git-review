@@ -3,4 +3,6 @@ parameters:
         - '#Mockery\\MockInterface::shouldReceive\(\)#'
         - '#Call to an undefined method Mockery\\Mock::[a-zA-Z0-9_]+\(\)#'
         - '#Call to an undefined method Mockery\\MockInterface::[a-zA-Z0-9_]+\(\)#'
+        - '#, Mockery\\MockInterface given.#'
+        - '#Parameter \#1 \$finder of method PhpCsFixer\\ConfigInterface::setFinder\(\) expects iterable\<string\>, PhpCsFixer\\Finder given.#'
     reportUnmatchedIgnoredErrors: false

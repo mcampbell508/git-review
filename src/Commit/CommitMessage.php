@@ -24,19 +24,9 @@ class CommitMessage implements CommitMessageInterface
      * @var string Commit message body.
      */
     protected $body = '';
-
-    /**
-     * @var bool Commit identifier.
-     */
     protected $hash;
 
-    /**
-     * Initializes a new instance of the CommitMessage class.
-     *
-     * @param string $message
-     * @param string $hash
-     */
-    public function __construct(string $message, $hash = null)
+    public function __construct(string $message, ?string $hash = null)
     {
         $message = (new SanitizeMessage($message))->getSanitizedMessage();
 
