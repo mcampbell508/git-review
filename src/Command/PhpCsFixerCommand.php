@@ -77,7 +77,9 @@ class PhpCsFixerCommand extends Command
 
         $filesFinder = new FilesFinder($changedFiles, $phpCsFixerConfig["paths_to_scan"]);
 
-        $output->writeln("<options=bold,underscore>Found files...</>\n");
+        if ($branch->getName() !== 'master') {
+            $output->writeln("<options=bold,underscore>Found files...</>\n");
+        }
 
         $filePaths = $filesFinder->getFoundFiles()
             ->sortBy(function (File $file) {
@@ -99,6 +101,11 @@ class PhpCsFixerCommand extends Command
 
                 return $paths .= " {$file}";
             }, '');
+
+        if ($branch->getName() !== 'master' && $filePaths === "") {
+            $io->success("No files to scan matching provided filters!");
+            exit(0);
+        }
 
         $command = $this->getCommand($phpCsFixerConfig, $filePaths, $branch->getName());
 
