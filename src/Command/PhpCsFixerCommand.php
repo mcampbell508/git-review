@@ -79,8 +79,9 @@ class PhpCsFixerCommand extends Command
         $filesFinder = new FilesFinder($changedFiles, $phpCsFixerConfig["paths_to_scan"]);
 
         $ciDetector = new CiDetector();
+        $branchName = $ciDetector->isCiDetected() ? $ciDetector->detect()->getGitBranch() : $branch->getName();
 
-        if ($ciDetector->isCiDetected() && $ciDetector->detect()->getGitBranch() !== 'master') {
+        if ($branchName !== 'master') {
             $output->writeln("<options=bold,underscore>Found files...</>\n");
         }
 
@@ -105,7 +106,7 @@ class PhpCsFixerCommand extends Command
                 return $paths .= " {$file}";
             }, '');
 
-        if ($ciDetector->isCiDetected() && $ciDetector->detect()->getGitBranch() !== 'master' && $filePaths === "") {
+        if ($branchName !== 'master' && $filePaths === "") {
             $io->success("No files to scan matching provided filters!");
             exit(0);
         }
