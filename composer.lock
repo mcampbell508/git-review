@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "05b853a953bf0079e70e83c20838c11b",
+    "content-hash": "871743bad91f4d5c69f21039db06f179",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -727,6 +727,62 @@
             ],
             "description": "Composer plugin that provides efficient querying for installed package versions (no runtime IO)",
             "time": "2018-02-05T13:05:30+00:00"
+        },
+        {
+            "name": "ondram/ci-detector",
+            "version": "3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/OndraM/ci-detector.git",
+                "reference": "9142514bc11d4dc19811a582cba5ed2c8e231cfb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/OndraM/ci-detector/zipball/9142514bc11d4dc19811a582cba5ed2c8e231cfb",
+                "reference": "9142514bc11d4dc19811a582cba5ed2c8e231cfb",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.7",
+                "phpstan/phpstan-shim": "^0.9.1",
+                "phpunit/phpunit": "^6.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "OndraM\\CiDetector\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ondřej Machulda",
+                    "email": "ondrej.machulda@gmail.com"
+                }
+            ],
+            "description": "Detect current continuous integration server and provide unified access to properties of current build",
+            "keywords": [
+                "CircleCI",
+                "Codeship",
+                "adapter",
+                "appveyor",
+                "bamboo",
+                "continuous integration",
+                "continuousphp",
+                "drone",
+                "gitlab",
+                "interface",
+                "jenkins",
+                "teamcity",
+                "travis"
+            ],
+            "time": "2018-02-19T23:41:27+00:00"
         },
         {
             "name": "phpstan/phpdoc-parser",

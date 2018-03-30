@@ -5,6 +5,7 @@ namespace GitReview\Command;
 use GitReview\File\File;
 use GitReview\File\FilesFinder;
 use GitReview\VersionControl\GitBranch;
+use OndraM\CiDetector;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -77,7 +78,9 @@ class PhpCsFixerCommand extends Command
 
         $filesFinder = new FilesFinder($changedFiles, $phpCsFixerConfig["paths_to_scan"]);
 
-        if ($branch->getName() !== 'master') {
+        $ciDetector = CiDetector::detect();
+
+        if ($ciDetector && $ciDetector->getGitBranch() !== 'master') {
             $output->writeln("<options=bold,underscore>Found files...</>\n");
         }
 
@@ -102,7 +105,7 @@ class PhpCsFixerCommand extends Command
                 return $paths .= " {$file}";
             }, '');
 
-        if ($branch->getName() !== 'master' && $filePaths === "") {
+        if ($ciDetector && $ciDetector->getGitBranch() !== 'master' && $filePaths === "") {
             $io->success("No files to scan matching provided filters!");
             exit(0);
         }
