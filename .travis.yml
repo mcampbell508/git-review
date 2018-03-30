@@ -19,7 +19,7 @@ before_script:
   - composer install --prefer-source --no-interaction --dev
 
 script:
-  - echo -e "Branch name: \`$(git rev-parse --abbrev-ref HEAD)\`"
+  - echo "Branch name: $(git rev-parse --abbrev-ref HEAD)"
   - vendor/bin/phpcs
   - php vendor/bin/phpstan analyse app bin hooks src tests .php_cs.dist -c phpstan.neon -l 7
   - php vendor/bin/parallel-lint app bin hooks src tests .php_cs.dist
