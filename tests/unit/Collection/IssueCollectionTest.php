@@ -27,7 +27,10 @@ class IssueCollectionTest extends TestCase
         $this->collection = new IssueCollection();
     }
 
-    public function testValidateWithValidObject(): void
+    /**
+     * @test
+     */
+    public function validate_with_valid_object(): void
     {
         $object = Mockery::mock('GitReview\Issue\IssueInterface');
 
@@ -36,15 +39,20 @@ class IssueCollectionTest extends TestCase
 
     /**
      * @expectedException InvalidArgumentException
+     *
+     * @test
      */
-    public function testValidateWithInvalidObject(): void
+    public function validate_with_invalid_object(): void
     {
         $object = 'Test';
 
         $this->collection->validate($object);
     }
 
-    public function testSelectWithTrueCallback(): void
+    /**
+     * @test
+     */
+    public function select_with_true_callback(): void
     {
         $issue = Mockery::mock('GitReview\Issue\IssueInterface');
 
@@ -59,7 +67,10 @@ class IssueCollectionTest extends TestCase
         $this->assertCount(1, $issues);
     }
 
-    public function testSelectWithFalseCallback(): void
+    /**
+     * @test
+     */
+    public function select_with_false_callback(): void
     {
         $issue = Mockery::mock('GitReview\Issue\IssueInterface');
 
@@ -74,7 +85,10 @@ class IssueCollectionTest extends TestCase
         $this->assertCount(0, $issues);
     }
 
-    public function testSelectWithEmptyCollection(): void
+    /**
+     * @test
+     */
+    public function select_with_empty_collection(): void
     {
         $filter = function () {
             return true;
@@ -83,7 +97,10 @@ class IssueCollectionTest extends TestCase
         $this->assertEquals(new IssueCollection(), $this->collection->select($filter));
     }
 
-    public function testForLevelWithMatchingLevel(): void
+    /**
+     * @test
+     */
+    public function for_level_with_matching_level(): void
     {
         $issue = Mockery::mock('GitReview\Issue\IssueInterface');
         $issue->shouldReceive('matches')->once()->andReturn(true);
@@ -96,7 +113,10 @@ class IssueCollectionTest extends TestCase
         $this->assertSame($issue, $issues->current());
     }
 
-    public function testForLevelWithNonMatchingLevel(): void
+    /**
+     * @test
+     */
+    public function for_level_with_non_matching_level(): void
     {
         $issue = Mockery::mock('GitReview\Issue\IssueInterface');
         $issue->shouldReceive('matches')->once()->andReturn(false);

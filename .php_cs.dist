@@ -74,6 +74,10 @@ $rules = [
     'ordered_imports' => true,
     'php_unit_construct' => true,
     'php_unit_dedicate_assert' => true,
+    'php_unit_test_annotation' => [
+        'case' => 'snake',
+        'style' => 'annotation',
+    ],
     'phpdoc_no_empty_return' => true,
     'phpdoc_no_package' => true,
     'phpdoc_scalar' => true,

@@ -40,12 +40,18 @@ class GitReviewTest extends TestCase
         Mockery::close();
     }
 
-    public function testGetReporter(): void
+    /**
+     * @test
+     */
+    public function get_reporter(): void
     {
         $this->assertSame($this->reporter, $this->GitReview->getReporter());
     }
 
-    public function testSetReporter(): void
+    /**
+     * @test
+     */
+    public function set_reporter(): void
     {
         $newReporter = Mockery::mock('GitReview\Reporter\ReporterInterface');
 
@@ -54,7 +60,10 @@ class GitReviewTest extends TestCase
         $this->assertSame($newReporter, $this->GitReview->getReporter());
     }
 
-    public function testGetReviews(): void
+    /**
+     * @test
+     */
+    public function get_reviews(): void
     {
         $this->assertTrue($this->GitReview->getReviews() instanceof ReviewCollection);
         $this->assertCount(0, $this->GitReview->getReviews());
@@ -63,7 +72,10 @@ class GitReviewTest extends TestCase
         $this->assertCount(1, $this->GitReview->getReviews());
     }
 
-    public function testAddReview(): void
+    /**
+     * @test
+     */
+    public function add_review(): void
     {
         $this->assertCount(0, $this->GitReview->getReviews());
 
@@ -71,7 +83,10 @@ class GitReviewTest extends TestCase
         $this->assertCount(1, $this->GitReview->getReviews());
     }
 
-    public function testAddReviews(): void
+    /**
+     * @test
+     */
+    public function add_reviews(): void
     {
         $this->assertCount(0, $this->GitReview->getReviews());
 
@@ -81,7 +96,10 @@ class GitReviewTest extends TestCase
         $this->assertCount(2, $this->GitReview->getReviews());
     }
 
-    public function testReview(): void
+    /**
+     * @test
+     */
+    public function review(): void
     {
         $file = Mockery::mock('GitReview\File\FileInterface');
 

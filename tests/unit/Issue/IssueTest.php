@@ -51,17 +51,26 @@ class IssueTest extends TestCase
         Mockery::close();
     }
 
-    public function testGetLevel(): void
+    /**
+     * @test
+     */
+    public function get_level(): void
     {
         $this->assertSame($this->issueLevel, $this->issue->getLevel());
     }
 
-    public function testGetMessage(): void
+    /**
+     * @test
+     */
+    public function get_message(): void
     {
         $this->assertSame($this->issueMessage, $this->issue->getMessage());
     }
 
-    public function testGetReviewName(): void
+    /**
+     * @test
+     */
+    public function get_review_name(): void
     {
         // Mocked classes doesn't have a namespace so just expect the full class name.
         $expected = \get_class($this->issueReview);
@@ -69,7 +78,10 @@ class IssueTest extends TestCase
         $this->assertSame($expected, $this->issue->getReviewName());
     }
 
-    public function testGetReviewNameWithNamespace(): void
+    /**
+     * @test
+     */
+    public function get_review_name_with_namespace(): void
     {
         $review = new \GitReview\Review\General\NoCommitTagReview();
 
@@ -83,12 +95,18 @@ class IssueTest extends TestCase
         $this->assertSame('NoCommitTagReview', $issue->getReviewName());
     }
 
-    public function testGetSubject(): void
+    /**
+     * @test
+     */
+    public function get_subject(): void
     {
         $this->assertSame($this->issueFile, $this->issue->getSubject());
     }
 
-    public function testGetLevelName(): void
+    /**
+     * @test
+     */
+    public function get_level_name(): void
     {
         foreach ($this->levels as $level) {
             $issue = new Issue(
@@ -104,8 +122,10 @@ class IssueTest extends TestCase
 
     /**
      * @expectedException UnexpectedValueException
+     *
+     * @test
      */
-    public function testGetLevelNameWithInvalidInput(): void
+    public function get_level_name_with_invalid_input(): void
     {
         $issue = new Issue(
             Issue::LEVEL_ALL,
@@ -117,7 +137,10 @@ class IssueTest extends TestCase
         $this->assertNull($issue->getLevelName());
     }
 
-    public function testGetColour(): void
+    /**
+     * @test
+     */
+    public function get_colour(): void
     {
         foreach ($this->levels as $level) {
             $issue = new Issue(
@@ -133,8 +156,10 @@ class IssueTest extends TestCase
 
     /**
      * @expectedException UnexpectedValueException
+     *
+     * @test
      */
-    public function testGetColourWithInvalidInput(): void
+    public function get_colour_with_invalid_input(): void
     {
         $issue = Mockery::mock(
             'GitReview\Issue\Issue[getLevel]',
@@ -151,7 +176,10 @@ class IssueTest extends TestCase
         $this->assertNull($issue->getColour());
     }
 
-    public function testMatches(): void
+    /**
+     * @test
+     */
+    public function it_can_identify_matches(): void
     {
         $shouldMatch = [
             Issue::LEVEL_INFO,
@@ -176,7 +204,10 @@ class IssueTest extends TestCase
         }
     }
 
-    public function testToString(): void
+    /**
+     * @test
+     */
+    public function to_string(): void
     {
         $file = $this->issue->getSubject();
 

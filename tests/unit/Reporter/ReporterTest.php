@@ -34,14 +34,20 @@ class ReporterTest extends TestCase
         $this->reporter = new Reporter();
     }
 
-    public function testReport(): void
+    /**
+     * @test
+     */
+    public function report(): void
     {
         $this->reporter->report(Issue::LEVEL_INFO, 'Test', $this->review, $this->file);
 
         $this->assertCount(1, $this->reporter->getIssues());
     }
 
-    public function testInfo(): void
+    /**
+     * @test
+     */
+    public function info(): void
     {
         $this->reporter->info('Test', $this->review, $this->file);
 
@@ -52,7 +58,10 @@ class ReporterTest extends TestCase
         $this->assertSame(Issue::LEVEL_INFO, $issues->current()->getLevel());
     }
 
-    public function testWarning(): void
+    /**
+     * @test
+     */
+    public function warning(): void
     {
         $this->reporter->warning('Test', $this->review, $this->file);
 
@@ -63,7 +72,10 @@ class ReporterTest extends TestCase
         $this->assertSame(Issue::LEVEL_WARNING, $issues->current()->getLevel());
     }
 
-    public function testError(): void
+    /**
+     * @test
+     */
+    public function error(): void
     {
         $this->reporter->error('Test', $this->review, $this->file);
 
@@ -74,19 +86,28 @@ class ReporterTest extends TestCase
         $this->assertSame(Issue::LEVEL_ERROR, $issues->current()->getLevel());
     }
 
-    public function testHasIssues(): void
+    /**
+     * @test
+     */
+    public function has_issues(): void
     {
         $this->reporter->info('Test', $this->review, $this->file);
 
         $this->assertTrue($this->reporter->hasIssues());
     }
 
-    public function testHasIssuesWithNoIssues(): void
+    /**
+     * @test
+     */
+    public function has_issues_with_no_issues(): void
     {
         $this->assertFalse($this->reporter->hasIssues());
     }
 
-    public function testGetIssues(): void
+    /**
+     * @test
+     */
+    public function get_issues(): void
     {
         $this->reporter->info('Test', $this->review, $this->file);
 

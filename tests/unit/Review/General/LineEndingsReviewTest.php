@@ -33,14 +33,20 @@ class LineEndingsReviewTest extends TestCase
         Mockery::close();
     }
 
-    public function testCanReview(): void
+    /**
+     * @test
+     */
+    public function can_review(): void
     {
         $this->file->shouldReceive('getMimeType')->once()->andReturn('text');
 
         $this->assertTrue($this->review->canReview($this->file));
     }
 
-    public function testReview(): void
+    /**
+     * @test
+     */
+    public function review(): void
     {
         $this->file->shouldReceive('getFullPath')->once()->andReturn(__FILE__);
 

@@ -33,21 +33,30 @@ class PhpLeadingLineReviewTest extends TestCase
         Mockery::close();
     }
 
-    public function testCanReview(): void
+    /**
+     * @test
+     */
+    public function can_review(): void
     {
         $this->file->shouldReceive('getExtension')->once()->andReturn('php');
 
         $this->assertTrue($this->review->canReview($this->file));
     }
 
-    public function testCanReviewWithInvalidExtension(): void
+    /**
+     * @test
+     */
+    public function can_review_with_invalid_extension(): void
     {
         $this->file->shouldReceive('getExtension')->once()->andReturn('txt');
 
         $this->assertFalse($this->review->canReview($this->file));
     }
 
-    public function testReviewWithBadBeginning(): void
+    /**
+     * @test
+     */
+    public function review_with_bad_beginning(): void
     {
         $this->file->shouldReceive('getFullPath')->once()->andReturn(__FILE__);
 
@@ -63,7 +72,10 @@ class PhpLeadingLineReviewTest extends TestCase
         $this->assertNull($this->review->review($reporter, $this->file));
     }
 
-    public function testReviewWithDefaultBeginning(): void
+    /**
+     * @test
+     */
+    public function review_with_default_beginning(): void
     {
         $this->file->shouldReceive('getFullPath')->once()->andReturn(__FILE__);
 
@@ -78,7 +90,10 @@ class PhpLeadingLineReviewTest extends TestCase
         $this->assertNull($this->review->review($reporter, $this->file));
     }
 
-    public function testReviewWithScriptBeginning(): void
+    /**
+     * @test
+     */
+    public function review_with_script_beginning(): void
     {
         $this->file->shouldReceive('getFullPath')->once()->andReturn(__FILE__);
 

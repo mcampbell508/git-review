@@ -30,7 +30,10 @@ class ComposerLintReviewTest extends TestCase
         Mockery::close();
     }
 
-    public function testCanReview(): void
+    /**
+     * @test
+     */
+    public function can_review(): void
     {
         $composerFile = Mockery::mock('GitReview\File\FileInterface');
         $composerFile->shouldReceive('getFileName')->once()->andReturn('composer.json');
@@ -43,7 +46,10 @@ class ComposerLintReviewTest extends TestCase
         $this->assertFalse($this->review->canReview($normalFile));
     }
 
-    public function testReview(): void
+    /**
+     * @test
+     */
+    public function review(): void
     {
         $composerFile = Mockery::mock('GitReview\File\FileInterface');
         $composerFile->shouldReceive('getFullPath')->once()->andReturn('/some/path/composer.json');

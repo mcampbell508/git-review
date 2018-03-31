@@ -34,7 +34,10 @@ EOT;
         $this->assertFalse($this->gitBranch->isDirty());
     }
 
-    public function testItCanRetrieveBranchName(): void
+    /**
+     * @test
+     */
+    public function it_can_retrieve_branch_name(): void
     {
         $branchName = $this->gitBranch->getName();
 
@@ -47,7 +50,10 @@ EOT;
         $this->assertEquals($this->topicBranchName, $branchName);
     }
 
-    public function testItCanSeeIfBranchIsDirty(): void
+    /**
+     * @test
+     */
+    public function it_can_see_if_branch_is_dirty(): void
     {
         $this->runProcess("touch modified-file.txt");
 
@@ -58,7 +64,10 @@ EOT;
         $this->assertFalse($this->gitBranch->isDirty());
     }
 
-    public function testItCanGetParentHashAtPointerToMaster(): void
+    /**
+     * @test
+     */
+    public function it_can_get_parent_hash_at_pointer_to_master(): void
     {
         $masterCommitId = \trim($this->runProcess("git log --grep='master commit a' --format='%H'")->getOutput());
 
@@ -67,7 +76,10 @@ EOT;
         $this->assertEquals($masterCommitId, $this->gitBranch->getParentHash());
     }
 
-    public function testItCanGetAllChangedFilesOnBranchIncludingUncommitted(): void
+    /**
+     * @test
+     */
+    public function it_can_get_all_changed_files_on_branch_including_uncommitted(): void
     {
         $this->checkoutBranch($this->topicBranchName);
 
