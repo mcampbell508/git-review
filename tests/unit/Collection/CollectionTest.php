@@ -35,7 +35,10 @@ class CollectionTest extends TestCase
         Mockery::close();
     }
 
-    public function testConstructorWithArgument(): void
+    /**
+     * @test
+     */
+    public function constructor_with_argument(): void
     {
         $items = [
             Mockery::mock(IssueInterface::class),
@@ -56,7 +59,10 @@ class CollectionTest extends TestCase
         $this->assertCount(3, $this->collection);
     }
 
-    public function testConstructorWithoutArgument(): void
+    /**
+     * @test
+     */
+    public function constructor_without_argument(): void
     {
         $this->collection->shouldReceive('validate')->never()->andReturn(true);
 
@@ -65,7 +71,10 @@ class CollectionTest extends TestCase
         $this->assertCount(0, $this->collection);
     }
 
-    public function testAppendWithValidItem(): void
+    /**
+     * @test
+     */
+    public function append_with_valid_item(): void
     {
         $this->collection->shouldReceive('validate')->twice()->andReturn(true);
 
@@ -81,7 +90,10 @@ class CollectionTest extends TestCase
         $this->assertSame($mock, $this->collection->next());
     }
 
-    public function testAppendWithNotTrueOnValidate(): void
+    /**
+     * @test
+     */
+    public function append_with_not_true_on_validate(): void
     {
         $this->collection->shouldReceive('validate')->once()->andReturn(false);
         $mock = Mockery::mock(IssueInterface::class);
@@ -93,8 +105,10 @@ class CollectionTest extends TestCase
 
     /**
      * @expectedException InvalidArgumentException
+     *
+     * @test
      */
-    public function testAppendWithExceptionOnValidate(): void
+    public function append_with_exception_on_validate(): void
     {
         $this->collection->shouldReceive('validate')->once()->andThrow(new \InvalidArgumentException());
         $mock = Mockery::mock(IssueInterface::class);
@@ -104,7 +118,10 @@ class CollectionTest extends TestCase
         $this->assertCount(0, $this->collection);
     }
 
-    public function testToString(): void
+    /**
+     * @test
+     */
+    public function to_string(): void
     {
         $this->collection->shouldReceive('validate')->twice()->andReturn(true);
         $mock = Mockery::mock(IssueInterface::class);

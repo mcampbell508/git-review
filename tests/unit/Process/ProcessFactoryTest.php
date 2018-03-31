@@ -8,7 +8,10 @@ use PHPUnit_Framework_TestCase as TestCase;
 
 class ProcessFactoryTest extends TestCase
 {
-    public function testItCanCreateProcessThroughFactory(): void
+    /**
+     * @test
+     */
+    public function it_can_create_process_through_factory(): void
     {
         $this->assertInstanceOf(ProcessInterface::class, (new ProcessFactory())->create('command'));
     }

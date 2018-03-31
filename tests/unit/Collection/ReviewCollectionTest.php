@@ -26,7 +26,10 @@ class ReviewCollectionTest extends TestCase
         $this->collection = new ReviewCollection();
     }
 
-    public function testValidateWithValidObject(): void
+    /**
+     * @test
+     */
+    public function validate_with_valid_object(): void
     {
         $object = Mockery::mock('GitReview\Review\ReviewInterface');
 
@@ -35,15 +38,20 @@ class ReviewCollectionTest extends TestCase
 
     /**
      * @expectedException InvalidArgumentException
+     *
+     * @test
      */
-    public function testValidateWithInvalidObject(): void
+    public function validate_with_invalid_object(): void
     {
         $object = 'Test';
 
         $this->collection->validate($object);
     }
 
-    public function testSelectWithTrueCallback(): void
+    /**
+     * @test
+     */
+    public function select_with_true_callback(): void
     {
         $review = Mockery::mock('GitReview\Review\ReviewInterface');
 
@@ -58,7 +66,10 @@ class ReviewCollectionTest extends TestCase
         $this->assertCount(1, $reviews);
     }
 
-    public function testSelectWithFalseCallback(): void
+    /**
+     * @test
+     */
+    public function select_with_false_callback(): void
     {
         $review = Mockery::mock('GitReview\Review\ReviewInterface');
 
@@ -73,7 +84,10 @@ class ReviewCollectionTest extends TestCase
         $this->assertCount(0, $reviews);
     }
 
-    public function testSelectWithEmptyCollection(): void
+    /**
+     * @test
+     */
+    public function select_with_empty_collection(): void
     {
         $filter = function () {
             return true;
@@ -82,7 +96,10 @@ class ReviewCollectionTest extends TestCase
         $this->assertEquals(new ReviewCollection(), $this->collection->select($filter));
     }
 
-    public function testForFileWithMatchingFile(): void
+    /**
+     * @test
+     */
+    public function for_file_with_matching_file(): void
     {
         $review = Mockery::mock('GitReview\Review\ReviewInterface');
         $review->shouldReceive('canReview')->once()->andReturn(true);
@@ -97,7 +114,10 @@ class ReviewCollectionTest extends TestCase
         $this->assertSame($review, $reviews->current());
     }
 
-    public function testForFileWithNonMatchingFile(): void
+    /**
+     * @test
+     */
+    public function for_file_with_non_matching_file(): void
     {
         $review = Mockery::mock('GitReview\Review\ReviewInterface');
         $review->shouldReceive('canReview')->once()->andReturn(false);

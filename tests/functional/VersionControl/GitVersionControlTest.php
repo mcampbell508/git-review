@@ -35,7 +35,10 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->runProcess('rm -rf ' . $this->directory);
     }
 
-    public function testGetStagedFilesWithNoGitRepo(): void
+    /**
+     * @test
+     */
+    public function get_staged_files_with_no_git_repo(): void
     {
         $collection = $this->gitVersionControl->getStagedFiles();
 
@@ -43,7 +46,10 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->assertCount(0, $collection);
     }
 
-    public function testGetStagedFilesWithGitRepo(): void
+    /**
+     * @test
+     */
+    public function get_staged_files_with_git_repo_saassa_saassa(): void
     {
         $cmd = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
@@ -56,7 +62,10 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->assertCount(0, $collection);
     }
 
-    public function testGetStagedFilesWithNewFile(): void
+    /**
+     * @test
+     */
+    public function get_staged_files_with_new_file(): void
     {
         $cmd = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
@@ -75,7 +84,10 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->assertSame('A', $file->getStatus());
     }
 
-    public function testGetStagedFilesWithModifiedFile(): void
+    /**
+     * @test
+     */
+    public function get_staged_files_with_modified_file(): void
     {
         $cmd = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
@@ -97,7 +109,10 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->assertSame('M', $file->getStatus());
     }
 
-    public function testGetStagedFilesWithPartiallyStagedFile(): void
+    /**
+     * @test
+     */
+    public function get_staged_files_with_partially_staged_file(): void
     {
         $cmd = 'touch ' . $this->testFileName;
         $cmd .= ' && git init';
@@ -124,7 +139,10 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->assertSame('test', \trim($process->getOutput()));
     }
 
-    public function testGetStagedFilesWithMovedUnrenamedFile(): void
+    /**
+     * @test
+     */
+    public function get_staged_files_with_moved_unrenamed_file(): void
     {
         $testFolderName = 'test_folder';
 
@@ -153,7 +171,10 @@ class GitVersionControlTest extends FunctionalTestCase
         $this->assertStringStartsWith('R', $file->getStatus());
     }
 
-    public function testGetStagedFilesWithMovedRenamedFile(): void
+    /**
+     * @test
+     */
+    public function get_staged_files_with_moved_renamed_file(): void
     {
         $testFolderName = 'test_folder';
         $newTestFileName = 'test_new.txt';

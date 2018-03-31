@@ -33,21 +33,30 @@ class PhpCodeSnifferReviewTest extends TestCase
         Mockery::close();
     }
 
-    public function testGetOption(): void
+    /**
+     * @test
+     */
+    public function get_option(): void
     {
         $this->review->setOption('standard', 'PSR2');
 
         $this->assertSame('PSR2', $this->review->getOption('standard'));
     }
 
-    public function testGetOptionForConsole(): void
+    /**
+     * @test
+     */
+    public function get_option_for_console(): void
     {
         $this->review->setOption('standard', 'PSR2');
 
         $this->assertSame('--standard=PSR2 ', $this->review->getOptionsForConsole());
     }
 
-    public function testSetOption(): void
+    /**
+     * @test
+     */
+    public function set_option(): void
     {
         $this->review->setOption('standard', 'PSR2');
 
@@ -60,13 +69,18 @@ class PhpCodeSnifferReviewTest extends TestCase
 
     /**
      * @expectedException RuntimeException
+     *
+     * @test
      */
-    public function testSetOptionWithReportOption(): void
+    public function set_option_with_report_option(): void
     {
         $this->review->setOption('report', 'value');
     }
 
-    public function testSetOptionWithOverwrite(): void
+    /**
+     * @test
+     */
+    public function set_option_with_overwrite(): void
     {
         $this->review->setOption('standard', 'PSR2');
 
@@ -77,26 +91,38 @@ class PhpCodeSnifferReviewTest extends TestCase
         $this->assertSame('PEAR', $this->review->getOption('standard'));
     }
 
-    public function testSetOptionReturnsReview(): void
+    /**
+     * @test
+     */
+    public function set_option_returns_review(): void
     {
         $this->assertInstanceOf(\get_class($this->review), $this->review->setOption('test', 'test'));
     }
 
-    public function testCanReview(): void
+    /**
+     * @test
+     */
+    public function can_review(): void
     {
         $this->file->shouldReceive('getExtension')->once()->andReturn('php');
 
         $this->assertTrue($this->review->canReview($this->file));
     }
 
-    public function testCanReviewWithInvalidExtension(): void
+    /**
+     * @test
+     */
+    public function can_review_with_invalid_extension(): void
     {
         $this->file->shouldReceive('getExtension')->once()->andReturn('txt');
 
         $this->assertFalse($this->review->canReview($this->file));
     }
 
-    public function testReviewWithPsr2Standard(): void
+    /**
+     * @test
+     */
+    public function review_with_psr2_standard(): void
     {
         $this->file->shouldReceive('getFullPath')->once()->andReturn(__FILE__);
 
@@ -117,7 +143,10 @@ class PhpCodeSnifferReviewTest extends TestCase
         $this->assertNull($this->review->review($reporter, $this->file));
     }
 
-    public function testReviewWithViolations(): void
+    /**
+     * @test
+     */
+    public function review_with_violations(): void
     {
         $this->file->shouldReceive('getFullPath')->once()->andReturn(__FILE__);
 
