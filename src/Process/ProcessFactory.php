@@ -2,7 +2,7 @@
 
 namespace GitReview\Process;
 
-final class ProcessFactory implements ProcessFactoryInterface
+class ProcessFactory implements ProcessFactoryInterface
 {
     public function create(
         $commandLine,

@@ -19,3 +19,22 @@ tools:
       - "tests/*"
       - ".php_cs.dist"
       - "git-review"
+
+reviews:
+  commits:
+    recommended_max_commits: 10
+    subject:
+      max_length: 60
+      capitalised: true
+      no_full_stop: true
+      imperative_check: true
+    body:
+      wrapped_line_length: 72
+      recommended_min_characters: 30 # use to explain the why behind a commit's existence
+      issue_reference:
+        pattern: ""
+        error_message:
+    laravel:
+      enabled: false
+      uses_migrations: true
+      keep_timestamps_up_to_date: true

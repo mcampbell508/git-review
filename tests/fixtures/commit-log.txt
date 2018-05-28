@@ -1,0 +1,40 @@
+___GIT_REVIEW_COMMIT__
+Hash: "d644da14e54be5375306fe552d3e23960246f4b5"
+Subject: "Why So serious?"
+Body: "Body that spans
+
+multiple lines
+"
+Author Name: "The Joker"
+Date: "2018-03-31 14:07:17 +0100"
+Name Status:
+
+A       the-dark-knight.php
+___GIT_REVIEW_COMMIT__
+Hash: "018eae9a0297c92fd887da125801ad2bf751762d"
+Subject: "Yipee Ki Yay!"
+Body: "This doesnt really allow for meaningful test names."
+Author Name: "John McClane"
+Date: "2018-03-31 13:37:25 +0100"
+Name Status:
+
+M       die-hard-3.php
+D       die-hard-5-should-never-have-been-made.php
+___GIT_REVIEW_COMMIT__
+Hash: "443550d1687ccbaf423e5d4898bf9a1d4a970721"
+Subject: "PHPCSFixer: ensure command detects local branches"
+Body: ""
+Author Name: "Matt Campbell"
+Date: "2018-03-30 14:37:46 +0100"
+Name Status:
+
+M       src/Command/PhpCsFixerCommand.php
+___GIT_REVIEW_COMMIT__
+Hash: "1209f46a2d810275b61b475633fd2ad3ae911be8"
+Subject: "TravisCI fix build"
+Body: ""
+Author Name: "Matt Campbell"
+Date: "2018-03-30 14:33:22 +0100"
+Name Status:
+
+M       src/Command/PhpCsFixerCommand.php
