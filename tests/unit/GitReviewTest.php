@@ -17,7 +17,7 @@ use GitReview\Collection\FileCollection;
 use GitReview\Collection\ReviewCollection;
 use GitReview\GitReview;
 use Mockery;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 class GitReviewTest extends TestCase
 {

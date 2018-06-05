@@ -14,7 +14,7 @@
 namespace GitReview\Tests\Unit;
 
 use Mockery;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 class AbstractReviewTest extends TestCase
 {

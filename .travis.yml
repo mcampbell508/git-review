@@ -20,9 +20,9 @@ before_script:
 
 script:
   - vendor/bin/phpcs
-  - php vendor/bin/phpstan analyse app bin hooks src tests .php_cs.dist -c phpstan.neon -l 7
-  - php vendor/bin/parallel-lint app bin hooks src tests .php_cs.dist
-  - php vendor/bin/phpunit --coverage-text
+  - php vendor/bin/phpstan analyse app bin bootstrap/app.php config hooks src tests .php_cs.dist git-review -c phpstan.neon -l 7
+  - php vendor/bin/parallel-lint app bin bootstrap/app.php config hooks src tests .php_cs.dist git-review
+  - php vendor/bin/phpunit tests/ --coverage-text
   - bin/git-review tools:php-cs-fixer
 
 matrix:

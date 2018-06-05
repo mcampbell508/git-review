@@ -15,7 +15,7 @@ namespace GitReview\Tests\Unit\Collection;
 
 use GitReview\Collection\FileCollection;
 use Mockery;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 class FileCollectionTest extends TestCase
 {

@@ -43,7 +43,6 @@ abstract class AbstractReview implements ReviewInterface
      * @param null|array  $env
      * @param null|string $input
      * @param int         $timeout
-     * @param array       $options
      *
      * @return Process
      */
@@ -52,14 +51,13 @@ abstract class AbstractReview implements ReviewInterface
         $cwd = null,
         array $env = null,
         $input = null,
-        $timeout = 60,
-        array $options = []
+        $timeout = 60
     ) {
         if (null === $cwd) {
             $cwd = $this->getRootDirectory();
         }
 
-        return new Process($commandline, $cwd, $env, $input, $timeout, $options);
+        return new Process($commandline, $cwd, $env, $input, $timeout);
     }
 
     abstract protected function canReviewFile(FileInterface $file);

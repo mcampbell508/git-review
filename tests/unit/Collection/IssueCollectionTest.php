@@ -16,7 +16,7 @@ namespace GitReview\Tests\Unit\Collection;
 use GitReview\Collection\IssueCollection;
 use GitReview\Issue\Issue;
 use Mockery;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 class IssueCollectionTest extends TestCase
 {

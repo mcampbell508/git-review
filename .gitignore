@@ -8,6 +8,7 @@ build/
 .php_cs
 /git-review.yml
 phpcs.xml
+bootstrap/cache/*
 
 # OS Generated Files #
 ######################
