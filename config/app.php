@@ -11,7 +11,7 @@ return [
     | framework needs to place the application's name in a notification or
     | any other location as required by the application or its packages.
     |
-    */
+     */
     'name' => 'Git-review',
 
     /*
@@ -23,7 +23,7 @@ return [
     | in. You may want to follow the "Semantic Versioning" - Given a version
     | number MAJOR.MINOR.PATCH when an update happens: https://semver.org.
     |
-    */
+     */
     'version' => app('git.version'),
 
     /*
@@ -35,7 +35,7 @@ return [
     | running in. This may determine how you prefer to configure various
     | services your application utilizes. Should be true in production.
     |
-    */
+     */
     'production' => false,
 
     /*
@@ -47,7 +47,7 @@ return [
     | request to your application. Feel free to add your own services to
     | this array to grant expanded functionality to your applications.
     |
-    */
+     */
     'providers' => [
         GitReview\Providers\AppServiceProvider::class,
     ],

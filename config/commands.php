@@ -11,7 +11,7 @@ return [
     | provided. Consider update the default command for single command applications.
     | You cannot pass arguments to the default command because they are ignored.
     |
-    */
+     */
     'default' => NunoMaduro\LaravelConsoleSummary\SummaryCommand::class,
 
     /*
@@ -23,7 +23,7 @@ return [
     | kernel. Foreach "path" present on the array provided below the kernel
     | will extract all "Illuminate\Console\Command" based class commands.
     |
-    */
+     */
     'paths' => [app_path('Commands')],
 
     /*
@@ -35,7 +35,7 @@ return [
     | entire folder. Here you can specify which commands should be added to
     | your list of commands. The console's kernel will try to load them.
     |
-    */
+     */
     'add' => [
         // ..
     ],
@@ -49,7 +49,7 @@ return [
     | of commands. But you can still make them "hidden" specifying an array
     | of commands below. All "hidden" commands can still be run/executed.
     |
-    */
+     */
     'hidden' => [
         NunoMaduro\LaravelConsoleSummary\SummaryCommand::class,
         Symfony\Component\Console\Command\HelpCommand::class,
@@ -67,7 +67,7 @@ return [
     | you don't need? No problem. Laravel Zero allows you to specify
     | bellow a list of commands that you don't to see in your app.
     |
-    */
+     */
     'remove' => [
         // ..
     ],

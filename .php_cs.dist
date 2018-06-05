@@ -5,11 +5,15 @@ use PhpCsFixer\Finder;
 
 $finder = Finder::create()
     ->in([
+        'app',
         'bin',
+        'bootstrap',
+        'config',
         'hooks',
         'src',
         'tests',
-    ]);
+    ])
+    ->exclude('bootstrap/cache');
 
 $rules = [
     '@PSR2' => false,
