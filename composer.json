@@ -64,9 +64,9 @@
     },
     "scripts": {
         "test": [
-            "vendor/bin/phpcs --colors --standard=PSR2 src/ bin/ hooks/ tests/",
-            "vendor/bin/phpunit --color=always --testsuite unit",
-            "vendor/bin/phpunit --color=always --testsuite functional",
+            "vendor/bin/phpcs --colors",
+            "vendor/bin/phpunit tests/ --color=always --testsuite unit",
+            "vendor/bin/phpunit tests/ --color=always --testsuite functional",
             "php vendor/bin/phpstan analyse app bin hooks src tests .php_cs.dist"
         ],
         "code-style": [
