@@ -10,8 +10,12 @@ tools:
     use_cache: false
     allow_risky: false
     paths_to_scan:
+      - "app/*"
       - "bin/*"
+      - "bootstrap/app.php"
+      - "config/*"
       - "hooks/*"
       - "src/*"
       - "tests/*"
       - ".php_cs.dist"
+      - "git-review"
