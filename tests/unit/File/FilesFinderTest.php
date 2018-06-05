@@ -4,7 +4,7 @@ namespace GitReview\Tests\Unit\Classes;
 
 use GitReview\File\File;
 use GitReview\File\FilesFinder;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Tightenco\Collect\Support\Collection;
 
 class FilesFinderTest extends TestCase

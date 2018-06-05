@@ -2,7 +2,7 @@
 
 namespace GitReview\Tests\Functional;
 
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Process\Process;
 
 class FunctionalTestCase extends TestCase

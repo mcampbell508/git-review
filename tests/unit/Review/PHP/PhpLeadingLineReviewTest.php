@@ -14,7 +14,7 @@
 namespace GitReview\Tests\Unit\Review\PHP;
 
 use Mockery;
-use PHPUnit_Framework_TestCase as TestCase;
+use PHPUnit\Framework\TestCase;
 
 class PhpLeadingLineReviewTest extends TestCase
 {
