@@ -67,7 +67,7 @@
             "vendor/bin/phpcs --colors",
             "vendor/bin/phpunit tests/ --color=always --testsuite unit",
             "vendor/bin/phpunit tests/ --color=always --testsuite functional",
-            "php vendor/bin/phpstan analyse app bin hooks src tests .php_cs.dist"
+            "php vendor/bin/phpstan analyse app bin bootstrap/app.php config hooks src tests .php_cs.dist git-review -c phpstan.neon -l 7"
         ],
         "code-style": [
             "php vendor/bin/phpcs",
