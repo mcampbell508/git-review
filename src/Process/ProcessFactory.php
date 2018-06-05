@@ -6,19 +6,17 @@ final class ProcessFactory implements ProcessFactoryInterface
 {
     public function create(
         $commandLine,
-        $cwd = null,
+        ?string $cwd = null,
         array $env = null,
         $input = null,
-        $timeout = 60,
-        array $options = []
+        $timeout = 60
     ): Process {
         $process = new Process(
             $commandLine,
             $cwd,
             $env,
             $input,
-            $timeout,
-            $options
+            $timeout
         );
 
         $process->run();

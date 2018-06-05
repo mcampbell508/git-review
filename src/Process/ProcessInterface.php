@@ -22,13 +22,12 @@ interface ProcessInterface
      * @param callable|null $callback A PHP callback to run whenever there is some
      *                                output available on STDOUT or STDERR
      *
+     * @param array         $env
+     *
      * @return int The exit status code
      *
-     * @throws RuntimeException When process can't be launched
-     * @throws RuntimeException When process stopped after receiving signal
-     * @throws LogicException   In case a callback is provided and output has been disabled
      */
-    public function run($callback = null);
+    public function run(callable $callback = null, array $env = []): int;
 
     /**
      * Returns the Pid (process identifier), if applicable.
@@ -259,7 +258,7 @@ interface ProcessInterface
      *
      * @param string $line The line to append
      */
-    public function addOutput($line);
+    public function addOutput(string $line);
 
     /**
      * Adds a line to the STDERR stream.
@@ -268,7 +267,7 @@ interface ProcessInterface
      *
      * @param string $line The line to append
      */
-    public function addErrorOutput($line);
+    public function addErrorOutput(string $line);
 
     /**
      * Gets the command line to be executed.

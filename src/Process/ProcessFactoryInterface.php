@@ -6,10 +6,9 @@ interface ProcessFactoryInterface
 {
     public function create(
         $commandLine,
-        $cwd = null,
+        ?string $cwd = null,
         array $env = null,
         $input = null,
-        $timeout = 60,
-        array $options = []
+        $timeout = 60
     ): Process;
 }
