@@ -2,10 +2,15 @@
 <ruleset name="GitReview">
     <description>The coding standard for Git Review</description>
 
+    <file>./app</file>
     <file>./bin</file>
+    <file>./bootstrap/app.php</file>
+    <file>./config</file>
     <file>./src</file>
     <file>./hooks</file>
     <file>./tests</file>
+    <file>./.php_cs.dist</file>
+    <file>./git-review</file>
 
     <arg name="colors"/>
 
